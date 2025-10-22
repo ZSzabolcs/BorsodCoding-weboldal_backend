@@ -7,7 +7,7 @@ using MySql.EntityFrameworkCore.Metadata;
 namespace For_The_Potatoe_Backend.Migrations
 {
     /// <inheritdoc />
-    public partial class CreateConnectedTables : Migration
+    public partial class CreateAndConnectTables : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -39,7 +39,7 @@ namespace For_The_Potatoe_Backend.Migrations
                         .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
                     Points = table.Column<int>(type: "int", nullable: false),
                     Level = table.Column<int>(type: "int", nullable: false),
-                    Language = table.Column<string>(type: "longtext", nullable: false),
+                    Language = table.Column<string>(type: "varchar(2)", nullable: false),
                     Date = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     UserId = table.Column<int>(type: "int", nullable: false)
                 },

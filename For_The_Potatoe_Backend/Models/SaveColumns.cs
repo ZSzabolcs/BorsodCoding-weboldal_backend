@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using For_The_Potatoe_Backend.Models;
+using MySql.Data.MySqlClient.X.XDevAPI.Common;
 
 namespace For_The_Potatoe_Backend.Models
 {
@@ -11,6 +12,7 @@ namespace For_The_Potatoe_Backend.Models
 
         public int Level { get; set; }
 
+        [Column(TypeName = "varchar(2)")]
         public string Language { get; set; }
 
         public DateTime Date { get; set; }

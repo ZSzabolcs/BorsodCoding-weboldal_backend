@@ -131,3 +131,4 @@ C:\Users\CsKrisz\source\repos\For_The_Potatoe_Backend\For_The_Potatoe_Backend\ob
 C:\Users\CsKrisz\source\repos\For_The_Potatoe_Backend\For_The_Potatoe_Backend\obj\Debug\net8.0\For_The_Potatoe_Backend.pdb
 C:\Users\CsKrisz\source\repos\For_The_Potatoe_Backend\For_The_Potatoe_Backend\obj\Debug\net8.0\For_The_Potatoe_Backend.genruntimeconfig.cache
 C:\Users\CsKrisz\source\repos\For_The_Potatoe_Backend\For_The_Potatoe_Backend\obj\Debug\net8.0\ref\For_The_Potatoe_Backend.dll
+C:\Users\CsKrisz\source\repos\For_The_Potatoe_Backend\For_The_Potatoe_Backend\obj\Debug\net8.0\For_The_Potatoe_Backend.sourcelink.json

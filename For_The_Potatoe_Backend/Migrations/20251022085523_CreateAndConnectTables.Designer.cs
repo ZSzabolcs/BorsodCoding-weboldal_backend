@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace For_The_Potatoe_Backend.Migrations
 {
     [DbContext(typeof(For_The_PotatoeDbContext))]
-    [Migration("20251022080242_CreateConnectedTables")]
-    partial class CreateConnectedTables
+    [Migration("20251022085523_CreateAndConnectTables")]
+    partial class CreateAndConnectTables
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -33,7 +33,7 @@ namespace For_The_Potatoe_Backend.Migrations
 
                     b.Property<string>("Language")
                         .IsRequired()
-                        .HasColumnType("longtext");
+                        .HasColumnType("varchar(2)");
 
                     b.Property<int>("Level")
                         .HasColumnType("int");

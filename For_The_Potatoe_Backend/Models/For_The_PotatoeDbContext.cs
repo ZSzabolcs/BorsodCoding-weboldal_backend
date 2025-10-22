@@ -20,6 +20,7 @@ namespace For_The_Potatoe_Backend.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+
             modelBuilder.Entity<UserColumns>()
                 .HasMany(e => e.Saves)
                 .WithOne(e => e.UserColumns)

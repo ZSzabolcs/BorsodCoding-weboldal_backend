@@ -3,6 +3,7 @@ using System;
 using For_The_Potatoe_Backend.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace For_The_Potatoe_Backend.Migrations
 {
     [DbContext(typeof(For_The_PotatoeDbContext))]
-    partial class For_The_PotatoeDbContextModelSnapshot : ModelSnapshot
+    [Migration("20251022091434_CreateAndConnectTables2")]
+    partial class CreateAndConnectTables2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
