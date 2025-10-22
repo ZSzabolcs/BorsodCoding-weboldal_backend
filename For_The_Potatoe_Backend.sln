@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36616.10 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "For_The_Potatoe_Backend", "For_The_Potatoe_Backend\For_The_Potatoe_Backend.csproj", "{0E1C0992-7DC6-461E-980F-D319D9614697}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0E1C0992-7DC6-461E-980F-D319D9614697}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E1C0992-7DC6-461E-980F-D319D9614697}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E1C0992-7DC6-461E-980F-D319D9614697}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E1C0992-7DC6-461E-980F-D319D9614697}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D56150B9-2B5F-4673-A24D-20C6E45A5250}
+	EndGlobalSection
+EndGlobal
