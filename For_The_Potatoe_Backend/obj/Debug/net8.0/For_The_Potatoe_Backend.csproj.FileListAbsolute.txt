@@ -176,11 +176,8 @@ D:\Munka\Iskola\vegso_projekt\backend\For_The_Potatoe_Backend\bin\Debug\net8.0\S
 D:\Munka\Iskola\vegso_projekt\backend\For_The_Potatoe_Backend\bin\Debug\net8.0\System.Composition.Runtime.dll
 D:\Munka\Iskola\vegso_projekt\backend\For_The_Potatoe_Backend\bin\Debug\net8.0\System.Composition.TypedParts.dll
 D:\Munka\Iskola\vegso_projekt\backend\For_The_Potatoe_Backend\bin\Debug\net8.0\System.Configuration.ConfigurationManager.dll
-D:\Munka\Iskola\vegso_projekt\backend\For_The_Potatoe_Backend\bin\Debug\net8.0\System.IO.Pipelines.dll
 D:\Munka\Iskola\vegso_projekt\backend\For_The_Potatoe_Backend\bin\Debug\net8.0\System.Security.Cryptography.ProtectedData.dll
 D:\Munka\Iskola\vegso_projekt\backend\For_The_Potatoe_Backend\bin\Debug\net8.0\System.Security.Permissions.dll
-D:\Munka\Iskola\vegso_projekt\backend\For_The_Potatoe_Backend\bin\Debug\net8.0\System.Text.Encodings.Web.dll
-D:\Munka\Iskola\vegso_projekt\backend\For_The_Potatoe_Backend\bin\Debug\net8.0\System.Text.Json.dll
 D:\Munka\Iskola\vegso_projekt\backend\For_The_Potatoe_Backend\bin\Debug\net8.0\System.Windows.Extensions.dll
 D:\Munka\Iskola\vegso_projekt\backend\For_The_Potatoe_Backend\bin\Debug\net8.0\ZstdSharp.dll
 D:\Munka\Iskola\vegso_projekt\backend\For_The_Potatoe_Backend\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.resources.dll
@@ -240,7 +237,6 @@ D:\Munka\Iskola\vegso_projekt\backend\For_The_Potatoe_Backend\bin\Debug\net8.0\r
 D:\Munka\Iskola\vegso_projekt\backend\For_The_Potatoe_Backend\bin\Debug\net8.0\runtimes\win-x64\native\k5sprt64.dll
 D:\Munka\Iskola\vegso_projekt\backend\For_The_Potatoe_Backend\bin\Debug\net8.0\runtimes\win-x64\native\krb5_64.dll
 D:\Munka\Iskola\vegso_projekt\backend\For_The_Potatoe_Backend\bin\Debug\net8.0\runtimes\win-x64\native\krbcc64.dll
-D:\Munka\Iskola\vegso_projekt\backend\For_The_Potatoe_Backend\bin\Debug\net8.0\runtimes\browser\lib\net8.0\System.Text.Encodings.Web.dll
 D:\Munka\Iskola\vegso_projekt\backend\For_The_Potatoe_Backend\bin\Debug\net8.0\runtimes\win\lib\net8.0\System.Windows.Extensions.dll
 D:\Munka\Iskola\vegso_projekt\backend\For_The_Potatoe_Backend\obj\Debug\net8.0\For_The_Potatoe_Backend.csproj.AssemblyReference.cache
 D:\Munka\Iskola\vegso_projekt\backend\For_The_Potatoe_Backend\obj\Debug\net8.0\rpswa.dswa.cache.json

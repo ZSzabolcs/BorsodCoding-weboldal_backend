@@ -1,5 +1,25 @@
 [
   {
+    "ContainingType": "For_The_Potatoe_Backend.Controllers.UserRegistData",
+    "Method": "GetAllData",
+    "RelativePath": "api/UserRegistData",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "For_The_Potatoe_Backend.Models.UserColumns",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
     "ContainingType": "For_The_Potatoe_Backend.Controllers.WeatherForecastController",
     "Method": "Get",
     "RelativePath": "WeatherForecast",

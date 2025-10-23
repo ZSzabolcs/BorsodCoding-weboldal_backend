@@ -17,7 +17,6 @@ namespace For_The_Potatoe_Backend.Controllers
             {
                 var users = context.User.ToList();
 
-                Console.WriteLine(users);
 
                 if (users != null)
                 {
