@@ -41,7 +41,7 @@
   },
   {
     "ContainingType": "For_The_Potatoe_Backend.Controllers.UserSaveData",
-    "Method": "GetByName",
+    "Method": "InsertSaveData",
     "RelativePath": "api/UserSaveData",
     "HttpMethod": "POST",
     "IsController": true,
@@ -51,6 +51,32 @@
         "Name": "save",
         "Type": "For_The_Potatoe_Backend.Models.Dto.InsertSaveDto",
         "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "For_The_Potatoe_Backend.Models.SaveColumns",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "For_The_Potatoe_Backend.Controllers.UserSaveData",
+    "Method": "RemoveASave",
+    "RelativePath": "api/UserSaveData",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": [

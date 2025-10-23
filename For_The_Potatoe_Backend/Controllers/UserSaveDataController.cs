@@ -25,6 +25,8 @@ namespace For_The_Potatoe_Backend.Controllers
             }
 
         }
+
+
         [HttpPost]
         public ActionResult<SaveColumns> InsertSaveData(InsertSaveDto save)
         {
@@ -51,7 +53,7 @@ namespace For_The_Potatoe_Backend.Controllers
                         };
                         context.Save.Add(newSave);
                         context.SaveChanges();
-                        return StatusCode(201, new { Value = save });
+                        return StatusCode(201, new { value = save });
                     }
 
                 }
@@ -65,5 +67,24 @@ namespace For_The_Potatoe_Backend.Controllers
             }
 
         }
+
+        [HttpDelete]
+        public ActionResult<SaveColumns> RemoveASave(int id)
+        {
+            using (For_The_PotatoeDbContext context = new For_The_PotatoeDbContext())
+            {
+                var record = context.Save.FirstOrDefault(s => s.Id == id);
+
+                if (record != null)
+                {
+                    context.Remove(record);
+                    context.SaveChanges();
+                    return StatusCode(204);
+                }
+
+                return BadRequest(new { message = "Sikertelen törlés" });
+
+            }
+        } 
     }
 }
