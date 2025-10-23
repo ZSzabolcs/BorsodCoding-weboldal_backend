@@ -67,6 +67,9 @@ namespace For_The_Potatoe_Backend.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("Name")
+                        .IsUnique();
+
                     b.ToTable("User");
                 });
 

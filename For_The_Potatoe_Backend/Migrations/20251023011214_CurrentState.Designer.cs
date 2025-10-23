@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace For_The_Potatoe_Backend.Migrations
 {
     [DbContext(typeof(For_The_PotatoeDbContext))]
-    [Migration("20251022085523_CreateAndConnectTables")]
-    partial class CreateAndConnectTables
+    [Migration("20251023011214_CurrentState")]
+    partial class CurrentState
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -62,13 +62,16 @@ namespace For_The_Potatoe_Backend.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("longtext");
+                        .HasColumnType("varchar(30)");
 
                     b.Property<string>("Password")
                         .IsRequired()
-                        .HasColumnType("longtext");
+                        .HasColumnType("varchar(50)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("Name")
+                        .IsUnique();
 
                     b.ToTable("User");
                 });

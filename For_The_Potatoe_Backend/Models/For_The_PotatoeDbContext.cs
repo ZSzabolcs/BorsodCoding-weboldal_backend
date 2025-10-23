@@ -19,7 +19,7 @@ namespace For_The_Potatoe_Backend.Models
 
         public DbSet<SaveColumns> Save { get; set; }
 
-
+        
         public static async Task SeedDataAsync(IServiceProvider serviceProvider)
         {
             using (var scope = serviceProvider.CreateScope())
@@ -66,7 +66,9 @@ namespace For_The_Potatoe_Backend.Models
                     await context.SaveChangesAsync();
                 }
             }
+        
         }
+        
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

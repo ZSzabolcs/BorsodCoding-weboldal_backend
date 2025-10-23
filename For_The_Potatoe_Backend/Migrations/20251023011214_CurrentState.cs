@@ -7,7 +7,7 @@ using MySql.EntityFrameworkCore.Metadata;
 namespace For_The_Potatoe_Backend.Migrations
 {
     /// <inheritdoc />
-    public partial class CreateAndConnectTables : Migration
+    public partial class CurrentState : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -21,8 +21,8 @@ namespace For_The_Potatoe_Backend.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(type: "longtext", nullable: false),
-                    Password = table.Column<string>(type: "longtext", nullable: false),
+                    Name = table.Column<string>(type: "varchar(30)", nullable: false),
+                    Password = table.Column<string>(type: "varchar(50)", nullable: false),
                     Date = table.Column<DateTime>(type: "datetime(6)", nullable: false)
                 },
                 constraints: table =>
@@ -59,6 +59,39 @@ namespace For_The_Potatoe_Backend.Migrations
                 name: "IX_Save_UserId",
                 table: "Save",
                 column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_User_Name",
+                table: "User",
+                column: "Name",
+                unique: true);
+
+            using (StreamReader sr = new StreamReader("UserData.csv"))
+            {
+                while (!sr.EndOfStream)
+                {
+                    var sor = sr.ReadLine().Split(';');
+                    migrationBuilder.InsertData(
+                    table: "User",
+                    columns: ["Id", "Name", "Password", "Date"],
+                    values: [int.Parse(sor[0]), sor[1], sor[2], sor[3]]
+                    );
+                }
+
+            }
+
+            using (StreamReader sr = new StreamReader("SaveData.csv"))
+            {
+                while (!sr.EndOfStream)
+                {
+                    var sor = sr.ReadLine().Split(',');
+                    migrationBuilder.InsertData(
+                    table: "Save",
+                    columns: ["Id", "Points", "Level", "Language", "Date", "UserId"],
+                    values: [int.Parse(sor[0]), sor[1], sor[2], sor[3], sor[4], int.Parse(sor[0])]
+                    );
+                }
+            }
         }
 
         /// <inheritdoc />
