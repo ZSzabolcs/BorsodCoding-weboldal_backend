@@ -26,5 +26,11 @@ namespace For_The_Potatoe_Backend.Controllers
             }
 
         }
+
+        [HttpPost]
+        public ActionResult<UserColumns> InsertRegistData()
+        {
+            return BadRequest(new { message = "Sikertelen feltöltés"});
+        }
     }
 }

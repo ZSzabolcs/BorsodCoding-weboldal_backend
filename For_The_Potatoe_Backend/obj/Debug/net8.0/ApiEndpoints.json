@@ -20,6 +20,26 @@
     ]
   },
   {
+    "ContainingType": "For_The_Potatoe_Backend.Controllers.UserRegistData",
+    "Method": "InsertRegistData",
+    "RelativePath": "api/UserRegistData",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "For_The_Potatoe_Backend.Models.UserColumns",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
     "ContainingType": "For_The_Potatoe_Backend.Controllers.UserSaveData",
     "Method": "GetAllData",
     "RelativePath": "api/UserSaveData",

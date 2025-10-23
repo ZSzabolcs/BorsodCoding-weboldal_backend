@@ -32,6 +32,33 @@
             }
           }
         }
+      },
+      "post": {
+        "tags": [
+          "UserRegistData"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserColumns"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserColumns"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserColumns"
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/api/UserSaveData": {
