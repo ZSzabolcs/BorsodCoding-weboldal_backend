@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 using MySql.EntityFrameworkCore.Metadata;
+using For_The_Potatoe_Backend.Migrations;
 
 #nullable disable
 
@@ -66,32 +67,7 @@ namespace For_The_Potatoe_Backend.Migrations
                 column: "Name",
                 unique: true);
 
-            using (StreamReader sr = new StreamReader("UserData.csv"))
-            {
-                while (!sr.EndOfStream)
-                {
-                    var sor = sr.ReadLine().Split(';');
-                    migrationBuilder.InsertData(
-                    table: "User",
-                    columns: ["Id", "Name", "Password", "Date"],
-                    values: [int.Parse(sor[0]), sor[1], sor[2], sor[3]]
-                    );
-                }
-
-            }
-
-            using (StreamReader sr = new StreamReader("SaveData.csv"))
-            {
-                while (!sr.EndOfStream)
-                {
-                    var sor = sr.ReadLine().Split(',');
-                    migrationBuilder.InsertData(
-                    table: "Save",
-                    columns: ["Id", "Points", "Level", "Language", "Date", "UserId"],
-                    values: [int.Parse(sor[0]), sor[1], sor[2], sor[3], sor[4], int.Parse(sor[0])]
-                    );
-                }
-            }
+            SetupData.InsertDataToTables(ref migrationBuilder);
         }
 
         /// <inheritdoc />
