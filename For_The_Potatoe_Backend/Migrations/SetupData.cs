@@ -27,8 +27,8 @@ namespace For_The_Potatoe_Backend.Migrations
                     var sor = sr.ReadLine().Split(',');
                     migrationBuilder.InsertData(
                     table: "Save",
-                    columns: ["Id", "Points", "Level", "Language", "Date", "UserId"],
-                    values: [int.Parse(sor[0]), sor[1], sor[2], sor[3], sor[4], int.Parse(sor[0])]
+                    columns: ["UserId", "Points", "Level", "Language", "Date"],
+                    values: [int.Parse(sor[0]), sor[1], sor[2], sor[3], sor[4]]
                     );
                 }
             }

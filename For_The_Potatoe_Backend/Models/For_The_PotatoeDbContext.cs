@@ -77,16 +77,24 @@ namespace For_The_Potatoe_Backend.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<UserColumns>()
+                .HasKey(u => u.Id);
 
             modelBuilder.Entity<UserColumns>()
-                .HasIndex(e => e.Name)
+                .HasIndex(u => u.Name)
                 .IsUnique();
 
-            modelBuilder.Entity<UserColumns>()
-                .HasMany(e => e.Saves)
-                .WithOne(e => e.UserColumns)
-                .HasForeignKey(e => e.UserId)
-                .HasPrincipalKey(e => e.Id);
+            // Konfiguráljuk az Egy-az-Egyhez kapcsolatot az User és a Save között
+            modelBuilder.Entity<SaveColumns>()
+                .HasKey(sc => sc.UserId);
+
+            modelBuilder.Entity<SaveColumns>()
+                .HasOne(sc => sc.UserColumns)
+                .WithOne(u => u.SaveColumns)
+                .HasForeignKey<SaveColumns>(sc => sc.UserId);
+
+
+            base.OnModelCreating(modelBuilder);
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

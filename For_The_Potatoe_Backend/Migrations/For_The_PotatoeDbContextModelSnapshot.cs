@@ -21,8 +21,7 @@ namespace For_The_Potatoe_Backend.Migrations
 
             modelBuilder.Entity("For_The_Potatoe_Backend.Models.SaveColumns", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
+                    b.Property<int>("UserId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("Date")
@@ -38,12 +37,7 @@ namespace For_The_Potatoe_Backend.Migrations
                     b.Property<int>("Points")
                         .HasColumnType("int");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UserId");
+                    b.HasKey("UserId");
 
                     b.ToTable("Save");
                 });
@@ -76,8 +70,8 @@ namespace For_The_Potatoe_Backend.Migrations
             modelBuilder.Entity("For_The_Potatoe_Backend.Models.SaveColumns", b =>
                 {
                     b.HasOne("For_The_Potatoe_Backend.Models.UserColumns", "UserColumns")
-                        .WithMany("Saves")
-                        .HasForeignKey("UserId")
+                        .WithOne("SaveColumns")
+                        .HasForeignKey("For_The_Potatoe_Backend.Models.SaveColumns", "UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -86,7 +80,8 @@ namespace For_The_Potatoe_Backend.Migrations
 
             modelBuilder.Entity("For_The_Potatoe_Backend.Models.UserColumns", b =>
                 {
-                    b.Navigation("Saves");
+                    b.Navigation("SaveColumns")
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

@@ -17,6 +17,6 @@ namespace For_The_Potatoe_Backend.Models
         public string Password { get; set; }
         public DateTime Date { get; set; }
 
-        public ICollection<SaveColumns> Saves { get; }
+        public SaveColumns SaveColumns { get; }
     }
 }
