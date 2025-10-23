@@ -17,9 +17,11 @@ namespace For_The_Potatoe_Backend.Controllers
             {
                 var users = context.Save.ToList();
 
-                if (users != null)
+                var userData = users.Select(s => new { s.UserId, s.Points, s.Level, s.Language, s.Date });
+
+                if (userData != null)
                 {
-                    return Ok(users);
+                    return Ok(userData);
                 }
                 return BadRequest(new { message = "Sikertelen lekérdezés" });
             }
@@ -73,7 +75,7 @@ namespace For_The_Potatoe_Backend.Controllers
         {
             using (For_The_PotatoeDbContext context = new For_The_PotatoeDbContext())
             {
-                var record = context.Save.FirstOrDefault(s => s.Id == id);
+                var record = context.Save.FirstOrDefault(s => s.UserId == id);
 
                 if (record != null)
                 {
