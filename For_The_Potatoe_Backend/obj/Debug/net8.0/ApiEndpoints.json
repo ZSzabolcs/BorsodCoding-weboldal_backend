@@ -38,5 +38,31 @@
         "StatusCode": 200
       }
     ]
+  },
+  {
+    "ContainingType": "For_The_Potatoe_Backend.Controllers.UserSaveData",
+    "Method": "GetByName",
+    "RelativePath": "api/UserSaveData",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "save",
+        "Type": "For_The_Potatoe_Backend.Models.Dto.InsertSaveDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "For_The_Potatoe_Backend.Models.SaveColumns",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   }
 ]

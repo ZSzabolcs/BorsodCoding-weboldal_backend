@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using For_The_Potatoe_Backend.Models.Dto;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace For_The_Potatoe_Backend.Models
@@ -70,7 +72,7 @@ namespace For_The_Potatoe_Backend.Models
         }
         */
 
-       
+  
         
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
