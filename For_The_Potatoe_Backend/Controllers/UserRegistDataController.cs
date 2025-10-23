@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using For_The_Potatoe_Backend.Models;
 using Microsoft.EntityFrameworkCore;
+using For_The_Potatoe_Backend.Models.Dto;
 
 namespace For_The_Potatoe_Backend.Controllers
 {
@@ -29,9 +30,28 @@ namespace For_The_Potatoe_Backend.Controllers
         }
 
         [HttpPost]
-        public ActionResult<UserColumns> InsertRegistData()
+        public ActionResult<UserColumns> InsertRegistData(UserDto user)
         {
-            return BadRequest(new { message = "Sikertelen feltöltés"});
+            using (For_The_PotatoeDbContext context = new For_The_PotatoeDbContext())
+            {
+                UserColumns newUser = new UserColumns()
+                {
+                    Name = user.Name,
+                    Password = user.Password,
+                    Date = user.Date
+                };
+
+                if (newUser != null)
+                {
+                    context.User.Add(newUser);
+                    context.SaveChanges();
+                    return StatusCode(201, new { value = newUser });
+                }
+
+                return BadRequest(new { message = "Sikertelen feltöltés" });
+            }
+
+
         }
     }
 }
