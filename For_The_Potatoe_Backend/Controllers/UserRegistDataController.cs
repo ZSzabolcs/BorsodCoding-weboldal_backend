@@ -17,10 +17,11 @@ namespace For_The_Potatoe_Backend.Controllers
             {
                 var users = context.User.ToList();
 
+                var userData = users.Select(u => new { u.Id, u.Name, u.Password, u.Date });
 
-                if (users != null)
+                if (userData != null)
                 {
-                    return Ok(users);
+                    return Ok(userData);
                 }
                 return BadRequest(new { message = "Sikertelen lekérdezés" });
             }
