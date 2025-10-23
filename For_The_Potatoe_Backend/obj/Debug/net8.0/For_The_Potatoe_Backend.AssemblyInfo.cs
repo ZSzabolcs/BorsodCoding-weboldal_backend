@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("For_The_Potatoe_Backend")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3ec50238283d3d9e3a74fd0ba7912f99d952a7e6")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8d6eb4ab63ac798eddcc10345f444d2de292f15e")]
 [assembly: System.Reflection.AssemblyProductAttribute("For_The_Potatoe_Backend")]
 [assembly: System.Reflection.AssemblyTitleAttribute("For_The_Potatoe_Backend")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -37,6 +37,25 @@
         "tags": [
           "UserRegistData"
         ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserDto"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -205,7 +224,7 @@
       "SaveColumns": {
         "type": "object",
         "properties": {
-          "id": {
+          "userId": {
             "type": "integer",
             "format": "int32"
           },
@@ -224,10 +243,6 @@
           "date": {
             "type": "string",
             "format": "date-time"
-          },
-          "userId": {
-            "type": "integer",
-            "format": "int32"
           },
           "userColumns": {
             "$ref": "#/components/schemas/UserColumns"
@@ -254,13 +269,26 @@
             "type": "string",
             "format": "date-time"
           },
-          "saves": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/SaveColumns"
-            },
-            "nullable": true,
-            "readOnly": true
+          "saveColumns": {
+            "$ref": "#/components/schemas/SaveColumns"
+          }
+        },
+        "additionalProperties": false
+      },
+      "UserDto": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "password": {
+            "type": "string",
+            "nullable": true
+          },
+          "date": {
+            "type": "string",
+            "format": "date-time"
           }
         },
         "additionalProperties": false
