@@ -19,7 +19,7 @@ namespace For_The_Potatoe_Backend.Models
 
         public DbSet<SaveColumns> Save { get; set; }
 
-        
+        /*
         public static async Task SeedDataAsync(IServiceProvider serviceProvider)
         {
             using (var scope = serviceProvider.CreateScope())
@@ -68,6 +68,9 @@ namespace For_The_Potatoe_Backend.Models
             }
         
         }
+        */
+
+       
         
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -86,8 +89,10 @@ namespace For_The_Potatoe_Backend.Models
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseMySQL("server=localhost;database=for_the_potatoe;UID=root;password='';SslMode=None");
+            optionsBuilder.UseMySQL("server=localhost;database=for_the_potatoe;UID=root;password='';Convert Zero Datetime=True;Allow Zero Datetime=True;SslMode=Disabled");
         }
+
+
 
     }
 }
