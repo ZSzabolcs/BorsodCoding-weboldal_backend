@@ -20,16 +20,16 @@
     ]
   },
   {
-    "ContainingType": "For_The_Potatoe_Backend.Controllers.WeatherForecastController",
-    "Method": "Get",
-    "RelativePath": "WeatherForecast",
+    "ContainingType": "For_The_Potatoe_Backend.Controllers.UserSaveData",
+    "Method": "GetAllData",
+    "RelativePath": "api/UserSaveData",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[For_The_Potatoe_Backend.WeatherForecast, For_The_Potatoe_Backend, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "For_The_Potatoe_Backend.Models.SaveColumns",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -37,7 +37,6 @@
         ],
         "StatusCode": 200
       }
-    ],
-    "EndpointName": "GetWeatherForecast"
+    ]
   }
 ]
