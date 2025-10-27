@@ -14,7 +14,7 @@ namespace For_The_Potatoe_Backend.Controllers
         [HttpGet]
         public ActionResult<UserColumns> GetAllData()
         {
-            using (var context = new For_The_PotatoeDbContext())
+            using (For_The_PotatoeDbContext context = new For_The_PotatoeDbContext())
             {
                 var users = context.User.ToList();
 
@@ -34,15 +34,16 @@ namespace For_The_Potatoe_Backend.Controllers
         {
             using (For_The_PotatoeDbContext context = new For_The_PotatoeDbContext())
             {
-                UserColumns newUser = new UserColumns()
-                {
-                    Name = user.Name,
-                    Password = user.Password,
-                    Date = user.Date
-                };
 
-                if (newUser != null)
+                if (user != null)
                 {
+                    UserColumns newUser = new UserColumns()
+                    {
+                        Name = user.Name,
+                        Password = user.Password,
+                        Date = user.Date
+                    };
+
                     context.User.Add(newUser);
                     context.SaveChanges();
                     return StatusCode(201, new { value = newUser });
@@ -53,5 +54,7 @@ namespace For_The_Potatoe_Backend.Controllers
 
 
         }
+
+
     }
 }
