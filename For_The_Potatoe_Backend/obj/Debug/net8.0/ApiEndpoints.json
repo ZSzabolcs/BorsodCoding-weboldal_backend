@@ -46,6 +46,32 @@
     ]
   },
   {
+    "ContainingType": "For_The_Potatoe_Backend.Controllers.UserRegistData",
+    "Method": "DeleteRegistData",
+    "RelativePath": "api/UserRegistData",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "For_The_Potatoe_Backend.Models.UserColumns",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
     "ContainingType": "For_The_Potatoe_Backend.Controllers.UserSaveData",
     "Method": "GetAllData",
     "RelativePath": "api/UserSaveData",

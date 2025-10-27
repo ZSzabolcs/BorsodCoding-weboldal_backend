@@ -55,6 +55,25 @@ namespace For_The_Potatoe_Backend.Controllers
 
         }
 
+        [HttpDelete]
+        public ActionResult<UserColumns> DeleteRegistData(int id) 
+        {
+            using (For_The_PotatoeDbContext context = new For_The_PotatoeDbContext())
+            {
+                var record = context.User.FirstOrDefault(u => u.Id == id);
+
+                if (record != null)
+                {
+                    context.Remove(record);
+                    context.SaveChanges();
+                    return StatusCode(204);
+                }
+
+                return BadRequest(new { message = "Sikertelen törlés" });
+            }
+
+        }
+
 
     }
 }
