@@ -74,6 +74,34 @@ namespace For_The_Potatoe_Backend.Controllers
 
         }
 
+        [HttpPut]
+        public ActionResult<UserColumns> UpdateUserData(UserDto user) 
+        {
+            using (For_The_PotatoeDbContext context = new For_The_PotatoeDbContext())
+            {
+                if (user != null)
+                {
+                    var getUser = context.User.FirstOrDefault(u => u.Name == user.Name);
+
+                    if (getUser != null)
+                    {
+                        UserColumns newuser = new UserColumns()
+                        {
+                            Password = user.Password
+
+                        };
+
+                        context.User.Update(newuser);
+                        context.SaveChanges();
+                    }
+
+                }
+
+                return BadRequest(new { message = "Sikertelen frissítés" });
+            }
+        }
+
+
 
     }
 }
