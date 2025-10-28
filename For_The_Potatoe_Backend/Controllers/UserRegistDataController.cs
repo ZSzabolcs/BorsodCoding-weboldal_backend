@@ -55,6 +55,26 @@ namespace For_The_Potatoe_Backend.Controllers
 
         }
 
+        [HttpPost("Login")]
+        public ActionResult<UserColumns> LoginUser(UserDto loginUser)
+        {
+            using (For_The_PotatoeDbContext context = new For_The_PotatoeDbContext())
+            {
+                if (loginUser != null)
+                {
+
+                    var foundUser = context.User.FirstOrDefault(u => u.Name == loginUser.Name && u.Password == loginUser.Password);
+
+                    if (foundUser != null) 
+                    {
+                        return StatusCode(201, new { value = loginUser });
+                    }
+                }
+
+                return BadRequest(new { message = "Sikertelen bejelentkezés" });
+            }
+        }
+
         [HttpDelete]
         public ActionResult<UserColumns> DeleteRegistData(int id) 
         {
