@@ -171,6 +171,32 @@
   },
   {
     "ContainingType": "For_The_Potatoe_Backend.Controllers.UserSaveData",
+    "Method": "UpdateUserSave",
+    "RelativePath": "api/UserSaveData",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "saveobj",
+        "Type": "For_The_Potatoe_Backend.Models.Dto.InsertSaveDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "For_The_Potatoe_Backend.Models.SaveColumns",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "For_The_Potatoe_Backend.Controllers.UserSaveData",
     "Method": "RemoveASave",
     "RelativePath": "api/UserSaveData",
     "HttpMethod": "DELETE",

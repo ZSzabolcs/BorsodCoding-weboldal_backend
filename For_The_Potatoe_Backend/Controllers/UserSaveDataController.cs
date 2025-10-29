@@ -70,6 +70,36 @@ namespace For_The_Potatoe_Backend.Controllers
 
         }
 
+        [HttpPut]
+        public ActionResult<SaveColumns> UpdateUserSave(InsertSaveDto saveobj)
+        {
+            using (For_The_PotatoeDbContext context = new For_The_PotatoeDbContext())
+            {
+                if (saveobj != null)
+                {
+                    var getUser = context.User.FirstOrDefault(u => u.Name == saveobj.Name);
+
+                    var userSave = context.Save.FirstOrDefault(s => s.UserId == getUser.Id);
+
+                    if (userSave != null) 
+                    {
+
+                        userSave.Level = saveobj.Level;
+                        userSave.Points = saveobj.Points;
+                        userSave.Language = saveobj.Language;
+                        userSave.Date = saveobj.Date;
+
+                        context.Save.Update(userSave);
+                        context.SaveChanges();
+                        return StatusCode(201, new { message = "Sikeres frissítés" });
+                        
+                    }   
+                }
+
+                return BadRequest(new { message = "Sikertelen frissítés"});
+            }
+        }
+
         [HttpDelete]
         public ActionResult<SaveColumns> RemoveASave(int id)
         {
