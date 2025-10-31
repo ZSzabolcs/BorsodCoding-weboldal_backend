@@ -152,7 +152,7 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "save",
+        "Name": "Save",
         "Type": "For_The_Potatoe_Backend.Models.Dto.InsertSaveDto",
         "IsRequired": true
       }

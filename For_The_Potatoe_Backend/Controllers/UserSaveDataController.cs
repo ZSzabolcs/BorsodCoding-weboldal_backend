@@ -30,32 +30,40 @@ namespace For_The_Potatoe_Backend.Controllers
 
 
         [HttpPost]
-        public ActionResult<SaveColumns> InsertSaveData(InsertSaveDto save)
+        public ActionResult<SaveColumns> InsertSaveData([FromBody] InsertSaveDto Save)
         {
             using (For_The_PotatoeDbContext context = new For_The_PotatoeDbContext())
             {
                 try
                 {
-                    var userId = context.User.Where(u => u.Name == save.Name).Select(u => u.Id).FirstOrDefault();
-                    bool vanUser = (userId != null ? true : false);
-
-                    var getSave = context.Save.Where(s => s.UserId == userId).FirstOrDefault();
-                    bool nincsSave = (getSave == null ? true : false);
-
-                    if (vanUser && save != null && nincsSave)
+                    if (Save != null)
                     {
+                        var userId = context.User.Where(u => u.Name == Save.Name).Select(u => u.Id).FirstOrDefault();
+
+                    if (userId == null)
+                    {
+                        return NotFound(new { message = "Nincsen fiókja" });
+                    }
+
+                        var getSave = context.Save.Where(s => s.UserId == userId).FirstOrDefault();
+
+                    if (getSave != null)
+                    {
+                        return Ok(new { message = "Már van mentése" });
+                    }
+
                         SaveColumns newSave = new SaveColumns()
                         {
-                            Points = save.Points,
-                            Level = save.Level,
-                            Language = save.Language,
-                            Date = save.Date,
+                            Points = Save.Points,
+                            Level = Save.Level,
+                            Language = Save.Language,
+                            Date = Save.Date,
                             UserId = userId
 
                         };
                         context.Save.Add(newSave);
                         context.SaveChanges();
-                        return StatusCode(201, new { value = save });
+                        return StatusCode(201, new { value = Save });
                     }
 
                 }
@@ -64,20 +72,25 @@ namespace For_The_Potatoe_Backend.Controllers
                     return BadRequest(new { message = ex.Message });
                 }
                 
-                return BadRequest(new { message = "Már van mentése" });
+                return BadRequest(new { message = "Sikertelen hozzáadás" });
 
             }
 
         }
 
         [HttpPut]
-        public ActionResult<SaveColumns> UpdateUserSave(InsertSaveDto saveobj)
+        public ActionResult<SaveColumns> UpdateUserSave([FromBody] InsertSaveDto saveobj)
         {
             using (For_The_PotatoeDbContext context = new For_The_PotatoeDbContext())
             {
                 if (saveobj != null)
                 {
                     var getUser = context.User.FirstOrDefault(u => u.Name == saveobj.Name);
+
+                    if (getUser == null)
+                    {
+                        return NotFound(new { message = "Nincsen fiókja" });
+                    }
 
                     var userSave = context.Save.FirstOrDefault(s => s.UserId == getUser.Id);
 
@@ -93,7 +106,11 @@ namespace For_The_Potatoe_Backend.Controllers
                         context.SaveChanges();
                         return StatusCode(201, new { message = "Sikeres frissítés" });
                         
-                    }   
+                    }
+                    else
+                    {
+                        return NotFound(new { message = "Nincsen mentése" });
+                    }
                 }
 
                 return BadRequest(new { message = "Sikertelen frissítés"});
