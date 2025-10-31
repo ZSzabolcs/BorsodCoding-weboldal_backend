@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using For_The_Potatoe_Backend.Models;
 using Microsoft.EntityFrameworkCore;
 using For_The_Potatoe_Backend.Models.Dto;
+using Microsoft.AspNetCore.Http.HttpResults;
 
 namespace For_The_Potatoe_Backend.Controllers
 {
@@ -30,7 +31,7 @@ namespace For_The_Potatoe_Backend.Controllers
         }
 
         [HttpPost]
-        public ActionResult<UserColumns> InsertRegistData(UserDto user)
+        public ActionResult<UserColumns> InsertRegistData([FromBody] UserDto user)
         {
             using (For_The_PotatoeDbContext context = new For_The_PotatoeDbContext())
             {
@@ -56,7 +57,7 @@ namespace For_The_Potatoe_Backend.Controllers
         }
 
         [HttpPost("Login")]
-        public ActionResult<UserColumns> LoginUser(UserDto loginUser)
+        public ActionResult<UserColumns> LoginUser([FromBody] UserDto loginUser)
         {
             using (For_The_PotatoeDbContext context = new For_The_PotatoeDbContext())
             {
@@ -67,7 +68,11 @@ namespace For_The_Potatoe_Backend.Controllers
 
                     if (foundUser != null) 
                     {
-                        return StatusCode(201, new { value = loginUser });
+                        return Ok(new { value = loginUser });
+                    }
+                    else
+                    {
+                        return NotFound(new { message = "Nincsen fiókja"});
                     }
                 }
 
@@ -95,7 +100,7 @@ namespace For_The_Potatoe_Backend.Controllers
         }
 
         [HttpPut]
-        public ActionResult<UserColumns> UpdateUserData(UserDto user) 
+        public ActionResult<UserColumns> UpdateUserData([FromBody] UserDto user) 
         {
             using (For_The_PotatoeDbContext context = new For_The_PotatoeDbContext())
             {
@@ -105,14 +110,14 @@ namespace For_The_Potatoe_Backend.Controllers
 
                     if (getUser != null)
                     {
-                        UserColumns newuser = new UserColumns()
-                        {
-                            Password = user.Password
-
-                        };
-
-                        context.User.Update(newuser);
+                        getUser.Password = user.Password;
+                        context.User.Update(getUser);
                         context.SaveChanges();
+                        return StatusCode(201, new { message = "Sikeres módosítás" });
+                    }
+                    else
+                    {
+                        return NotFound(new {message = "Nincsen fiókja"});
                     }
 
                 }
