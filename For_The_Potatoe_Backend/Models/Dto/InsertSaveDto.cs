@@ -4,9 +4,9 @@ namespace For_The_Potatoe_Backend.Models.Dto
 {
     public class InsertSaveDto
     {
-        private string language;
+        private string? language;
 
-        public string Name { get; set; }
+        public string? Name { get; set; }
         public int Points { get; set; }
 
         public int Level { get; set; }
@@ -18,7 +18,6 @@ namespace For_The_Potatoe_Backend.Models.Dto
 
         }
 
-        public DateTime Date { get; set; } = DateTime.Now;
 
     }
 }
