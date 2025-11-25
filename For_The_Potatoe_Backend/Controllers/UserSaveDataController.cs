@@ -15,7 +15,7 @@ namespace For_The_Potatoe_Backend.Controllers
         {
             using (For_The_PotatoeDbContext context = new For_The_PotatoeDbContext())
             {
-                var users = context.Save.ToList();
+                var users = context.Save.ToArray();
 
                 var userData = users.Select(s => new { s.UserId, s.Points, s.Level, s.Language, s.RegDate, s.ModDate });
 
@@ -24,6 +24,18 @@ namespace For_The_Potatoe_Backend.Controllers
                     return Ok(userData);
                 }
                 return BadRequest(new { message = "Sikertelen lekérdezés" });
+            }
+
+        }
+
+        [HttpGet("GetUserAndSave")]
+        public ActionResult<SaveColumns> GetUserAndSave()
+        {
+            using (For_The_PotatoeDbContext context = new For_The_PotatoeDbContext())
+            {
+                var tablak = context.User.Include(u => u.SaveColumns).ToArray();
+                return Ok(tablak);
+
             }
 
         }
@@ -38,33 +50,31 @@ namespace For_The_Potatoe_Backend.Controllers
                 {
                     if (Save != null)
                     {
-                        var userId = context.User.Where(u => u.Name == Save.Name).Select(u => u.Id).FirstOrDefault();
+                        var nincsenSave = context.User.Include(u => u.SaveColumns).FirstOrDefault(u => u.Name == Save.Name && u.SaveColumns == null);
+                        
 
-                    if (userId == null)
-                    {
-                        return NotFound(new { message = "Nincsen fiókja" });
-                    }
-
-                        var getSave = context.Save.Where(s => s.UserId == userId).FirstOrDefault();
-
-                    if (getSave != null)
+                    if (nincsenSave == null)
                     {
                         return Ok(new { message = "Már van mentése" });
                     }
+                    else
+                    {
+                            SaveColumns newSave = new SaveColumns()
+                            {
+                                Points = Save.Points,
+                                Level = Save.Level,
+                                Language = Save.Language,
+                                RegDate = DateTime.Now,
+                                ModDate = DateTime.Now,
+                                UserId = nincsenSave.Id
 
-                        SaveColumns newSave = new SaveColumns()
-                        {
-                            Points = Save.Points,
-                            Level = Save.Level,
-                            Language = Save.Language,
-                            RegDate = DateTime.Now,
-                            ModDate = DateTime.Now,
-                            UserId = userId
+                            };
+                            context.Save.Add(newSave);
+                            context.SaveChanges();
+                            return StatusCode(201, new { message = "Sikeres mentés", value = Save });
+                        }
 
-                        };
-                        context.Save.Add(newSave);
-                        context.SaveChanges();
-                        return StatusCode(201, new { value = Save });
+                            
                     }
 
                 }

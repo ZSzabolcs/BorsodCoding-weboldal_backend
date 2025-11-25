@@ -368,6 +368,35 @@
           }
         }
       }
+    },
+    "/api/UserSaveData/GetUserAndSave": {
+      "get": {
+        "tags": [
+          "UserSaveData"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/SaveColumns"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SaveColumns"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SaveColumns"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -390,10 +419,6 @@
           "language": {
             "type": "string",
             "nullable": true
-          },
-          "date": {
-            "type": "string",
-            "format": "date-time"
           }
         },
         "additionalProperties": false
@@ -424,9 +449,6 @@
           "modDate": {
             "type": "string",
             "format": "date-time"
-          },
-          "userColumns": {
-            "$ref": "#/components/schemas/UserColumns"
           }
         },
         "additionalProperties": false
@@ -470,10 +492,6 @@
           "password": {
             "type": "string",
             "nullable": true
-          },
-          "date": {
-            "type": "string",
-            "format": "date-time"
           }
         },
         "additionalProperties": false

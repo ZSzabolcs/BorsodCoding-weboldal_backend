@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 using For_The_Potatoe_Backend.Models;
 using MySql.Data.MySqlClient.X.XDevAPI.Common;
 
@@ -20,6 +21,7 @@ namespace For_The_Potatoe_Backend.Models
 
         public DateTime ModDate { get; set; }
 
+        [JsonIgnore]
         public UserColumns UserColumns { get; set; }
     }
 }

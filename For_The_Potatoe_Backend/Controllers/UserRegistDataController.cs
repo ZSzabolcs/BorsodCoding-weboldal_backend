@@ -17,7 +17,7 @@ namespace For_The_Potatoe_Backend.Controllers
         {
             using (For_The_PotatoeDbContext context = new For_The_PotatoeDbContext())
             {
-                var users = context.User.ToList();
+                var users = context.User.ToArray();
 
                 var userData = users.Select(u => new { u.Id, u.Name, u.Password, u.RegDate, u.ModDate });
 
@@ -42,7 +42,8 @@ namespace For_The_Potatoe_Backend.Controllers
                     {
                         Name = user.Name,
                         Password = user.Password,
-                        RegDate = DateTime.Now
+                        RegDate = DateTime.Now,
+                        ModDate = DateTime.Now
                     };
 
                     context.User.Add(newUser);
@@ -68,7 +69,7 @@ namespace For_The_Potatoe_Backend.Controllers
 
                     if (foundUser != null) 
                     {
-                        return Ok(new { value = loginUser });
+                        return Ok(new {message = "Sikeres bejelentkezés", value = loginUser });
                     }
                     else
                     {

@@ -220,5 +220,25 @@
         "StatusCode": 200
       }
     ]
+  },
+  {
+    "ContainingType": "For_The_Potatoe_Backend.Controllers.UserSaveData",
+    "Method": "GetUserAndSave",
+    "RelativePath": "api/UserSaveData/GetUserAndSave",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "For_The_Potatoe_Backend.Models.SaveColumns",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   }
 ]
