@@ -19,7 +19,7 @@ namespace For_The_Potatoe_Backend.Controllers
             {
                 var users = context.User.ToList();
 
-                var userData = users.Select(u => new { u.Id, u.Name, u.Password, u.RegDate });
+                var userData = users.Select(u => new { u.Id, u.Name, u.Password, u.RegDate, u.ModDate });
 
                 if (userData != null)
                 {
@@ -42,7 +42,7 @@ namespace For_The_Potatoe_Backend.Controllers
                     {
                         Name = user.Name,
                         Password = user.Password,
-                        RegDate = user.Date
+                        RegDate = DateTime.Now
                     };
 
                     context.User.Add(newUser);
