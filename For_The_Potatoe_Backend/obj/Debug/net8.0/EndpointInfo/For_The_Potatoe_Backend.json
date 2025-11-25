@@ -417,7 +417,11 @@
             "type": "string",
             "nullable": true
           },
-          "date": {
+          "regDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "modDate": {
             "type": "string",
             "format": "date-time"
           },
@@ -442,7 +446,11 @@
             "type": "string",
             "nullable": true
           },
-          "date": {
+          "regDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "modDate": {
             "type": "string",
             "format": "date-time"
           },

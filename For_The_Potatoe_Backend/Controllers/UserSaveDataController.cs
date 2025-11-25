@@ -17,7 +17,7 @@ namespace For_The_Potatoe_Backend.Controllers
             {
                 var users = context.Save.ToList();
 
-                var userData = users.Select(s => new { s.UserId, s.Points, s.Level, s.Language, s.Date });
+                var userData = users.Select(s => new { s.UserId, s.Points, s.Level, s.Language, s.RegDate });
 
                 if (userData != null)
                 {
@@ -57,7 +57,7 @@ namespace For_The_Potatoe_Backend.Controllers
                             Points = Save.Points,
                             Level = Save.Level,
                             Language = Save.Language,
-                            Date = Save.Date,
+                            RegDate = Save.Date,
                             UserId = userId
 
                         };
@@ -100,7 +100,7 @@ namespace For_The_Potatoe_Backend.Controllers
                         userSave.Level = saveobj.Level;
                         userSave.Points = saveobj.Points;
                         userSave.Language = saveobj.Language;
-                        userSave.Date = saveobj.Date;
+                        userSave.RegDate = saveobj.Date;
 
                         context.Save.Update(userSave);
                         context.SaveChanges();

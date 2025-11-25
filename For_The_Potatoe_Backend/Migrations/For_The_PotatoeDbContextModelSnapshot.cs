@@ -24,9 +24,6 @@ namespace For_The_Potatoe_Backend.Migrations
                     b.Property<int>("UserId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("Date")
-                        .HasColumnType("datetime(6)");
-
                     b.Property<string>("Language")
                         .IsRequired()
                         .HasColumnType("varchar(2)");
@@ -34,8 +31,14 @@ namespace For_The_Potatoe_Backend.Migrations
                     b.Property<int>("Level")
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("ModDate")
+                        .HasColumnType("datetime(6)");
+
                     b.Property<int>("Points")
                         .HasColumnType("int");
+
+                    b.Property<DateTime>("RegDate")
+                        .HasColumnType("datetime(6)");
 
                     b.HasKey("UserId");
 
@@ -48,7 +51,7 @@ namespace For_The_Potatoe_Backend.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("Date")
+                    b.Property<DateTime>("ModDate")
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("Name")
@@ -58,6 +61,9 @@ namespace For_The_Potatoe_Backend.Migrations
                     b.Property<string>("Password")
                         .IsRequired()
                         .HasColumnType("varchar(50)");
+
+                    b.Property<DateTime>("RegDate")
+                        .HasColumnType("datetime(6)");
 
                     b.HasKey("Id");
 

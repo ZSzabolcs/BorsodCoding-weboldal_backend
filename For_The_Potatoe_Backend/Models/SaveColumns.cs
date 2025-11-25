@@ -6,6 +6,7 @@ namespace For_The_Potatoe_Backend.Models
 {
     public class SaveColumns
     {
+
         public int UserId { get; set; }
 
         public int Points { get; set; }
@@ -15,7 +16,9 @@ namespace For_The_Potatoe_Backend.Models
         [Column(TypeName = "varchar(2)")]
         public string Language { get; set; }
 
-        public DateTime Date { get; set; }
+        public DateTime RegDate { get; set; }
+
+        public DateTime ModDate { get; set; }
 
         public UserColumns UserColumns { get; set; }
     }

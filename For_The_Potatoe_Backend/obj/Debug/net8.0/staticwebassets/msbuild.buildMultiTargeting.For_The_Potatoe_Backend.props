@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\For_The_Potatoe_Backend.props" />
+</Project>

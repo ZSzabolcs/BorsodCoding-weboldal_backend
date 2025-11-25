@@ -7,7 +7,6 @@ namespace For_The_Potatoe_Backend.Models
 {
     public class UserColumns
     {
-        [Key]
         public  int Id { get; set; }
 
         [Column(TypeName = "varchar(30)")]
@@ -15,7 +14,9 @@ namespace For_The_Potatoe_Backend.Models
 
         [Column(TypeName = "varchar(50)")]
         public string Password { get; set; }
-        public DateTime Date { get; set; }
+        public DateTime RegDate { get; set; }
+
+        public DateTime ModDate { get; set; }
 
         public SaveColumns SaveColumns { get; }
     }

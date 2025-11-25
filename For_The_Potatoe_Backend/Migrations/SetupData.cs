@@ -13,8 +13,8 @@ namespace For_The_Potatoe_Backend.Migrations
                     var sor = sr.ReadLine().Split(';');
                     migrationBuilder.InsertData(
                     table: "User",
-                    columns: ["Id", "Name", "Password", "Date"],
-                    values: [int.Parse(sor[0]), sor[1], sor[2], sor[3]]
+                    columns: ["Id", "Name", "Password", "RegDate", "ModDate"],
+                    values: [int.Parse(sor[0]), sor[1], sor[2], sor[3], sor[3]]
                     );
                 }
 
@@ -27,8 +27,8 @@ namespace For_The_Potatoe_Backend.Migrations
                     var sor = sr.ReadLine().Split(',');
                     migrationBuilder.InsertData(
                     table: "Save",
-                    columns: ["UserId", "Points", "Level", "Language", "Date"],
-                    values: [int.Parse(sor[0]), sor[1], sor[2], sor[3], sor[4]]
+                    columns: ["UserId", "Points", "Level", "Language", "RegDate", "ModDate"],
+                    values: [int.Parse(sor[0]), sor[1], sor[2], sor[3], sor[4], sor[4]]
                     );
                 }
             }
