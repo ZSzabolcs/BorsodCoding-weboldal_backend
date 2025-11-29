@@ -12,19 +12,16 @@ namespace For_The_Potatoe_Backend
 
             builder.Services.AddDbContext<ForThePotatoeContext>();
 
-            var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
             // Add services to the container.
 
             builder.Services.AddCors(options =>
             {
-
-                options.AddPolicy(MyAllowSpecificOrigins,
-                                      policy =>
-                                      {
-                                          policy.WithOrigins("*")
-                                                                .AllowAnyHeader()
-                                                                .AllowAnyMethod();
-                                      });
+                options.AddPolicy("AllowAll", policy =>
+                {
+                    policy.AllowAnyOrigin()
+                          .AllowAnyMethod()
+                          .AllowAnyHeader();
+                });
             });
 
             builder.Services.AddControllers();
@@ -35,7 +32,7 @@ namespace For_The_Potatoe_Backend
 
             var app = builder.Build();
 
-            app.UseCors(MyAllowSpecificOrigins);
+            app.UseCors("AllowAll");
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())

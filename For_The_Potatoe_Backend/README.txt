@@ -1,2 +1,0 @@
-﻿HA egy létező adatbázist szeretnéd, hogy építse meg neked az API-ba, akkor én úgy oldottam meg, hogy telepítsd  Pomelo.EntityFrameworkCore.MySql-t és írd be ezt a parancsot a Pacakge Manager Console-ba:
-Scaffold-DbContext "server=localhost;database=for_the_potatoe;user=root;password=;ssl mode=none;" Pomelo.EntityFrameworkCore.MySql -OutputDir Models -f
