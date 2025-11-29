@@ -2,7 +2,7 @@
 
 namespace For_The_Potatoe_Backend.Models.Dto
 {
-    public class InsertSaveDto
+    public class SaveDto
     {
         private string? language;
 
