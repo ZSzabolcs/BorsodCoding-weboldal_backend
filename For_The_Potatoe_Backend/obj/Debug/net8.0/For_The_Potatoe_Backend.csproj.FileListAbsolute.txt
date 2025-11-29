@@ -402,9 +402,6 @@ D:\Munka\Iskola\vegso_projekt\BorsodCoding-weboldal_backend\For_The_Potatoe_Back
 D:\Munka\Iskola\vegso_projekt\BorsodCoding-weboldal_backend\For_The_Potatoe_Backend\obj\Debug\net8.0\For_The_Potatoe_Backend.MvcApplicationPartsAssemblyInfo.cs
 D:\Munka\Iskola\vegso_projekt\BorsodCoding-weboldal_backend\For_The_Potatoe_Backend\obj\Debug\net8.0\For_The_Potatoe_Backend.MvcApplicationPartsAssemblyInfo.cache
 D:\Munka\Iskola\vegso_projekt\BorsodCoding-weboldal_backend\For_The_Potatoe_Backend\obj\Debug\net8.0\For_The_Potatoe_Backend.sourcelink.json
-D:\Munka\Iskola\vegso_projekt\BorsodCoding-weboldal_backend\For_The_Potatoe_Backend\obj\Debug\net8.0\For_The_Potatoe_Backend.dll
-D:\Munka\Iskola\vegso_projekt\BorsodCoding-weboldal_backend\For_The_Potatoe_Backend\obj\Debug\net8.0\refint\For_The_Potatoe_Backend.dll
-D:\Munka\Iskola\vegso_projekt\BorsodCoding-weboldal_backend\For_The_Potatoe_Backend\obj\Debug\net8.0\For_The_Potatoe_Backend.pdb
 D:\Munka\Iskola\vegso_projekt\BorsodCoding-weboldal_backend\For_The_Potatoe_Backend\bin\Debug\net8.0\appsettings.Development.json
 D:\Munka\Iskola\vegso_projekt\BorsodCoding-weboldal_backend\For_The_Potatoe_Backend\bin\Debug\net8.0\appsettings.json
 D:\Munka\Iskola\vegso_projekt\BorsodCoding-weboldal_backend\For_The_Potatoe_Backend\bin\Debug\net8.0\For_The_Potatoe_Backend.staticwebassets.endpoints.json
@@ -547,5 +544,8 @@ D:\Munka\Iskola\vegso_projekt\BorsodCoding-weboldal_backend\For_The_Potatoe_Back
 D:\Munka\Iskola\vegso_projekt\BorsodCoding-weboldal_backend\For_The_Potatoe_Backend\obj\Debug\net8.0\staticwebassets.build.endpoints.json
 D:\Munka\Iskola\vegso_projekt\BorsodCoding-weboldal_backend\For_The_Potatoe_Backend\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 D:\Munka\Iskola\vegso_projekt\BorsodCoding-weboldal_backend\For_The_Potatoe_Backend\obj\Debug\net8.0\For_The_.1C4F0736.Up2Date
+D:\Munka\Iskola\vegso_projekt\BorsodCoding-weboldal_backend\For_The_Potatoe_Backend\obj\Debug\net8.0\For_The_Potatoe_Backend.dll
+D:\Munka\Iskola\vegso_projekt\BorsodCoding-weboldal_backend\For_The_Potatoe_Backend\obj\Debug\net8.0\refint\For_The_Potatoe_Backend.dll
+D:\Munka\Iskola\vegso_projekt\BorsodCoding-weboldal_backend\For_The_Potatoe_Backend\obj\Debug\net8.0\For_The_Potatoe_Backend.pdb
 D:\Munka\Iskola\vegso_projekt\BorsodCoding-weboldal_backend\For_The_Potatoe_Backend\obj\Debug\net8.0\For_The_Potatoe_Backend.genruntimeconfig.cache
 D:\Munka\Iskola\vegso_projekt\BorsodCoding-weboldal_backend\For_The_Potatoe_Backend\obj\Debug\net8.0\ref\For_The_Potatoe_Backend.dll

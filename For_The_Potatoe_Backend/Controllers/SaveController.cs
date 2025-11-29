@@ -10,9 +10,9 @@ namespace For_The_Potatoe_Backend.Controllers
     [ApiController]
     public class SaveController : ControllerBase
     {
-        private readonly ForThePotatoeDbContext _context;
+        private readonly ForThePotatoeContext _context;
 
-        public SaveController(ForThePotatoeDbContext context)
+        public SaveController(ForThePotatoeContext context)
         {
             _context = context;
         }
@@ -24,7 +24,7 @@ namespace For_The_Potatoe_Backend.Controllers
                 {
                     if (Save != null)
                     {
-                        var nincsenSave = await _context.User.Include(u => u.Save).FirstOrDefaultAsync(u => u.Name == Save.Name && u.Save == null);
+                        var nincsenSave = await _context.Users.Include(u => u.Save).FirstOrDefaultAsync(u => u.Name == Save.Name && u.Save == null);
 
 
                         if (nincsenSave == null)
@@ -41,7 +41,7 @@ namespace For_The_Potatoe_Backend.Controllers
                                 UserId = nincsenSave.Id
 
                             };
-                            await _context.Save.AddAsync(newSave);
+                            await _context.Saves.AddAsync(newSave);
                             await _context.SaveChangesAsync();
                             return StatusCode(201, new { message = "Sikeres mentés", value = Save });
                         }
@@ -58,12 +58,13 @@ namespace For_The_Potatoe_Backend.Controllers
                 }
 
         }
+
         [HttpGet]
         public async Task<ActionResult> GetAllData()
         {
             try
             {
-                var users = await _context.Save.ToArrayAsync();
+                var users = await _context.Saves.ToArrayAsync();
 
                 if (users != null)
                 {
@@ -76,8 +77,6 @@ namespace For_The_Potatoe_Backend.Controllers
                 return BadRequest(new { message = ex.Message });
             }
 
-
-
         }
 
         [HttpGet("ToWPF")]
@@ -85,7 +84,7 @@ namespace For_The_Potatoe_Backend.Controllers
         {
             try
             {
-                var users = await _context.Save.ToArrayAsync();
+                var users = await _context.Saves.ToArrayAsync();
 
                 var userData = users.Select(s => new { s.UserId, s.Points, s.Level, s.Language });
 
@@ -105,7 +104,7 @@ namespace For_The_Potatoe_Backend.Controllers
         [HttpGet("GetUsersSave")]
         public async Task<ActionResult> GetUsersSave()
         {
-            var tablak = await _context.User.Include(u => u.Save).ToArrayAsync();
+            var tablak = await _context.Users.Include(u => u.Save).ToArrayAsync();
             return Ok(tablak);
         }
 
@@ -116,14 +115,14 @@ namespace For_The_Potatoe_Backend.Controllers
             {
                 if (saveobj != null)
                 {
-                    var getUser = await _context.User.FirstOrDefaultAsync(u => u.Name == saveobj.Name);
+                    var getUser = await _context.Users.FirstOrDefaultAsync(u => u.Name == saveobj.Name);
 
                     if (getUser == null)
                     {
                         return NotFound(new { message = "Nincsen fiókja" });
                     }
 
-                    var userSave = await _context.Save.FirstOrDefaultAsync(s => s.UserId == getUser.Id);
+                    var userSave = await _context.Saves.FirstOrDefaultAsync(s => s.UserId == getUser.Id);
 
                     if (userSave != null)
                     {
@@ -132,7 +131,7 @@ namespace For_The_Potatoe_Backend.Controllers
                         userSave.Points = saveobj.Points;
                         userSave.Language = saveobj.Language;
 
-                        _context.Save.Update(userSave);
+                        _context.Saves.Update(userSave);
                         await _context.SaveChangesAsync();
                         return StatusCode(201, new { message = "Sikeres frissítés" });
 
@@ -156,7 +155,7 @@ namespace For_The_Potatoe_Backend.Controllers
         {
             try
             {
-                var record = await _context.Save.FirstOrDefaultAsync(s => s.UserId == id);
+                var record = await _context.Saves.FirstOrDefaultAsync(s => s.UserId == id);
 
                 if (record != null)
                 {

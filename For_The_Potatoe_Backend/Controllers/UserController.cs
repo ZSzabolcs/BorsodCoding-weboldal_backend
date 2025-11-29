@@ -12,9 +12,9 @@ namespace For_The_Potatoe_Backend.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
-        private readonly ForThePotatoeDbContext _context;
+        private readonly ForThePotatoeContext _context;
 
-        public UserController(ForThePotatoeDbContext context)
+        public UserController(ForThePotatoeContext context)
         {
             _context = context;
         }
@@ -32,7 +32,7 @@ namespace For_The_Potatoe_Backend.Controllers
                         Password = user.Password,
                     };
 
-                    await _context.User.AddAsync(newUser);
+                    await _context.Users.AddAsync(newUser);
                     await _context.SaveChangesAsync();
                     return StatusCode(201, new { message = "Sikeres regisztráció", value = newUser });
                 }
@@ -52,7 +52,7 @@ namespace For_The_Potatoe_Backend.Controllers
         {
             try
             {
-                var users = await _context.User.ToArrayAsync();
+                var users = await _context.Users.ToArrayAsync();
 
                 if (users != null)
                 {
@@ -73,9 +73,9 @@ namespace For_The_Potatoe_Backend.Controllers
         {
             try
             {
-                var users = await _context.User.ToArrayAsync();
+                var users = await _context.Users.ToArrayAsync();
 
-                var usersData = users.Select(u => new { u.Id, u.Name, u.Password, u.Date });
+                var usersData = users.Select(u => new { u.Id, u.Name, u.Password });
 
                 if (usersData != null)
                 {
@@ -99,7 +99,7 @@ namespace For_The_Potatoe_Backend.Controllers
                 if (loginUser != null)
                 {
 
-                    var foundUser = await _context.User.FirstOrDefaultAsync(u => u.Name == loginUser.Name && u.Password == loginUser.Password);
+                    var foundUser = await _context.Users.FirstOrDefaultAsync(u => u.Name == loginUser.Name && u.Password == loginUser.Password);
 
                     if (foundUser != null)
                     {
@@ -125,7 +125,7 @@ namespace For_The_Potatoe_Backend.Controllers
         {
             try
             {
-                var record = await _context.User.FirstOrDefaultAsync(u => u.Id == id);
+                var record = await _context.Users.FirstOrDefaultAsync(u => u.Id == id);
 
                 if (record != null)
                 {
@@ -151,12 +151,12 @@ namespace For_The_Potatoe_Backend.Controllers
             {
                 if (user != null)
                 {
-                    var getUser = await _context.User.FirstOrDefaultAsync(u => u.Name == user.Name);
+                    var getUser = await _context.Users.FirstOrDefaultAsync(u => u.Name == user.Name);
 
                     if (getUser != null)
                     {
                         getUser.Password = user.Password;
-                        _context.User.Update(getUser);
+                        _context.Users.Update(getUser);
                         await _context.SaveChangesAsync();
                         return StatusCode(201, new { message = "Sikeres módosítás" });
                     }

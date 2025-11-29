@@ -11,7 +11,9 @@ public partial class User
 
     public string Password { get; set; } = null!;
 
-    public DateTime Date { get; set; }
+    public DateTime RegDate { get; set; }
+
+    public DateTime ModDate { get; set; }
 
     public virtual Save? Save { get; set; }
 }

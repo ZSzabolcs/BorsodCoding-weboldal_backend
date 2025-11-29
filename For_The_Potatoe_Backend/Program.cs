@@ -10,7 +10,7 @@ namespace For_The_Potatoe_Backend
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            builder.Services.AddDbContext<ForThePotatoeDbContext>();
+            builder.Services.AddDbContext<ForThePotatoeContext>();
 
             var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
             // Add services to the container.

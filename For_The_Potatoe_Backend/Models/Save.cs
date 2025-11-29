@@ -13,7 +13,9 @@ public partial class Save
 
     public string Language { get; set; } = null!;
 
-    public DateTime Date { get; set; }
+    public DateTime RegDate { get; set; }
+
+    public DateTime ModDate { get; set; }
 
     public virtual User User { get; set; } = null!;
 }
