@@ -1,3 +1,3 @@
 # FOR THE POTATOE BACKEND
-Hogy egy létezõ adatabázisból alakítsa ki .NET Web API szerkezetet, modulokat, nekem úgy sikerült, hogy letelepítjük Pomelo.EntityFrameworkCore.MySql-t és megírjuk ezt a parancsot:
-Scaffold-DbContext "server=localhost;database=for_the_potatoe;user=root;password=;ssl mode=none;" Pomelo.EntityFrameworkCore.MySql -OutputDir Models -f
+Hogy egy lÃ©tezÅ‘ adatabÃ¡zisbÃ³l alakÃ­tsa ki .NET Web API szerkezetet, modulokat, nekem Ãºgy sikerÃ¼lt, hogy letelepÃ­tjÃ¼k Pomelo.EntityFrameworkCore.MySql-t Ã©s megÃ­rjuk ezt a parancsot:
+`Scaffold-DbContext "server=localhost;database=for_the_potatoe;user=root;password=;ssl mode=none;" Pomelo.EntityFrameworkCore.MySql -OutputDir Models -f`
