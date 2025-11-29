@@ -24,7 +24,7 @@ public partial class ForThePotatoeContext : DbContext
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
         => optionsBuilder.UseMySql("server=localhost;database=for_the_potatoe;user=root;ssl mode=none", Microsoft.EntityFrameworkCore.ServerVersion.Parse("10.4.32-mariadb"));
-
+    
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder
@@ -34,13 +34,13 @@ public partial class ForThePotatoeContext : DbContext
 
         modelBuilder.Entity<Save>(entity =>
         {
-            entity.HasKey(e => e.UserId).HasName("PRIMARY");
+            entity.HasKey(e => e.Id).HasName("PRIMARY");
 
             entity.ToTable("save");
 
-            entity.Property(e => e.UserId)
+            entity.Property(e => e.Id)
                 .ValueGeneratedNever()
-                .HasColumnType("int(11)");
+                .HasColumnType("varchar(36)");
             entity.Property(e => e.Language).HasMaxLength(2);
             entity.Property(e => e.Level).HasColumnType("int(11)");
             entity.Property(e => e.ModDate)
@@ -52,7 +52,7 @@ public partial class ForThePotatoeContext : DbContext
                 .HasDefaultValueSql("'0001-01-01 00:00:00.000000'");
 
             entity.HasOne(d => d.User).WithOne(p => p.Save)
-                .HasForeignKey<Save>(d => d.UserId)
+                .HasForeignKey<Save>(d => d.Id)
                 .HasConstraintName("FK_Save_User_UserId");
         });
 
@@ -64,7 +64,7 @@ public partial class ForThePotatoeContext : DbContext
 
             entity.HasIndex(e => e.Name, "IX_User_Name").IsUnique();
 
-            entity.Property(e => e.Id).HasColumnType("int(11)");
+            entity.Property(e => e.Id).HasColumnType("varchar(36)");
             entity.Property(e => e.ModDate)
                 .HasMaxLength(6)
                 .HasDefaultValueSql("'0001-01-01 00:00:00.000000'");
@@ -77,6 +77,7 @@ public partial class ForThePotatoeContext : DbContext
 
         OnModelCreatingPartial(modelBuilder);
     }
-
+    
+    
     partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
 }

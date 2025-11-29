@@ -75,7 +75,7 @@ namespace For_The_Potatoe_Backend.Controllers
             {
                 var users = await _context.Users.ToArrayAsync();
 
-                var usersData = users.Select(u => new { u.Id, u.Name, u.Password });
+                var usersData = users.Select(u => new { u.Id, u.Name, u.Password, u.RegDate, u.ModDate });
 
                 if (usersData != null)
                 {
@@ -121,7 +121,7 @@ namespace For_The_Potatoe_Backend.Controllers
         }
 
         [HttpDelete]
-        public async Task<ActionResult> DeleteRegistData(int id)
+        public async Task<ActionResult> DeleteRegistData(Guid id)
         {
             try
             {
@@ -156,6 +156,7 @@ namespace For_The_Potatoe_Backend.Controllers
                     if (getUser != null)
                     {
                         getUser.Password = user.Password;
+                        getUser.ModDate = DateTime.Now;
                         _context.Users.Update(getUser);
                         await _context.SaveChangesAsync();
                         return StatusCode(201, new { message = "Sikeres módosítás" });

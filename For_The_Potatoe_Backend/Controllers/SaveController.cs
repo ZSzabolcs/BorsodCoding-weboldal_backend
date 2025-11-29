@@ -38,7 +38,7 @@ namespace For_The_Potatoe_Backend.Controllers
                                 Points = Save.Points,
                                 Level = Save.Level,
                                 Language = Save.Language,
-                                UserId = nincsenSave.Id
+                                Id = nincsenSave.Id
 
                             };
                             await _context.Saves.AddAsync(newSave);
@@ -49,7 +49,7 @@ namespace For_The_Potatoe_Backend.Controllers
 
                     }
 
-                    return BadRequest(new {message = "Sikertelen mentés"});
+                    return BadRequest(new { message = "Sikertelen mentés"});
 
                 }
                 catch (DbUpdateException ex)
@@ -86,7 +86,7 @@ namespace For_The_Potatoe_Backend.Controllers
             {
                 var users = await _context.Saves.ToArrayAsync();
 
-                var userData = users.Select(s => new { s.UserId, s.Points, s.Level, s.Language });
+                var userData = users.Select(s => new { s.Id, s.Points, s.Level, s.Language, s.RegDate, s.ModDate });
 
                 if (userData != null)
                 {
@@ -122,7 +122,7 @@ namespace For_The_Potatoe_Backend.Controllers
                         return NotFound(new { message = "Nincsen fiókja" });
                     }
 
-                    var userSave = await _context.Saves.FirstOrDefaultAsync(s => s.UserId == getUser.Id);
+                    var userSave = await _context.Saves.FirstOrDefaultAsync(s => s.Id == getUser.Id);
 
                     if (userSave != null)
                     {
@@ -130,7 +130,7 @@ namespace For_The_Potatoe_Backend.Controllers
                         userSave.Level = saveobj.Level;
                         userSave.Points = saveobj.Points;
                         userSave.Language = saveobj.Language;
-
+                        userSave.ModDate = DateTime.Now;
                         _context.Saves.Update(userSave);
                         await _context.SaveChangesAsync();
                         return StatusCode(201, new { message = "Sikeres frissítés" });
@@ -151,11 +151,11 @@ namespace For_The_Potatoe_Backend.Controllers
         }
 
         [HttpDelete]
-        public async Task<ActionResult> RemoveASave(int id)
+        public async Task<ActionResult> RemoveASave(Guid id)
         {
             try
             {
-                var record = await _context.Saves.FirstOrDefaultAsync(s => s.UserId == id);
+                var record = await _context.Saves.FirstOrDefaultAsync(s => s.Id == id);
 
                 if (record != null)
                 {

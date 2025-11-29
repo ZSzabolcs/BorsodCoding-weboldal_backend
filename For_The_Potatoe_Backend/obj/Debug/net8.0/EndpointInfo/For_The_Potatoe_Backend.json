@@ -83,8 +83,8 @@
             "name": "id",
             "in": "query",
             "schema": {
-              "type": "integer",
-              "format": "int32"
+              "type": "string",
+              "format": "uuid"
             }
           }
         ],
@@ -168,8 +168,8 @@
             "name": "id",
             "in": "query",
             "schema": {
-              "type": "integer",
-              "format": "int32"
+              "type": "string",
+              "format": "uuid"
             }
           }
         ],
