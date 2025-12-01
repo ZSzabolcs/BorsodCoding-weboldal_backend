@@ -153,6 +153,22 @@
   },
   {
     "ContainingType": "For_The_Potatoe_Backend.Controllers.UserController",
+    "Method": "RegistUser",
+    "RelativePath": "api/User/Registration",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "registUser",
+        "Type": "For_The_Potatoe_Backend.Models.Dto.RegistUserDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "For_The_Potatoe_Backend.Controllers.UserController",
     "Method": "GetAllUserToWPF",
     "RelativePath": "api/User/ToWPF",
     "HttpMethod": "GET",

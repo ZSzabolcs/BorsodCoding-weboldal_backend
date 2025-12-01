@@ -99,7 +99,7 @@ namespace For_The_Potatoe_Backend.Controllers
                 if (loginUser != null)
                 {
 
-                    var foundUser = await _context.Users.FirstOrDefaultAsync(u => u.Name == loginUser.Name && u.Password == loginUser.Password);
+                    var foundUser = await _context.Users.FirstOrDefaultAsync(u => (u.Name == loginUser.Name || u.Email == loginUser.Name) && u.Password == loginUser.Password);
 
                     if (foundUser != null)
                     {
@@ -119,6 +119,42 @@ namespace For_The_Potatoe_Backend.Controllers
                 return BadRequest(new { message = ex.Message });
             }
         }
+
+        [HttpPost("Registration")]
+        public async Task<ActionResult> RegistUser([FromBody] RegistUserDto registUser)
+        {
+            try
+            {
+                if (registUser != null)
+                {
+
+                    var foundUser = await _context.Users.FirstOrDefaultAsync(u => u.Name == registUser.Name && u.Email == registUser.Email && u.Password == registUser.Password);
+
+                    if (foundUser != null)
+                    {
+                        return BadRequest(new { message = "A fiók már létezik", value = registUser });
+                    }
+                    User newUser = new User() { 
+                        Name = registUser.Name,
+                        Password = registUser.Password,
+                        Email = registUser.Email 
+                    };
+
+                    await _context.Users.AddAsync(newUser);
+                    await _context.SaveChangesAsync();
+                    return Ok(new { message = "A fiók sikeresen létrehozva" });
+
+                }
+
+                return BadRequest(new { message = "Sikertelen bejelentkezés" });
+            }
+
+            catch (Exception ex)
+            {
+                return BadRequest(new { message = ex.Message });
+            }
+        }
+
 
         [HttpDelete]
         public async Task<ActionResult> DeleteRegistData(Guid id)
