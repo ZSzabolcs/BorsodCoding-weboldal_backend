@@ -116,7 +116,7 @@ namespace For_The_Potatoe_Backend.Controllers
 
             catch (Exception ex)
             {
-                return BadRequest(new { message = ex.Message });
+                return BadRequest(new { message = ex.Message, value = loginUser });
             }
         }
 
@@ -134,6 +134,7 @@ namespace For_The_Potatoe_Backend.Controllers
                     {
                         return BadRequest(new { message = "A fiók már létezik", value = registUser });
                     }
+
                     User newUser = new User() { 
                         Name = registUser.Name,
                         Password = registUser.Password,
@@ -151,7 +152,7 @@ namespace For_The_Potatoe_Backend.Controllers
 
             catch (Exception ex)
             {
-                return BadRequest(new { message = ex.Message });
+                return BadRequest(new { message = ex.Message, value = registUser });
             }
         }
 
