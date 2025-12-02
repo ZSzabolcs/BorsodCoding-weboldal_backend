@@ -156,6 +156,33 @@ namespace For_The_Potatoe_Backend.Controllers
             }
         }
 
+        [HttpPost("CheckUserName")]
+        public async Task<ActionResult> CheckUserName([FromBody] CheckUserDto checkUser)
+        {
+            try
+            {
+                if (checkUser != null)
+                {
+                    var foundUser = await _context.Users.FirstOrDefaultAsync(u => u.Name == checkUser.Name);
+
+                    if (foundUser != null) 
+                    {
+                        return Ok(new { message = "A felhasználó létezik" });
+                    }
+                    else
+                    {
+                        NotFound(new { message = "A felhasználó nem létezik" });
+                    }
+                }
+                return BadRequest(new { message = "Sikertelen lekérés" });
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest(new { message = ex.Message, value = checkUser });
+            }
+        }
+
 
         [HttpDelete]
         public async Task<ActionResult> DeleteRegistData(Guid id)

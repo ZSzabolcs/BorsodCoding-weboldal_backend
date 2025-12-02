@@ -38,7 +38,9 @@ namespace For_The_Potatoe_Backend.Controllers
                                 Points = Save.Points,
                                 Level = Save.Level,
                                 Language = Save.Language,
-                                Id = nincsenSave.Id
+                                Id = nincsenSave.Id,
+                                RegDate = DateTime.Now,
+                                ModDate = DateTime.Now
 
                             };
                             await _context.Saves.AddAsync(newSave);
@@ -108,6 +110,13 @@ namespace For_The_Potatoe_Backend.Controllers
             return Ok(tablak);
         }
 
+        [HttpGet("GetSavesUser")]
+        public async Task<ActionResult> GetSavesUser()
+        {
+            var tablak = await _context.Saves.Include(u => u.User).ToArrayAsync();
+            return Ok(tablak);
+        }
+
         [HttpPut]
         public async Task<ActionResult> UpdateUserSave([FromBody] SaveDto saveobj)
         {
@@ -115,31 +124,30 @@ namespace For_The_Potatoe_Backend.Controllers
             {
                 if (saveobj != null)
                 {
-                    var getUser = await _context.Users.FirstOrDefaultAsync(u => u.Name == saveobj.Name);
+                    var SavesUser = await _context.Users.Include(u => u.Save).ToArrayAsync();
 
-                    if (getUser == null)
+                    var user = SavesUser.FirstOrDefault(us => us.Name == saveobj.Name);
+
+                    if (user == null)
                     {
                         return NotFound(new { message = "Nincsen fiókja" });
                     }
-
-                    var userSave = await _context.Saves.FirstOrDefaultAsync(s => s.Id == getUser.Id);
-
-                    if (userSave != null)
+                    if (user.Save != null)
                     {
-
-                        userSave.Level = saveobj.Level;
-                        userSave.Points = saveobj.Points;
-                        userSave.Language = saveobj.Language;
-                        userSave.ModDate = DateTime.Now;
-                        _context.Saves.Update(userSave);
+                        user.Save.Level = saveobj.Level;
+                        user.Save.Points = saveobj.Points;
+                        user.Save.Language = saveobj.Language;
+                        user.Save.ModDate = DateTime.Now;
+                        _context.Saves.Update(user.Save);
                         await _context.SaveChangesAsync();
                         return StatusCode(201, new { message = "Sikeres frissítés" });
-
                     }
                     else
                     {
-                        return NotFound(new { message = "Nincsen mentése" });
+                        return BadRequest(new { message = "Nincsen mentése" });
                     }
+
+    
                 }
                 return BadRequest(new { message = "Sikertelen módosítás" });
             }

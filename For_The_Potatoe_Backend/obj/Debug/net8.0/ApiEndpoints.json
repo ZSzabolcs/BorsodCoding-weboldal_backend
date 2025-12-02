@@ -59,6 +59,16 @@
   },
   {
     "ContainingType": "For_The_Potatoe_Backend.Controllers.SaveController",
+    "Method": "GetSavesUser",
+    "RelativePath": "api/Save/GetSavesUser",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "For_The_Potatoe_Backend.Controllers.SaveController",
     "Method": "GetUsersSave",
     "RelativePath": "api/Save/GetUsersSave",
     "HttpMethod": "GET",
@@ -130,6 +140,22 @@
       {
         "Name": "user",
         "Type": "For_The_Potatoe_Backend.Models.Dto.UserDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "For_The_Potatoe_Backend.Controllers.UserController",
+    "Method": "CheckUserName",
+    "RelativePath": "api/User/CheckUserName",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "checkUser",
+        "Type": "For_The_Potatoe_Backend.Models.Dto.CheckUserDto",
         "IsRequired": true
       }
     ],
