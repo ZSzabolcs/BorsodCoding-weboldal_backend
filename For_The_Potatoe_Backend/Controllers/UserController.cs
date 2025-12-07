@@ -68,18 +68,23 @@ namespace For_The_Potatoe_Backend.Controllers
 
         }
 
+        [HttpGet("GetUsersDoNotHaveSave")]
+        public async Task<ActionResult> GetUsersSave()
+        {
+            var nincsMentesuk = await _context.Users.Include(u => u.Save).Where(u => u.Save == null).ToArrayAsync();
+            return Ok(nincsMentesuk);
+        }
+
         [HttpGet("ToWPF")]
         public async Task<ActionResult> GetAllUserToWPF()
         {
             try
             {
-                var users = await _context.Users.ToArrayAsync();
+                var users = await _context.Users.Select(u => new { u.Id, u.Name, u.Password, u.RegDate, u.ModDate }).ToArrayAsync();
 
-                var usersData = users.Select(u => new { u.Id, u.Name, u.Password, u.RegDate, u.ModDate });
-
-                if (usersData != null)
+                if (users != null)
                 {
-                    return Ok(usersData);
+                    return Ok(users);
                 }
                 return BadRequest(new { message = "Sikertelen lekérdezés" });
             }

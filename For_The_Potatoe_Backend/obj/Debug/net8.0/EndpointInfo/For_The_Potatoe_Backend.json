@@ -107,18 +107,6 @@
         }
       }
     },
-    "/api/Save/GetUsersSave": {
-      "get": {
-        "tags": [
-          "Save"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
     "/api/Save/GetSavesUser": {
       "get": {
         "tags": [
@@ -214,6 +202,18 @@
             }
           }
         },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/User/GetUsersDoNotHaveSave": {
+      "get": {
+        "tags": [
+          "User"
+        ],
         "responses": {
           "200": {
             "description": "OK"

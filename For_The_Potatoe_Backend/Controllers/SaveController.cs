@@ -26,21 +26,19 @@ namespace For_The_Potatoe_Backend.Controllers
                     {
                         var nincsenSave = await _context.Users.Include(u => u.Save).FirstOrDefaultAsync(u => u.Name == Save.Name && u.Save == null);
 
-
+                            
                         if (nincsenSave == null)
                         {
                             return Ok(new { message = "Már van mentése" });
                         }
                         else
                         {
-                            Save newSave = new Save()
+                        Save newSave = new Save()
                             {
                                 Points = Save.Points,
                                 Level = Save.Level,
                                 Language = Save.Language,
-                                Id = nincsenSave.Id,
-                                RegDate = DateTime.Now,
-                                ModDate = DateTime.Now
+                                Id = nincsenSave.Id
 
                             };
                             await _context.Saves.AddAsync(newSave);
@@ -66,11 +64,11 @@ namespace For_The_Potatoe_Backend.Controllers
         {
             try
             {
-                var users = await _context.Saves.ToArrayAsync();
+                var saves = await _context.Saves.ToArrayAsync();
 
-                if (users != null)
+                if (saves != null)
                 {
-                    return Ok(users);
+                    return Ok(saves);
                 }
                 return BadRequest(new { message = "Sikertelen lekérdezés" });
             }
@@ -86,13 +84,12 @@ namespace For_The_Potatoe_Backend.Controllers
         {
             try
             {
-                var users = await _context.Saves.ToArrayAsync();
+                var saves = await _context.Saves.Select(s => new { s.Id, s.Points, s.Level, s.Language, s.RegDate, s.ModDate }).ToArrayAsync();
 
-                var userData = users.Select(s => new { s.Id, s.Points, s.Level, s.Language, s.RegDate, s.ModDate });
 
-                if (userData != null)
+                if (saves != null)
                 {
-                    return Ok(userData);
+                    return Ok(saves);
                 }
                 return BadRequest(new { message = "Sikertelen lekérdezés" });
             }
@@ -103,12 +100,7 @@ namespace For_The_Potatoe_Backend.Controllers
                
         }
 
-        [HttpGet("GetUsersSave")]
-        public async Task<ActionResult> GetUsersSave()
-        {
-            var tablak = await _context.Users.Include(u => u.Save).ToArrayAsync();
-            return Ok(tablak);
-        }
+
 
         [HttpGet("GetSavesUser")]
         public async Task<ActionResult> GetSavesUser()
@@ -124,9 +116,7 @@ namespace For_The_Potatoe_Backend.Controllers
             {
                 if (saveobj != null)
                 {
-                    var SavesUser = await _context.Users.Include(u => u.Save).ToArrayAsync();
-
-                    var user = SavesUser.FirstOrDefault(us => us.Name == saveobj.Name);
+                    var user = await _context.Users.Include(u => u.Save).FirstOrDefaultAsync(us => us.Name == saveobj.Name);
 
                     if (user == null)
                     {

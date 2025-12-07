@@ -69,16 +69,6 @@
   },
   {
     "ContainingType": "For_The_Potatoe_Backend.Controllers.SaveController",
-    "Method": "GetUsersSave",
-    "RelativePath": "api/Save/GetUsersSave",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "For_The_Potatoe_Backend.Controllers.SaveController",
     "Method": "GetAllSaveToWPF",
     "RelativePath": "api/Save/ToWPF",
     "HttpMethod": "GET",
@@ -159,6 +149,16 @@
         "IsRequired": true
       }
     ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "For_The_Potatoe_Backend.Controllers.UserController",
+    "Method": "GetUsersSave",
+    "RelativePath": "api/User/GetUsersDoNotHaveSave",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
     "ReturnTypes": []
   },
   {
