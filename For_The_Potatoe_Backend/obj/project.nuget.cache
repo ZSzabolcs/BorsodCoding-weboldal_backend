@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "047nibTWo+0=",
+  "dgSpecHash": "luLcYc9Pv20=",
   "success": true,
-  "projectFilePath": "C:\\Users\\CsKrisz\\Source\\Repos\\BorsodCoding-weboldal_backend\\For_The_Potatoe_Backend\\For_The_Potatoe_Backend.csproj",
+  "projectFilePath": "C:\\Users\\CsKrisz\\Source\\Repos\\BorsodCoding-weboldal_backend\\For_The_Potatoe_Backend\\For_The_Potato_Backend.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\CsKrisz\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\CsKrisz\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",

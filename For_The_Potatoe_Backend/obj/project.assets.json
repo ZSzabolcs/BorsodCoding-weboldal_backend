@@ -4736,9 +4736,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\CsKrisz\\Source\\Repos\\BorsodCoding-weboldal_backend\\For_The_Potatoe_Backend\\For_The_Potatoe_Backend.csproj",
-      "projectName": "For_The_Potatoe_Backend",
-      "projectPath": "C:\\Users\\CsKrisz\\Source\\Repos\\BorsodCoding-weboldal_backend\\For_The_Potatoe_Backend\\For_The_Potatoe_Backend.csproj",
+      "projectUniqueName": "C:\\Users\\CsKrisz\\Source\\Repos\\BorsodCoding-weboldal_backend\\For_The_Potatoe_Backend\\For_The_Potato_Backend.csproj",
+      "projectName": "For_The_Potato_Backend",
+      "projectPath": "C:\\Users\\CsKrisz\\Source\\Repos\\BorsodCoding-weboldal_backend\\For_The_Potatoe_Backend\\For_The_Potato_Backend.csproj",
       "packagesPath": "C:\\Users\\CsKrisz\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\CsKrisz\\Source\\Repos\\BorsodCoding-weboldal_backend\\For_The_Potatoe_Backend\\obj\\",
       "projectStyle": "PackageReference",
