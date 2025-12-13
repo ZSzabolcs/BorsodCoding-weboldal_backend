@@ -7,8 +7,8 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
 
-DROP DATABASE IF EXISTS `for_the_potatoe`;
-CREATE DATABASE IF NOT EXISTS `for_the_potatoe` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+DROP DATABASE IF EXISTS `for_the_potato`;
+CREATE DATABASE IF NOT EXISTS `for_the_potato` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 USE `for_the_potatoe`;
 
 CREATE TABLE `save` (
