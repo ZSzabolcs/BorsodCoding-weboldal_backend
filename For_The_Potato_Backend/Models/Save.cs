@@ -1,22 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace For_The_Potato_Backend.Models;
 
 public partial class Save
 {
-    public Guid Id { get; set; }
+    public Guid Id { get; set; } = Guid.NewGuid();
 
     public int Points { get; set; }
 
     public int Level { get; set; }
 
-    public string Language { get; set; }
+    public string Language { get; set; } = null!;
 
     public DateTime RegDate { get; set; } = DateTime.Now;
 
     public DateTime ModDate { get; set; } = DateTime.Now;
 
-    public virtual User User { get; set; }
+    public virtual User User { get; set; } = null!;
 }

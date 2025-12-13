@@ -11,7 +11,7 @@ CREATE DATABASE IF NOT EXISTS `for_the_potato` DEFAULT CHARACTER SET utf8 COLLAT
 USE `for_the_potato`;
 
 CREATE TABLE `save` (
-  `Id` varchar(36) NOT NULL,
+  `Id` char(36) NOT NULL,
   `Points` int(11) NOT NULL,
   `Level` int(11) NOT NULL,
   `Language` varchar(2) NOT NULL,
@@ -122,7 +122,7 @@ INSERT INTO `save` (`Id`, `Points`, `Level`, `Language`, `RegDate`, `ModDate`) V
 ('fd9092fb-9871-40f8-b7fc-c2feffe1b92c', 600, 5, 'hu', '2025-06-01 00:00:00.000000', '2025-06-16 00:00:00.000000');
 
 CREATE TABLE `user` (
-  `Id` varchar(36) NOT NULL,
+  `Id` char(36) NOT NULL,
   `Name` varchar(30) NOT NULL,
   `Password` varchar(50) NOT NULL,
   `RegDate` datetime(6) NOT NULL DEFAULT '0001-01-01 00:00:00.000000',

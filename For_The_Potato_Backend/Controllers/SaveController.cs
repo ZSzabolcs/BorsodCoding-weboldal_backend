@@ -38,7 +38,8 @@ namespace For_The_Potato_Backend.Controllers
                                 Points = Save.Points,
                                 Level = Save.Level,
                                 Language = Save.Language,
-                                Id = nincsenSave.Id
+                                Id = nincsenSave.Id,
+
 
                             };
                             await _context.Saves.AddAsync(newSave);
