@@ -1,26 +1,26 @@
-﻿using For_The_Potato_Backend.Models;
+﻿using For_The_Potatoe_Backend.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using For_The_Potato_Backend.Models;
+using For_The_Potatoe_Backend.Models;
 using Microsoft.EntityFrameworkCore;
-using For_The_Potato_Backend.Models.Dto;
+using For_The_Potatoe_Backend.Models.Dto;
 using Microsoft.AspNetCore.Http.HttpResults;
 
-namespace For_The_Potato_Backend.Controllers
+namespace For_The_Potatoe_Backend.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
     public class UserController : ControllerBase
     {
-        private readonly ForThePotatoContext _context;
+        private readonly ForThePotatoeContext _context;
 
-        public UserController(ForThePotatoContext context)
+        public UserController(ForThePotatoeContext context)
         {
             _context = context;
         }
 
         [HttpPost]
-        public async Task<ActionResult> RegistAnUser([FromBody] UserDto user)
+        public async Task<ActionResult> RegistAnUser([FromBody] FullUserDto user)
         {
             try
             {
@@ -30,6 +30,9 @@ namespace For_The_Potato_Backend.Controllers
                     {
                         Name = user.Name,
                         Password = user.Password,
+                        Email = user.Email,
+                        ModDate = user.ModDate,
+                        RegDate = user.RegDate
                     };
 
                     await _context.Users.AddAsync(newUser);
@@ -80,7 +83,7 @@ namespace For_The_Potato_Backend.Controllers
         {
             try
             {
-                var users = await _context.Users.Select(u => new { u.Id, u.Name, u.Password, u.RegDate, u.ModDate }).ToArrayAsync();
+                var users = await _context.Users.Select(u => new { u.Id, u.Name, u.Password, u.RegDate, u.ModDate, u.Email }).ToArrayAsync();
 
                 if (users != null)
                 {

@@ -1,18 +1,18 @@
-﻿using For_The_Potato_Backend.Models;
-using For_The_Potato_Backend.Models.Dto;
+﻿using For_The_Potatoe_Backend.Models;
+using For_The_Potatoe_Backend.Models.Dto;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-namespace For_The_Potato_Backend.Controllers
+namespace For_The_Potatoe_Backend.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
     public class SaveController : ControllerBase
     {
-        private readonly ForThePotatoContext _context;
+        private readonly ForThePotatoeContext _context;
 
-        public SaveController(ForThePotatoContext context)
+        public SaveController(ForThePotatoeContext context)
         {
             _context = context;
         }
@@ -38,8 +38,7 @@ namespace For_The_Potato_Backend.Controllers
                                 Points = Save.Points,
                                 Level = Save.Level,
                                 Language = Save.Language,
-                                Id = nincsenSave.Id,
-
+                                Id = nincsenSave.Id
 
                             };
                             await _context.Saves.AddAsync(newSave);
