@@ -1,18 +1,18 @@
-﻿using For_The_Potatoe_Backend.Models;
-using For_The_Potatoe_Backend.Models.Dto;
+﻿using For_The_Potato_Backend.Models;
+using For_The_Potato_Backend.Models.Dto;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-namespace For_The_Potatoe_Backend.Controllers
+namespace For_The_Potato_Backend.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
     public class SaveController : ControllerBase
     {
-        private readonly ForThePotatoeContext _context;
+        private readonly ForThePotatoContext _context;
 
-        public SaveController(ForThePotatoeContext context)
+        public SaveController(ForThePotatoContext context)
         {
             _context = context;
         }

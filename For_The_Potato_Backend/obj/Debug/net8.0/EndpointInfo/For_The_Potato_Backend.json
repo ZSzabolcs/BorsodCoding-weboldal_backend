@@ -380,13 +380,21 @@
         "additionalProperties": false
       },
       "UserDto": {
+        "required": [
+          "name",
+          "password"
+        ],
         "type": "object",
         "properties": {
           "name": {
-            "type": "string",
-            "nullable": true
+            "minLength": 1,
+            "type": "string"
           },
           "password": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "email": {
             "type": "string",
             "nullable": true
           }

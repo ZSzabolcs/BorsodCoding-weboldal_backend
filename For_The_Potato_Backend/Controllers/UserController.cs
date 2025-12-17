@@ -1,26 +1,25 @@
-﻿using For_The_Potatoe_Backend.Models;
+﻿using For_The_Potato_Backend.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using For_The_Potatoe_Backend.Models;
 using Microsoft.EntityFrameworkCore;
-using For_The_Potatoe_Backend.Models.Dto;
+using For_The_Potato_Backend.Models.Dto;
 using Microsoft.AspNetCore.Http.HttpResults;
 
-namespace For_The_Potatoe_Backend.Controllers
+namespace For_The_Potato_Backend.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
     public class UserController : ControllerBase
     {
-        private readonly ForThePotatoeContext _context;
+        private readonly ForThePotatoContext _context;
 
-        public UserController(ForThePotatoeContext context)
+        public UserController(ForThePotatoContext context)
         {
             _context = context;
         }
 
         [HttpPost]
-        public async Task<ActionResult> RegistAnUser([FromBody] FullUserDto user)
+        public async Task<ActionResult> RegistAnUser([FromBody] UserDto user)
         {
             try
             {
@@ -31,8 +30,6 @@ namespace For_The_Potatoe_Backend.Controllers
                         Name = user.Name,
                         Password = user.Password,
                         Email = user.Email,
-                        ModDate = user.ModDate,
-                        RegDate = user.RegDate
                     };
 
                     await _context.Users.AddAsync(newUser);
