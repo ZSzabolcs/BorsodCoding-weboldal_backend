@@ -1,5 +1,7 @@
 
 using For_The_Potato_Backend.Models;
+using For_The_Potato_Backend.Models.Dto;
+using For_The_Potato_Backend.Services;
 using System.Text.Json.Serialization;
 
 namespace For_The_Potato_Backend
@@ -11,6 +13,9 @@ namespace For_The_Potato_Backend
             var builder = WebApplication.CreateBuilder(args);
 
             builder.Services.AddDbContext<ForThePotatoContext>();
+            builder.Services.AddScoped<IUser, UserService>();
+            builder.Services.AddScoped<ISave, SaveService>();
+            builder.Services.AddScoped<ResponseDto>();
 
             // Add services to the container.
 
@@ -24,7 +29,6 @@ namespace For_The_Potato_Backend
                 });
             });
 
-            builder.Services.AddControllers();
             builder.Services.AddControllers().AddJsonOptions(x => x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();

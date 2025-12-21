@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using For_The_Potato_Backend.Models.Dto;
 using Microsoft.AspNetCore.Http.HttpResults;
+using For_The_Potato_Backend.Services;
 
 namespace For_The_Potato_Backend.Controllers
 {
@@ -11,12 +12,21 @@ namespace For_The_Potato_Backend.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
-        private readonly ForThePotatoContext _context;
+        private readonly IUser _user;
 
-        public UserController(ForThePotatoContext context)
+        public UserController(IUser user)
         {
-            _context = context;
+            _user = user;
         }
+
+        [HttpGet]
+        public async Task<ActionResult> GetAllData()
+        {
+            var response = await _user.GetAllData();
+            return Ok(response);
+        }
+
+        /*
 
         [HttpPost]
         public async Task<ActionResult> RegistAnUser([FromBody] UserDto user)
@@ -47,26 +57,6 @@ namespace For_The_Potato_Backend.Controllers
 
         }
 
-        [HttpGet]
-        public async Task<ActionResult> GetAllData()
-        {
-            try
-            {
-                var users = await _context.Users.ToArrayAsync();
-
-                if (users != null)
-                {
-                    return Ok(users);
-                }
-                return BadRequest(new { message = "Sikertelen lekérdezés" });
-            }
-            catch (Exception ex)
-            {
-
-                return BadRequest(new { message = ex.Message });
-            }
-
-        }
 
         [HttpGet("GetUsersDoNotHaveSave")]
         public async Task<ActionResult> GetUsersSave()
@@ -243,7 +233,8 @@ namespace For_The_Potato_Backend.Controllers
                 return BadRequest(new { message = ex.Message });
             }
         }
-       
+        */
+
     }
 }
         
