@@ -15,9 +15,30 @@ namespace For_The_Potato_Backend.Services
             _responseDto = responseDto;
         }
 
-        public Task<object> DeleteData()
+        public async Task<object> DeleteData(Guid id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var record = await _context.Saves.FirstOrDefaultAsync(s => s.Id == id);
+
+                if (record != null)
+                {
+                    _context.Remove(record);
+                    await _context.SaveChangesAsync();
+                    _responseDto.Value = record;
+                    _responseDto.Message = "Sikeres törlés";
+                    return _responseDto;
+                }
+                _responseDto.Message = "Sikertelen törlés";
+                _responseDto.Value = null;
+                return _responseDto;
+            }
+            catch (Exception ex)
+            {
+                _responseDto.Message = ex.Message;
+                _responseDto.Value = null;
+                return _responseDto;
+            }
         }
 
         public async Task<object> GetAllData()
@@ -28,6 +49,33 @@ namespace For_The_Potato_Backend.Services
                 _responseDto.Message = "Sikeres lekérés";
                 _responseDto.Value = saves;
                 return _responseDto;
+            }
+            catch (Exception ex)
+            {
+                _responseDto.Message = ex.Message;
+                _responseDto.Value = null;
+                return _responseDto;
+            }
+        }
+
+        public async Task<object> GetAllDataToWPF()
+        {
+            try
+            {
+                var saves = await _context.Saves.Select(s => new { s.Id, s.Points, s.Level, s.Language, s.RegDate, s.ModDate }).ToArrayAsync();
+
+
+                if (saves != null)
+                {
+                    _responseDto.Message = "Sikeres lekérdezés";
+                    _responseDto.Value = saves;
+                    return _responseDto;
+                }
+
+                _responseDto.Message = "Sikertelen lekérdezés";
+                _responseDto.Value = null;
+                return _responseDto;
+
             }
             catch (Exception ex)
             {
@@ -84,9 +132,47 @@ namespace For_The_Potato_Backend.Services
             }
         }
 
-        public Task<object> PutData()
+
+        public async Task<object> PutData(SaveDto save)
         {
-            throw new NotImplementedException();
+            try
+            {
+                if (save != null)
+                {
+                    var user = await _context.Users.Include(u => u.Save).FirstOrDefaultAsync(us => us.Name == save.Name);
+
+                    if (user.Save != null)
+                    {
+                        user.Save.Level = save.Level;
+                        user.Save.Points = save.Points;
+                        user.Save.Language = save.Language;
+                        user.Save.ModDate = DateTime.Now;
+                        _context.Saves.Update(user.Save);
+                        await _context.SaveChangesAsync();
+                        _responseDto.Message = "Sikeres frissítés";
+                        _responseDto.Value = save;
+                        return _responseDto;
+                    }
+                    else
+                    {
+                        _responseDto.Message = "Nincsen mentése";
+                        _responseDto.Value = null;
+                        return _responseDto;
+                    }
+
+
+                }
+
+                _responseDto.Message = "Sikertelen módosítás";
+                _responseDto.Value = null;
+                return _responseDto;
+            }
+            catch (Exception ex)
+            {
+                _responseDto.Message = ex.Message;
+                _responseDto.Value = null;
+                return _responseDto;
+            }
         }
     }
 }
