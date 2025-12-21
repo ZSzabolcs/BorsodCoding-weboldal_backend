@@ -68,6 +68,16 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "For_The_Potato_Backend.Controllers.SetupController",
+    "Method": "DownloadFile",
+    "RelativePath": "api/Setup/download",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "For_The_Potato_Backend.Controllers.UserController",
     "Method": "GetAllData",
     "RelativePath": "api/User",
