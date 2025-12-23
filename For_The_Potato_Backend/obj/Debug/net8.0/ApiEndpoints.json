@@ -59,6 +59,16 @@
   },
   {
     "ContainingType": "For_The_Potato_Backend.Controllers.SaveController",
+    "Method": "JatekosokSzama",
+    "RelativePath": "api/Save/JatekosokSzama",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "For_The_Potato_Backend.Controllers.SaveController",
     "Method": "GetAllSaveToWPF",
     "RelativePath": "api/Save/ToWPF",
     "HttpMethod": "GET",
@@ -129,7 +139,7 @@
     "Parameters": [
       {
         "Name": "loginUser",
-        "Type": "For_The_Potato_Backend.Models.Dto.UserDto",
+        "Type": "For_The_Potato_Backend.Models.Dto.LoginDto",
         "IsRequired": true
       }
     ],
@@ -159,6 +169,22 @@
     "IsController": true,
     "Order": 0,
     "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "For_The_Potato_Backend.Controllers.UserController",
+    "Method": "UserStatistic",
+    "RelativePath": "api/User/UserStatistic",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "checkUserDto",
+        "Type": "For_The_Potato_Backend.Models.Dto.CheckUserDto",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": []
   }
 ]

@@ -25,7 +25,13 @@ namespace For_The_Potato_Backend.Controllers
             return Ok(data);
         }
 
-        
+        [HttpGet("JatekosokSzama")]
+        public async Task<ActionResult> JatekosokSzama()
+        {
+            var data = await _save.GetDbJatekos();
+            return Ok(data);
+        }
+
         [HttpPost]
         public async Task<ActionResult> InsertSaveData([FromBody] SaveDto Save)
         {

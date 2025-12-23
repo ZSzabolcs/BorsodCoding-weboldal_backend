@@ -27,8 +27,12 @@ namespace For_The_Potato_Backend.Controllers
         }
 
 
-
-
+        [HttpPost("UserStatistic")]
+        public async Task<ActionResult> UserStatistic(CheckUserDto checkUserDto)
+        {
+            var response = await _user.GetUserStatistic(checkUserDto);
+            return Ok(response);
+        }
 
         [HttpGet("ToWPF")]
         public async Task<ActionResult> GetAllUserToWPF()
@@ -39,7 +43,7 @@ namespace For_The_Potato_Backend.Controllers
         }
 
         [HttpPost("Login")]
-        public async Task<ActionResult> LoginUser([FromBody] UserDto loginUser)
+        public async Task<ActionResult> LoginUser([FromBody] LoginDto loginUser)
         {
             var response = await _user.PostLoginUser(loginUser);
             var responseDto = response as ResponseDto;

@@ -82,7 +82,40 @@ namespace For_The_Potato_Backend.Services
             }
         }
 
-        public async Task<object> PostLoginUser(UserDto loginUser)
+        public async Task<object> GetUserStatistic(CheckUserDto checkUserDto)
+        {
+            try
+            {
+                var userStatictic = _context.Users
+                    .Include(u => u.Save)
+                    .ToArray()
+                    .Where(t => t.Save != null && t.Name == checkUserDto.Name)
+                    .Select(t => new
+                    {
+                        t.Name,
+                        t.Save.Points,
+                        t.Save.Level,
+                        t.Save.Language,
+                        t.Save.RegDate,
+                        t.Save.ModDate,
+                        NyelvArany = _context.Nyelvaranies.FirstOrDefault(ny => ny.Language == t.Save.Language),
+                        PontArany = _context.Pontaranyegyts.FirstOrDefault(p => p.Points == t.Save.Points),
+                        Szintarany = _context.Szintaranies.FirstOrDefault(sz => sz.Level == t.Save.Level),
+                    });
+                _responseDto.Message = "Sikeres lekérés";
+                _responseDto.Value = userStatictic;
+                return _responseDto;
+            }
+            catch (Exception ex)
+            {
+                _responseDto.Message = ex.Message;
+                _responseDto.Value = null;
+                return _responseDto;
+            }
+        }
+
+
+        public async Task<object> PostLoginUser(LoginDto loginUser)
         {
             try
             {

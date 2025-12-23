@@ -17,7 +17,15 @@ public partial class ForThePotatoContext : DbContext
 
     public virtual DbSet<Efmigrationshistory> Efmigrationshistories { get; set; }
 
+    public virtual DbSet<Mentesek> Menteseks { get; set; }
+
+    public virtual DbSet<Nyelvarany> Nyelvaranies { get; set; }
+
+    public virtual DbSet<Pontaranyegyt> Pontaranyegyts { get; set; }
+
     public virtual DbSet<Save> Saves { get; set; }
+
+    public virtual DbSet<Szintarany> Szintaranies { get; set; }
 
     public virtual DbSet<User> Users { get; set; }
 
@@ -37,6 +45,39 @@ public partial class ForThePotatoContext : DbContext
             entity.Property(e => e.ProductVersion).HasMaxLength(32);
         });
 
+        modelBuilder.Entity<Mentesek>(entity =>
+        {
+            entity
+                .HasNoKey()
+                .ToView("mentesek");
+
+            entity.Property(e => e.Db).HasColumnType("bigint(21)");
+        });
+
+        modelBuilder.Entity<Nyelvarany>(entity =>
+        {
+            entity
+                .HasNoKey()
+                .ToView("nyelvarany");
+
+            entity.Property(e => e.Language).HasMaxLength(2);
+            entity.Property(e => e.Szazalek)
+                .HasPrecision(10, 1)
+                .HasDefaultValueSql("'NULL'");
+        });
+
+        modelBuilder.Entity<Pontaranyegyt>(entity =>
+        {
+            entity
+                .HasNoKey()
+                .ToView("pontaranyegyt");
+
+            entity.Property(e => e.Points).HasColumnType("int(11)");
+            entity.Property(e => e.Szazalek)
+                .HasPrecision(10, 1)
+                .HasDefaultValueSql("'NULL'");
+        });
+
         modelBuilder.Entity<Save>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("PRIMARY");
@@ -53,9 +94,21 @@ public partial class ForThePotatoContext : DbContext
                 .HasMaxLength(6)
                 .HasDefaultValueSql("'''0001-01-01 00:00:00.000000'''");
 
-            entity.HasOne(d => d.User).WithOne(p => p.Save)
+            entity.HasOne(d => d.IdNavigation).WithOne(p => p.Save)
                 .HasForeignKey<Save>(d => d.Id)
                 .HasConstraintName("FK_Save_User_UserId");
+        });
+
+        modelBuilder.Entity<Szintarany>(entity =>
+        {
+            entity
+                .HasNoKey()
+                .ToView("szintarany");
+
+            entity.Property(e => e.Level).HasColumnType("int(11)");
+            entity.Property(e => e.Szazalek)
+                .HasPrecision(10, 1)
+                .HasDefaultValueSql("'NULL'");
         });
 
         modelBuilder.Entity<User>(entity =>
