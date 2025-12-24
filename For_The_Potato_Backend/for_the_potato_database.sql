@@ -7,8 +7,20 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
 
+DROP DATABASE IF EXISTS `for_the_potato`;
 CREATE DATABASE IF NOT EXISTS `for_the_potato` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 USE `for_the_potato`;
+CREATE TABLE `mentesek` (
+`Db` bigint(21)
+);
+CREATE TABLE `nyelvarany` (
+`Language` varchar(2)
+,`Szazalek` decimal(10,1)
+);
+CREATE TABLE `pontaranyegyt` (
+`Points` int(11)
+,`Szazalek` decimal(10,1)
+);
 
 CREATE TABLE `save` (
   `Id` char(36) NOT NULL,
@@ -72,6 +84,7 @@ INSERT INTO `save` (`Id`, `Points`, `Level`, `Language`, `RegDate`, `ModDate`) V
 ('793fb1a1-deba-4ae0-8956-ca80146d0ea5', 1000, 6, 'en', '2025-10-06 00:00:00.000000', '2025-07-30 00:00:00.000000'),
 ('7e2b2ce1-8a2c-4384-8949-6e10a8bf88b9', 1000, 6, 'en', '2024-12-01 00:00:00.000000', '2024-12-14 00:00:00.000000'),
 ('8087b474-39c4-49db-808b-f093d21f75e5', 800, 5, 'hu', '2025-04-03 00:00:00.000000', '2025-07-26 00:00:00.000000'),
+('809be4f8-2853-4738-a9d3-232e881e355f', 100, 10, 'en', '2025-12-21 22:47:50.524348', '2025-12-21 22:48:15.762830'),
 ('86a598fd-098e-4a39-b68a-79cca1f32314', 1000, 6, 'en', '2025-08-17 00:00:00.000000', '2025-03-20 00:00:00.000000'),
 ('870782e2-3b62-4242-8a9e-92c5664630db', 300, 5, 'hu', '2025-09-24 00:00:00.000000', '2025-07-10 00:00:00.000000'),
 ('8797370c-9e48-4f8d-9214-229b19af8445', 800, 5, 'hu', '2024-12-06 00:00:00.000000', '2025-08-20 00:00:00.000000'),
@@ -120,6 +133,10 @@ INSERT INTO `save` (`Id`, `Points`, `Level`, `Language`, `RegDate`, `ModDate`) V
 ('fa5b1497-87cd-4762-9acf-afaa1d66f520', 1000, 6, 'en', '2025-07-27 00:00:00.000000', '2025-04-06 00:00:00.000000'),
 ('fc3af9dc-4b7e-40e5-8ea0-119ea511adae', 300, 5, 'hu', '2025-04-08 00:00:00.000000', '2025-06-13 00:00:00.000000'),
 ('fd9092fb-9871-40f8-b7fc-c2feffe1b92c', 600, 5, 'hu', '2025-06-01 00:00:00.000000', '2025-06-16 00:00:00.000000');
+CREATE TABLE `szintarany` (
+`Level` int(11)
+,`Szazalek` decimal(10,1)
+);
 
 CREATE TABLE `user` (
   `Id` char(36) NOT NULL,
@@ -152,6 +169,7 @@ INSERT INTO `user` (`Id`, `Name`, `Password`, `RegDate`, `ModDate`, `Email`) VAL
 ('2a2206b6-6684-45aa-8e83-856b2f0029f7', 'rbatteyt', 'FUXXTUVWD2PyWV', '2025-05-14 00:00:00.000000', '2025-05-09 00:00:00.000000', NULL),
 ('2b4637c3-ab88-45d4-877b-f95fc6cd9fdc', 'vbarwood28', 'DJFICKRBLD{N=,`W', '2025-04-16 00:00:00.000000', '2025-07-28 00:00:00.000000', NULL),
 ('2c395ff5-ec56-483a-b641-2b2852542d54', 'cspaducci1w', 'LDKHULURcR', '2025-05-25 00:00:00.000000', '2025-05-04 00:00:00.000000', NULL),
+('2ca74a68-3048-40f2-9311-c8b27c217402', 'sdsdgf', 'string', '2025-12-21 22:50:57.050736', '2025-12-21 22:50:57.050736', 'string'),
 ('325264b1-c849-41be-af50-6c378db1711f', 'jwitheridge1z', 'VJMTYOTJ', '2025-08-24 00:00:00.000000', '2025-01-15 00:00:00.000000', NULL),
 ('39301b3c-9729-445b-999d-1131c6e8a7da', 'ndorber2h', 'FCBSIBEO4N<', '2025-10-07 00:00:00.000000', '2025-09-13 00:00:00.000000', NULL),
 ('3e876604-b1b7-4529-b8c3-c5f6f68686f9', 'clochn', 'ITYXKIEG', '2025-08-28 00:00:00.000000', '2025-04-05 00:00:00.000000', NULL),
@@ -184,6 +202,7 @@ INSERT INTO `user` (`Id`, `Name`, `Password`, `RegDate`, `ModDate`, `Email`) VAL
 ('7df37d0b-d2af-4f53-8371-a52a3bff8f79', 'Dinny', '12345', '2025-12-13 08:33:09.876448', '2025-12-13 08:33:09.876698', 'fdgf@hjfds.com'),
 ('7e2b2ce1-8a2c-4384-8949-6e10a8bf88b9', 'ocrock16', 'LKAAPBVM0bk2%/+q', '2024-12-01 00:00:00.000000', '2024-12-14 00:00:00.000000', NULL),
 ('8087b474-39c4-49db-808b-f093d21f75e5', 'abigham8', 'SFPALZGHt9\"', '2025-04-03 00:00:00.000000', '2025-07-26 00:00:00.000000', NULL),
+('809be4f8-2853-4738-a9d3-232e881e355f', 'string', 'gg', '2025-12-21 19:53:30.885842', '2025-12-21 19:53:30.885844', 'dsdfsdf@hjhjd.com'),
 ('86a598fd-098e-4a39-b68a-79cca1f32314', 'draeburn17', 'DZEXIMIQngWfJXe', '2025-08-17 00:00:00.000000', '2025-03-20 00:00:00.000000', NULL),
 ('870782e2-3b62-4242-8a9e-92c5664630db', 'dnittii', 'MYQCJCJT3jY', '2025-09-24 00:00:00.000000', '2025-07-10 00:00:00.000000', NULL),
 ('8797370c-9e48-4f8d-9214-229b19af8445', 'cspraging2b', 'NDNGDAWWEn', '2024-12-06 00:00:00.000000', '2025-08-20 00:00:00.000000', NULL),
@@ -241,6 +260,18 @@ CREATE TABLE `__efmigrationshistory` (
 INSERT INTO `__efmigrationshistory` (`MigrationId`, `ProductVersion`) VALUES
 ('20251129211633_CreateGUIDIdColumn', '8.0.22'),
 ('20251201173521_EmailColumnAddedInUserTable', '8.0.22');
+DROP TABLE IF EXISTS `mentesek`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `mentesek`  AS SELECT count(`save`.`Id`) AS `Db` FROM `save` ;
+DROP TABLE IF EXISTS `nyelvarany`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `nyelvarany`  AS SELECT `save`.`Language` AS `Language`, cast(count(`save`.`Id`) / `mentesek`.`Db` * 100 as decimal(10,1)) AS `Szazalek` FROM (`save` join `mentesek`) GROUP BY `save`.`Language` ;
+DROP TABLE IF EXISTS `pontaranyegyt`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `pontaranyegyt`  AS SELECT `save`.`Points` AS `Points`, cast(count(`save`.`Id`) / `mentesek`.`Db` * 100 as decimal(10,1)) AS `Szazalek` FROM (`save` join `mentesek`) GROUP BY `save`.`Points` ;
+DROP TABLE IF EXISTS `szintarany`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `szintarany`  AS SELECT `save`.`Level` AS `Level`, cast(count(`save`.`Id`) / `mentesek`.`Db` * 100 as decimal(10,1)) AS `Szazalek` FROM (`save` join `mentesek`) GROUP BY `save`.`Level` ;
 
 
 ALTER TABLE `save`
