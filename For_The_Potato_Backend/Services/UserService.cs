@@ -82,14 +82,44 @@ namespace For_The_Potato_Backend.Services
             }
         }
 
-        public async Task<object> GetUserStatistic(CheckUserDto checkUserDto)
+        public async Task<object> GetOneUserData(string name)
         {
             try
             {
-                var userStatictic = _context.Users
+                var oneUser = await _context.Users
+                    .Select(u => new { u.RegDate, u.ModDate, u.Password, u.Email, u.Name})
+                    .Where(u => u.Name == name)
+                    .FirstOrDefaultAsync();
+;
+
+                if (oneUser != null)
+                {
+                    _responseDto.Message = "Sikeres lekérdezés";
+                    _responseDto.Value = oneUser;
+                    return _responseDto;
+                }
+
+                _responseDto.Message = "Sikertelen lekérdezés";
+                _responseDto.Value = null;
+                return _responseDto;
+
+                
+            }
+            catch (Exception ex)
+            {
+                _responseDto.Message = ex.Message;
+                _responseDto.Value = null;
+                return _responseDto;
+            }
+        }
+
+        public async Task<object> GetUserStatistic(string name)
+        {
+            try
+            {
+                var userStatictic = await _context.Users
                     .Include(u => u.Save)
-                    .ToArray()
-                    .Where(t => t.Save != null && t.Name == checkUserDto.Name)
+                    .Where(t => t.Save != null && t.Name == name)
                     .Select(t => new
                     {
                         t.Name,
@@ -100,11 +130,23 @@ namespace For_The_Potato_Backend.Services
                         t.Save.ModDate,
                         NyelvArany = _context.Nyelvaranies.FirstOrDefault(ny => ny.Language == t.Save.Language),
                         PontArany = _context.Pontaranyegyts.FirstOrDefault(p => p.Points == t.Save.Points),
-                        Szintarany = _context.Szintaranies.FirstOrDefault(sz => sz.Level == t.Save.Level),
-                    });
-                _responseDto.Message = "Sikeres lekérés";
-                _responseDto.Value = userStatictic;
-                return _responseDto;
+                        SzintArany = _context.Szintaranies.FirstOrDefault(sz => sz.Level == t.Save.Level),
+                    })
+                    .FirstOrDefaultAsync();
+
+                if (userStatictic != null)
+                {
+                    _responseDto.Message = "Sikeres lekérés";
+                    _responseDto.Value = userStatictic;
+                    return _responseDto;
+                }
+                
+                 _responseDto.Message = "Még nincsen mentése";
+                 _responseDto.Value = null;
+                 return _responseDto;
+                
+
+                
             }
             catch (Exception ex)
             {

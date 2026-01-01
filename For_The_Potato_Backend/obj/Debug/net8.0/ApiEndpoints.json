@@ -131,6 +131,22 @@
   },
   {
     "ContainingType": "For_The_Potato_Backend.Controllers.UserController",
+    "Method": "GetOneUser",
+    "RelativePath": "api/User/Fiok/{name}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "name",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "For_The_Potato_Backend.Controllers.UserController",
     "Method": "LoginUser",
     "RelativePath": "api/User/Login",
     "HttpMethod": "POST",
@@ -163,28 +179,28 @@
   },
   {
     "ContainingType": "For_The_Potato_Backend.Controllers.UserController",
+    "Method": "UserStatistic",
+    "RelativePath": "api/User/Statistic/{name}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "name",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "For_The_Potato_Backend.Controllers.UserController",
     "Method": "GetAllUserToWPF",
     "RelativePath": "api/User/ToWPF",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "For_The_Potato_Backend.Controllers.UserController",
-    "Method": "UserStatistic",
-    "RelativePath": "api/User/UserStatistic",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "checkUserDto",
-        "Type": "For_The_Potato_Backend.Models.Dto.CheckUserDto",
-        "IsRequired": true
-      }
-    ],
     "ReturnTypes": []
   }
 ]

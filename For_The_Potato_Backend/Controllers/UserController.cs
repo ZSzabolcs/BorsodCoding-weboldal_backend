@@ -27,10 +27,10 @@ namespace For_The_Potato_Backend.Controllers
         }
 
 
-        [HttpPost("UserStatistic")]
-        public async Task<ActionResult> UserStatistic(CheckUserDto checkUserDto)
+        [HttpGet("Statistic/{name}")]
+        public async Task<ActionResult> UserStatistic(string name)
         {
-            var response = await _user.GetUserStatistic(checkUserDto);
+            var response = await _user.GetUserStatistic(name);
             return Ok(response);
         }
 
@@ -41,6 +41,14 @@ namespace For_The_Potato_Backend.Controllers
             return Ok(response);
 
         }
+
+        [HttpGet("Fiok/{name}")]
+        public async Task<ActionResult> GetOneUser(string name)
+        {
+            var response = await _user.GetOneUserData(name);
+            return Ok(response);
+        }
+
 
         [HttpPost("Login")]
         public async Task<ActionResult> LoginUser([FromBody] LoginDto loginUser)

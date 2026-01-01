@@ -156,7 +156,9 @@ namespace For_The_Potato_Backend.Services
             {
                 if (save != null)
                 {
-                    var user = await _context.Users.Include(u => u.Save).FirstOrDefaultAsync(us => us.Name == save.Name);
+                    var user = await _context.Users
+                        .Include(u => u.Save)
+                        .FirstOrDefaultAsync(us => us.Name == save.Name);
 
                     if (user.Save != null)
                     {
