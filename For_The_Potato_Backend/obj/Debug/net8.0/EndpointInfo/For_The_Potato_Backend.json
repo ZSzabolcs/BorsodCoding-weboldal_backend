@@ -119,6 +119,37 @@
         }
       }
     },
+    "/api/Save/FromWPF": {
+      "put": {
+        "tags": [
+          "Save"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SaveDtoFromWPF"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SaveDtoFromWPF"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SaveDtoFromWPF"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Setup/download": {
       "get": {
         "tags": [
@@ -343,6 +374,34 @@
           "name": {
             "minLength": 1,
             "type": "string"
+          },
+          "points": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "level": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "language": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "SaveDtoFromWPF": {
+        "required": [
+          "id",
+          "language",
+          "level",
+          "points"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
           },
           "points": {
             "type": "integer",

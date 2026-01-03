@@ -59,6 +59,22 @@
   },
   {
     "ContainingType": "For_The_Potato_Backend.Controllers.SaveController",
+    "Method": "UpdateSaveFromWPF",
+    "RelativePath": "api/Save/FromWPF",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "saveobj",
+        "Type": "For_The_Potato_Backend.Models.Dto.SaveDtoFromWPF",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "For_The_Potato_Backend.Controllers.SaveController",
     "Method": "JatekosokSzama",
     "RelativePath": "api/Save/JatekosokSzama",
     "HttpMethod": "GET",

@@ -193,5 +193,49 @@ namespace For_The_Potato_Backend.Services
                 return _responseDto;
             }
         }
+
+        public async Task<object> PutDataFromWPF(SaveDtoFromWPF save)
+        {
+            try
+            {
+                if (save != null)
+                {
+                    var user = await _context.Users
+                        .Include(u => u.Save)
+                        .FirstOrDefaultAsync(us => us.Id == save.Id);
+
+                    if (user.Save != null)
+                    {
+                        user.Save.Level = save.Level;
+                        user.Save.Points = save.Points;
+                        user.Save.Language = save.Language;
+                        user.Save.ModDate = DateTime.Now;
+                        _context.Saves.Update(user.Save);
+                        await _context.SaveChangesAsync();
+                        _responseDto.Message = "Sikeres frissítés";
+                        _responseDto.Value = save;
+                        return _responseDto;
+                    }
+                    else
+                    {
+                        _responseDto.Message = "Nincsen mentése";
+                        _responseDto.Value = null;
+                        return _responseDto;
+                    }
+
+
+                }
+
+                _responseDto.Message = "Sikertelen módosítás";
+                _responseDto.Value = null;
+                return _responseDto;
+            }
+            catch (Exception ex)
+            {
+                _responseDto.Message = ex.Message;
+                _responseDto.Value = null;
+                return _responseDto;
+            }
+        }
     }
 }

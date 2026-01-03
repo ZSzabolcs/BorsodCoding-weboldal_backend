@@ -68,9 +68,23 @@ namespace For_The_Potato_Backend.Controllers
 
             return NotFound(responseDto);
 
+       }
+
+        [HttpPut("FromWPF")]
+        public async Task<ActionResult> UpdateSaveFromWPF([FromBody] SaveDtoFromWPF saveobj)
+        {
+            var response = await _save.PutDataFromWPF(saveobj);
+            var responseDto = response as ResponseDto;
+            if (responseDto.Value != null)
+            {
+                return StatusCode(201, responseDto);
+            }
+
+            return NotFound(responseDto);
+
         }
-        
-       [HttpDelete]
+
+        [HttpDelete]
        public async Task<ActionResult> RemoveASave(Guid id)
        {
             var response = await _save.DeleteData(id);
