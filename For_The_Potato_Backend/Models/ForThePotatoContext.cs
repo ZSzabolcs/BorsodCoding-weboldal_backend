@@ -52,6 +52,12 @@ public partial class ForThePotatoContext : DbContext
                 .ToView("mentesek");
 
             entity.Property(e => e.Db).HasColumnType("bigint(21)");
+            entity.Property(e => e.PontAtlag)
+                .HasPrecision(14, 4)
+                .HasDefaultValueSql("'NULL'");
+            entity.Property(e => e.SzintAtlag)
+                .HasPrecision(14, 4)
+                .HasDefaultValueSql("'NULL'");
         });
 
         modelBuilder.Entity<Nyelvarany>(entity =>
