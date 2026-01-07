@@ -10,4 +10,8 @@ public partial class Mentesek
     public decimal? PontAtlag { get; set; }
 
     public decimal? SzintAtlag { get; set; }
+
+    public int? SzintModusz { get; set; }
+
+    public int? PontModusz { get; set; }
 }
