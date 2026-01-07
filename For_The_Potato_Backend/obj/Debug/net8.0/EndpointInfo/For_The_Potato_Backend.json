@@ -95,18 +95,6 @@
         }
       }
     },
-    "/api/Save/JatekosokSzama": {
-      "get": {
-        "tags": [
-          "Save"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
     "/api/Save/ToWPF": {
       "get": {
         "tags": [

@@ -7,11 +7,12 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
 
-/*DROP DATABASE IF EXISTS `for_the_potato`;*/
 CREATE DATABASE IF NOT EXISTS `for_the_potato` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 USE `for_the_potato`;
 CREATE TABLE `mentesek` (
 `Db` bigint(21)
+,`PontAtlag` decimal(14,4)
+,`SzintAtlag` decimal(14,4)
 );
 CREATE TABLE `nyelvarany` (
 `Language` varchar(2)
@@ -133,6 +134,13 @@ INSERT INTO `save` (`Id`, `Points`, `Level`, `Language`, `RegDate`, `ModDate`) V
 ('fa5b1497-87cd-4762-9acf-afaa1d66f520', 1000, 6, 'en', '2025-07-27 00:00:00.000000', '2025-04-06 00:00:00.000000'),
 ('fc3af9dc-4b7e-40e5-8ea0-119ea511adae', 300, 5, 'hu', '2025-04-08 00:00:00.000000', '2025-06-13 00:00:00.000000'),
 ('fd9092fb-9871-40f8-b7fc-c2feffe1b92c', 600, 5, 'hu', '2025-06-01 00:00:00.000000', '2025-06-16 00:00:00.000000');
+
+-- --------------------------------------------------------
+
+--
+-- A nézet helyettes szerkezete `szintarany`
+-- (Lásd alább az aktuális nézetet)
+--
 CREATE TABLE `szintarany` (
 `Level` int(11)
 ,`Szazalek` decimal(10,1)
@@ -234,7 +242,7 @@ INSERT INTO `user` (`Id`, `Name`, `Password`, `RegDate`, `ModDate`, `Email`) VAL
 ('bdb92cbe-7165-4b49-a549-82fdbdc17497', 'mnarup2e', 'UKYOEOJH9BA`', '2025-03-01 00:00:00.000000', '2025-11-12 00:00:00.000000', NULL),
 ('beae0a42-9fc8-4c8d-9c85-432cbd42a494', 'vgayle5', 'LQNMTYFCoN/~', '2025-02-12 00:00:00.000000', '2025-03-12 00:00:00.000000', NULL),
 ('cdf978e0-5228-4a6e-866b-9d0c22f5b845', 'abagworthp', 'QAGWCMOT23dYhwlR', '2025-07-05 00:00:00.000000', '2025-11-15 00:00:00.000000', NULL),
-('cfe709cf-20fd-4924-acdf-e40d946a36f8', 'mmangion1p', 'ZCMXPRRO}\'vL', '2025-08-03 00:00:00.000000', '2025-06-19 00:00:00.000000', NULL),
+('cfe709cf-20fd-4924-acdf-e40d946a36f8', 'mmangion1p', 'ZCMXPRRO}\vL', '2025-08-03 00:00:00.000000', '2025-06-19 00:00:00.000000', NULL),
 ('d0f7f598-342a-4ec1-b2d0-c04f633432f4', 'pmcshee2o', 'CXBIXZRP/QU>?', '2025-03-31 00:00:00.000000', '2025-09-11 00:00:00.000000', NULL),
 ('d18b5624-4629-4742-abb3-8c19e442365a', 'gdredge2p', 'IQPZCNFDer53p+o', '2025-03-31 00:00:00.000000', '2025-11-22 00:00:00.000000', NULL),
 ('dc5bacb7-030b-412c-bd10-dd19f776de9f', 'nglantonl', 'MZBRCRHYEKS+aIN0', '2025-04-25 00:00:00.000000', '2025-07-13 00:00:00.000000', NULL),
@@ -245,11 +253,11 @@ INSERT INTO `user` (`Id`, `Name`, `Password`, `RegDate`, `ModDate`, `Email`) VAL
 ('e4a25c48-b2e4-406f-ba28-f8e88ef6b56c', 'eblabey23', 'SNEGRFLI_@Lm|,uf', '2025-10-06 00:00:00.000000', '2024-12-10 00:00:00.000000', NULL),
 ('e68e5647-a8c1-4845-99ea-0f03c3009a39', 'eayllett2c', 'CINHMERH', '2025-05-22 00:00:00.000000', '2025-07-02 00:00:00.000000', NULL),
 ('edfa274e-9a4e-4116-bf94-c2809c99eb1e', 'rfieldersx', 'CXLEKVBJxt', '2025-09-29 00:00:00.000000', '2025-07-30 00:00:00.000000', NULL),
-('f03bba13-3f44-42c8-84a5-8c4a81505363', 'sleadstone11', 'TMCUPVRE8\'', '2025-06-13 00:00:00.000000', '2025-02-14 00:00:00.000000', NULL),
+('f03bba13-3f44-42c8-84a5-8c4a81505363', 'sleadstone11', 'TMCUPVRE8\', '2025-06-13 00:00:00.000000', '2025-02-14 00:00:00.000000', NULL),
 ('f6676185-b834-4421-8f1e-1892f698bf07', 'rjerrand22', 'CSLWMUHG>%#=CN', '2025-05-10 00:00:00.000000', '2025-08-26 00:00:00.000000', NULL),
 ('fa3e9381-d6a4-499e-8f1b-9eec64897cdc', 'dlitchfield1h', 'XIYVLAZX_/f,K', '2025-10-16 00:00:00.000000', '2025-05-02 00:00:00.000000', NULL),
 ('fa5b1497-87cd-4762-9acf-afaa1d66f520', 'acarnier1l', 'PBXDEMZB@', '2025-07-27 00:00:00.000000', '2025-04-06 00:00:00.000000', NULL),
-('fc3af9dc-4b7e-40e5-8ea0-119ea511adae', 'gpatridge10', 'YAWYAXAL@q\'mLlxf', '2025-04-08 00:00:00.000000', '2025-06-13 00:00:00.000000', NULL),
+('fc3af9dc-4b7e-40e5-8ea0-119ea511adae', 'gpatridge10', 'YAWYAXAL@q\mLlxf', '2025-04-08 00:00:00.000000', '2025-06-13 00:00:00.000000', NULL),
 ('fd9092fb-9871-40f8-b7fc-c2feffe1b92c', 'amessruther2f', 'KVEIALAR\"Jwg{{x', '2025-06-01 00:00:00.000000', '2025-06-16 00:00:00.000000', NULL);
 
 CREATE TABLE `__efmigrationshistory` (
@@ -262,7 +270,7 @@ INSERT INTO `__efmigrationshistory` (`MigrationId`, `ProductVersion`) VALUES
 ('20251201173521_EmailColumnAddedInUserTable', '8.0.22');
 DROP TABLE IF EXISTS `mentesek`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `mentesek`  AS SELECT count(`save`.`Id`) AS `Db` FROM `save` ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `mentesek`  AS SELECT count(`save`.`Id`) AS `Db`, avg(`save`.`Points`) AS `PontAtlag`, avg(`save`.`Level`) AS `SzintAtlag` FROM `save` ;
 DROP TABLE IF EXISTS `nyelvarany`;
 
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `nyelvarany`  AS SELECT `save`.`Language` AS `Language`, cast(count(`save`.`Id`) / `mentesek`.`Db` * 100 as decimal(10,1)) AS `Szazalek` FROM (`save` join `mentesek`) GROUP BY `save`.`Language` ;
