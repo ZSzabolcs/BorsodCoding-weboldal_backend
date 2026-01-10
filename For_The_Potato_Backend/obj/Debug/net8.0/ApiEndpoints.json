@@ -75,6 +75,16 @@
   },
   {
     "ContainingType": "For_The_Potato_Backend.Controllers.SaveController",
+    "Method": "JatekosokSzama",
+    "RelativePath": "api/Save/JatekosokSzama",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "For_The_Potato_Backend.Controllers.SaveController",
     "Method": "GetAllSaveToWPF",
     "RelativePath": "api/Save/ToWPF",
     "HttpMethod": "GET",
