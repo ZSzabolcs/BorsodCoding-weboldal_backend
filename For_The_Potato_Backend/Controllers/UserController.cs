@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using For_The_Potato_Backend.Models.Dto;
 using Microsoft.AspNetCore.Http.HttpResults;
 using For_The_Potato_Backend.Services;
+using Microsoft.AspNetCore.Authorization;
 
 namespace For_The_Potato_Backend.Controllers
 {

@@ -318,8 +318,6 @@ D:\Munka\Iskola\vegso_projekt\BorsodCoding-weboldal_backend\For_The_Potato_Backe
 D:\Munka\Iskola\vegso_projekt\BorsodCoding-weboldal_backend\For_The_Potato_Backend\bin\Debug\net8.0\For_The_Potato_Backend.runtimeconfig.json
 D:\Munka\Iskola\vegso_projekt\BorsodCoding-weboldal_backend\For_The_Potato_Backend\bin\Debug\net8.0\For_The_Potato_Backend.dll
 D:\Munka\Iskola\vegso_projekt\BorsodCoding-weboldal_backend\For_The_Potato_Backend\bin\Debug\net8.0\For_The_Potato_Backend.pdb
-D:\Munka\Iskola\vegso_projekt\BorsodCoding-weboldal_backend\For_The_Potato_Backend\bin\Debug\net8.0\Azure.Core.dll
-D:\Munka\Iskola\vegso_projekt\BorsodCoding-weboldal_backend\For_The_Potato_Backend\bin\Debug\net8.0\Azure.Identity.dll
 D:\Munka\Iskola\vegso_projekt\BorsodCoding-weboldal_backend\For_The_Potato_Backend\bin\Debug\net8.0\BouncyCastle.Cryptography.dll
 D:\Munka\Iskola\vegso_projekt\BorsodCoding-weboldal_backend\For_The_Potato_Backend\bin\Debug\net8.0\Google.Protobuf.dll
 D:\Munka\Iskola\vegso_projekt\BorsodCoding-weboldal_backend\For_The_Potato_Backend\bin\Debug\net8.0\Humanizer.dll
@@ -331,12 +329,10 @@ D:\Munka\Iskola\vegso_projekt\BorsodCoding-weboldal_backend\For_The_Potato_Backe
 D:\Munka\Iskola\vegso_projekt\BorsodCoding-weboldal_backend\For_The_Potato_Backend\bin\Debug\net8.0\Microsoft.CodeAnalysis.CSharp.dll
 D:\Munka\Iskola\vegso_projekt\BorsodCoding-weboldal_backend\For_The_Potato_Backend\bin\Debug\net8.0\Microsoft.CodeAnalysis.CSharp.Workspaces.dll
 D:\Munka\Iskola\vegso_projekt\BorsodCoding-weboldal_backend\For_The_Potato_Backend\bin\Debug\net8.0\Microsoft.CodeAnalysis.Workspaces.dll
-D:\Munka\Iskola\vegso_projekt\BorsodCoding-weboldal_backend\For_The_Potato_Backend\bin\Debug\net8.0\Microsoft.Data.SqlClient.dll
 D:\Munka\Iskola\vegso_projekt\BorsodCoding-weboldal_backend\For_The_Potato_Backend\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.dll
 D:\Munka\Iskola\vegso_projekt\BorsodCoding-weboldal_backend\For_The_Potato_Backend\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Abstractions.dll
 D:\Munka\Iskola\vegso_projekt\BorsodCoding-weboldal_backend\For_The_Potato_Backend\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Design.dll
 D:\Munka\Iskola\vegso_projekt\BorsodCoding-weboldal_backend\For_The_Potato_Backend\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Relational.dll
-D:\Munka\Iskola\vegso_projekt\BorsodCoding-weboldal_backend\For_The_Potato_Backend\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.SqlServer.dll
 D:\Munka\Iskola\vegso_projekt\BorsodCoding-weboldal_backend\For_The_Potato_Backend\bin\Debug\net8.0\Microsoft.Extensions.Caching.Memory.dll
 D:\Munka\Iskola\vegso_projekt\BorsodCoding-weboldal_backend\For_The_Potato_Backend\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.dll
 D:\Munka\Iskola\vegso_projekt\BorsodCoding-weboldal_backend\For_The_Potato_Backend\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
@@ -344,8 +340,6 @@ D:\Munka\Iskola\vegso_projekt\BorsodCoding-weboldal_backend\For_The_Potato_Backe
 D:\Munka\Iskola\vegso_projekt\BorsodCoding-weboldal_backend\For_The_Potato_Backend\bin\Debug\net8.0\Microsoft.Extensions.Logging.dll
 D:\Munka\Iskola\vegso_projekt\BorsodCoding-weboldal_backend\For_The_Potato_Backend\bin\Debug\net8.0\Microsoft.Extensions.Logging.Abstractions.dll
 D:\Munka\Iskola\vegso_projekt\BorsodCoding-weboldal_backend\For_The_Potato_Backend\bin\Debug\net8.0\Microsoft.Extensions.Options.dll
-D:\Munka\Iskola\vegso_projekt\BorsodCoding-weboldal_backend\For_The_Potato_Backend\bin\Debug\net8.0\Microsoft.Identity.Client.dll
-D:\Munka\Iskola\vegso_projekt\BorsodCoding-weboldal_backend\For_The_Potato_Backend\bin\Debug\net8.0\Microsoft.Identity.Client.Extensions.Msal.dll
 D:\Munka\Iskola\vegso_projekt\BorsodCoding-weboldal_backend\For_The_Potato_Backend\bin\Debug\net8.0\Microsoft.IdentityModel.Abstractions.dll
 D:\Munka\Iskola\vegso_projekt\BorsodCoding-weboldal_backend\For_The_Potato_Backend\bin\Debug\net8.0\Microsoft.IdentityModel.JsonWebTokens.dll
 D:\Munka\Iskola\vegso_projekt\BorsodCoding-weboldal_backend\For_The_Potato_Backend\bin\Debug\net8.0\Microsoft.IdentityModel.Logging.dll
@@ -353,7 +347,6 @@ D:\Munka\Iskola\vegso_projekt\BorsodCoding-weboldal_backend\For_The_Potato_Backe
 D:\Munka\Iskola\vegso_projekt\BorsodCoding-weboldal_backend\For_The_Potato_Backend\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 D:\Munka\Iskola\vegso_projekt\BorsodCoding-weboldal_backend\For_The_Potato_Backend\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
 D:\Munka\Iskola\vegso_projekt\BorsodCoding-weboldal_backend\For_The_Potato_Backend\bin\Debug\net8.0\Microsoft.OpenApi.dll
-D:\Munka\Iskola\vegso_projekt\BorsodCoding-weboldal_backend\For_The_Potato_Backend\bin\Debug\net8.0\Microsoft.SqlServer.Server.dll
 D:\Munka\Iskola\vegso_projekt\BorsodCoding-weboldal_backend\For_The_Potato_Backend\bin\Debug\net8.0\Mono.TextTemplating.dll
 D:\Munka\Iskola\vegso_projekt\BorsodCoding-weboldal_backend\For_The_Potato_Backend\bin\Debug\net8.0\MySql.Data.dll
 D:\Munka\Iskola\vegso_projekt\BorsodCoding-weboldal_backend\For_The_Potato_Backend\bin\Debug\net8.0\MySql.EntityFrameworkCore.dll
@@ -362,7 +355,6 @@ D:\Munka\Iskola\vegso_projekt\BorsodCoding-weboldal_backend\For_The_Potato_Backe
 D:\Munka\Iskola\vegso_projekt\BorsodCoding-weboldal_backend\For_The_Potato_Backend\bin\Debug\net8.0\Swashbuckle.AspNetCore.Swagger.dll
 D:\Munka\Iskola\vegso_projekt\BorsodCoding-weboldal_backend\For_The_Potato_Backend\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 D:\Munka\Iskola\vegso_projekt\BorsodCoding-weboldal_backend\For_The_Potato_Backend\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll
-D:\Munka\Iskola\vegso_projekt\BorsodCoding-weboldal_backend\For_The_Potato_Backend\bin\Debug\net8.0\System.ClientModel.dll
 D:\Munka\Iskola\vegso_projekt\BorsodCoding-weboldal_backend\For_The_Potato_Backend\bin\Debug\net8.0\System.CodeDom.dll
 D:\Munka\Iskola\vegso_projekt\BorsodCoding-weboldal_backend\For_The_Potato_Backend\bin\Debug\net8.0\System.Composition.AttributedModel.dll
 D:\Munka\Iskola\vegso_projekt\BorsodCoding-weboldal_backend\For_The_Potato_Backend\bin\Debug\net8.0\System.Composition.Convention.dll
@@ -371,8 +363,6 @@ D:\Munka\Iskola\vegso_projekt\BorsodCoding-weboldal_backend\For_The_Potato_Backe
 D:\Munka\Iskola\vegso_projekt\BorsodCoding-weboldal_backend\For_The_Potato_Backend\bin\Debug\net8.0\System.Composition.TypedParts.dll
 D:\Munka\Iskola\vegso_projekt\BorsodCoding-weboldal_backend\For_The_Potato_Backend\bin\Debug\net8.0\System.Configuration.ConfigurationManager.dll
 D:\Munka\Iskola\vegso_projekt\BorsodCoding-weboldal_backend\For_The_Potato_Backend\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll
-D:\Munka\Iskola\vegso_projekt\BorsodCoding-weboldal_backend\For_The_Potato_Backend\bin\Debug\net8.0\System.Memory.Data.dll
-D:\Munka\Iskola\vegso_projekt\BorsodCoding-weboldal_backend\For_The_Potato_Backend\bin\Debug\net8.0\System.Runtime.Caching.dll
 D:\Munka\Iskola\vegso_projekt\BorsodCoding-weboldal_backend\For_The_Potato_Backend\bin\Debug\net8.0\System.Security.Cryptography.ProtectedData.dll
 D:\Munka\Iskola\vegso_projekt\BorsodCoding-weboldal_backend\For_The_Potato_Backend\bin\Debug\net8.0\System.Security.Permissions.dll
 D:\Munka\Iskola\vegso_projekt\BorsodCoding-weboldal_backend\For_The_Potato_Backend\bin\Debug\net8.0\System.Windows.Extensions.dll
@@ -429,18 +419,11 @@ D:\Munka\Iskola\vegso_projekt\BorsodCoding-weboldal_backend\For_The_Potato_Backe
 D:\Munka\Iskola\vegso_projekt\BorsodCoding-weboldal_backend\For_The_Potato_Backend\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
 D:\Munka\Iskola\vegso_projekt\BorsodCoding-weboldal_backend\For_The_Potato_Backend\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
 D:\Munka\Iskola\vegso_projekt\BorsodCoding-weboldal_backend\For_The_Potato_Backend\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
-D:\Munka\Iskola\vegso_projekt\BorsodCoding-weboldal_backend\For_The_Potato_Backend\bin\Debug\net8.0\runtimes\unix\lib\net6.0\Microsoft.Data.SqlClient.dll
-D:\Munka\Iskola\vegso_projekt\BorsodCoding-weboldal_backend\For_The_Potato_Backend\bin\Debug\net8.0\runtimes\win\lib\net6.0\Microsoft.Data.SqlClient.dll
-D:\Munka\Iskola\vegso_projekt\BorsodCoding-weboldal_backend\For_The_Potato_Backend\bin\Debug\net8.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
-D:\Munka\Iskola\vegso_projekt\BorsodCoding-weboldal_backend\For_The_Potato_Backend\bin\Debug\net8.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
-D:\Munka\Iskola\vegso_projekt\BorsodCoding-weboldal_backend\For_The_Potato_Backend\bin\Debug\net8.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
-D:\Munka\Iskola\vegso_projekt\BorsodCoding-weboldal_backend\For_The_Potato_Backend\bin\Debug\net8.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
 D:\Munka\Iskola\vegso_projekt\BorsodCoding-weboldal_backend\For_The_Potato_Backend\bin\Debug\net8.0\runtimes\win-x64\native\comerr64.dll
 D:\Munka\Iskola\vegso_projekt\BorsodCoding-weboldal_backend\For_The_Potato_Backend\bin\Debug\net8.0\runtimes\win-x64\native\gssapi64.dll
 D:\Munka\Iskola\vegso_projekt\BorsodCoding-weboldal_backend\For_The_Potato_Backend\bin\Debug\net8.0\runtimes\win-x64\native\k5sprt64.dll
 D:\Munka\Iskola\vegso_projekt\BorsodCoding-weboldal_backend\For_The_Potato_Backend\bin\Debug\net8.0\runtimes\win-x64\native\krb5_64.dll
 D:\Munka\Iskola\vegso_projekt\BorsodCoding-weboldal_backend\For_The_Potato_Backend\bin\Debug\net8.0\runtimes\win-x64\native\krbcc64.dll
-D:\Munka\Iskola\vegso_projekt\BorsodCoding-weboldal_backend\For_The_Potato_Backend\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Runtime.Caching.dll
 D:\Munka\Iskola\vegso_projekt\BorsodCoding-weboldal_backend\For_The_Potato_Backend\bin\Debug\net8.0\runtimes\win\lib\net8.0\System.Windows.Extensions.dll
 D:\Munka\Iskola\vegso_projekt\BorsodCoding-weboldal_backend\For_The_Potato_Backend\obj\Debug\net8.0\For_The_Potato_Backend.csproj.AssemblyReference.cache
 D:\Munka\Iskola\vegso_projekt\BorsodCoding-weboldal_backend\For_The_Potato_Backend\obj\Debug\net8.0\rpswa.dswa.cache.json
@@ -466,3 +449,4 @@ D:\Munka\Iskola\vegso_projekt\BorsodCoding-weboldal_backend\For_The_Potato_Backe
 D:\Munka\Iskola\vegso_projekt\BorsodCoding-weboldal_backend\For_The_Potato_Backend\obj\Debug\net8.0\For_The_Potato_Backend.pdb
 D:\Munka\Iskola\vegso_projekt\BorsodCoding-weboldal_backend\For_The_Potato_Backend\obj\Debug\net8.0\For_The_Potato_Backend.genruntimeconfig.cache
 D:\Munka\Iskola\vegso_projekt\BorsodCoding-weboldal_backend\For_The_Potato_Backend\obj\Debug\net8.0\ref\For_The_Potato_Backend.dll
+D:\Munka\Iskola\vegso_projekt\BorsodCoding-weboldal_backend\For_The_Potato_Backend\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll

@@ -2,6 +2,9 @@
 using For_The_Potato_Backend.Models;
 using For_The_Potato_Backend.Models.Dto;
 using For_The_Potato_Backend.Services;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 using System.Text.Json.Serialization;
 
 namespace For_The_Potato_Backend
@@ -11,6 +14,31 @@ namespace For_The_Potato_Backend
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+
+            var settingsSection = builder.Configuration.GetSection("AuthSettings:JwtOptions");
+
+            var secret = settingsSection.GetValue<string>("Secret");
+            var issuer = settingsSection.GetValue<string>("Issuer");
+            var auidience = settingsSection.GetValue<string>("Audience");
+
+            var key = Encoding.ASCII.GetBytes(secret);
+
+            builder.Services.AddAuthentication(x =>
+            {
+                x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            }).AddJwtBearer(x =>
+            {
+                x.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(key),
+                    ValidateIssuer = true,
+                    ValidIssuer = issuer,
+                    ValidAudience = auidience,
+                    ValidateAudience = true
+                };
+            });
 
             builder.Services.AddDbContext<ForThePotatoContext>();
             builder.Services.AddScoped<IUser, UserService>();

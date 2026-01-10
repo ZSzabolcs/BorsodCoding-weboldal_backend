@@ -45,7 +45,17 @@ namespace For_The_Potato_Backend.Services
         {
             try
             {
-                var users = await _context.Users.ToArrayAsync();
+                var users = await _context.Users
+                    .Select(u => new
+                    {
+                        u.Id,
+                        u.Name,
+                        u.Password,
+                        u.RegDate,
+                        u.ModDate,
+                        u.Email
+                    })
+                    .ToArrayAsync();
                 _responseDto.Message = "Sikeres lekérés";
                 _responseDto.Value = users;
                 return _responseDto;
