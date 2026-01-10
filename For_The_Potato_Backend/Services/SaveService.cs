@@ -85,22 +85,6 @@ namespace For_The_Potato_Backend.Services
             }
         }
 
-        public async Task<object> GetDbJatekos()
-        {
-            try
-            {
-                var mentesek = await _context.Menteseks.FirstOrDefaultAsync();
-                _responseDto.Message = "Játékosok száma";
-                _responseDto.Value = mentesek.Db;
-                return _responseDto;
-            }
-            catch (Exception ex)
-            {
-                _responseDto.Message = ex.Message;
-                _responseDto.Value = null;
-                return _responseDto;
-            }
-        }
 
         public async Task<object> PostData(SaveDto save)
         {

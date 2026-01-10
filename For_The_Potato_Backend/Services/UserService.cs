@@ -127,6 +127,9 @@ namespace For_The_Potato_Backend.Services
         {
             try
             {
+                var mentesek = await _context.Menteseks.FirstOrDefaultAsync();
+                var legnagyobb = _context.Szintaranies.MaxBy(sz => sz.Szazalek);
+                var szintModusz = legnagyobb.Level;
                 var userStatictic = await _context.Users
                     .Include(u => u.Save)
                     .Where(t => t.Save != null && t.Name == name)
@@ -141,6 +144,7 @@ namespace For_The_Potato_Backend.Services
                         NyelvArany = _context.Nyelvaranies.FirstOrDefault(ny => ny.Language == t.Save.Language),
                         PontArany = _context.Pontaranyegyts.FirstOrDefault(p => p.Points == t.Save.Points),
                         SzintArany = _context.Szintaranies.FirstOrDefault(sz => sz.Level == t.Save.Level),
+                        Mentesek = _context.Menteseks.FirstOrDefault()
                     })
                     .FirstOrDefaultAsync();
 
