@@ -15,7 +15,7 @@ namespace For_The_Potato_Backend.Services
             _responseDto = responseDto;
         }
 
-        public async Task<object> DeleteData(Guid id)
+        public async Task<object> DeleteData(string id)
         {
             try
             {
@@ -108,9 +108,9 @@ namespace For_The_Potato_Backend.Services
             {
                 if (save != null)
                 {
-                    var nincsenSave = await _context.Users
+                    var nincsenSave = await _context.Aspnetusers
                         .Include(u => u.Save)
-                        .FirstOrDefaultAsync(u => u.Name == save.Name && u.Save == null);
+                        .FirstOrDefaultAsync(u => u.UserName == save.Name && u.Save == null);
 
 
                     if (nincsenSave == null)
@@ -156,9 +156,9 @@ namespace For_The_Potato_Backend.Services
             {
                 if (save != null)
                 {
-                    var user = await _context.Users
+                    var user = await _context.Aspnetusers
                         .Include(u => u.Save)
-                        .FirstOrDefaultAsync(us => us.Name == save.Name);
+                        .FirstOrDefaultAsync(us => us.UserName == save.Name);
 
                     if (user.Save != null)
                     {
@@ -200,7 +200,7 @@ namespace For_The_Potato_Backend.Services
             {
                 if (save != null)
                 {
-                    var user = await _context.Users
+                    var user = await _context.Aspnetusers
                         .Include(u => u.Save)
                         .FirstOrDefaultAsync(us => us.Id == save.Id);
 

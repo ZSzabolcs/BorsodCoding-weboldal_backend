@@ -5,7 +5,7 @@ namespace For_The_Potato_Backend.Models;
 
 public partial class Save
 {
-    public Guid Id { get; set; }
+    public string Id { get; set; } = null!;
 
     public int Points { get; set; }
 
@@ -17,5 +17,5 @@ public partial class Save
 
     public DateTime ModDate { get; set; } = DateTime.Now;
 
-    public virtual User IdNavigation { get; set; } = null!;
+    public virtual Aspnetuser IdNavigation { get; set; } = null!;
 }

@@ -85,7 +85,7 @@ namespace For_The_Potato_Backend.Controllers
         }
 
         [HttpDelete]
-       public async Task<ActionResult> RemoveASave(Guid id)
+       public async Task<ActionResult> RemoveASave(string id)
        {
             var response = await _save.DeleteData(id);
             var responseDto = response as ResponseDto;

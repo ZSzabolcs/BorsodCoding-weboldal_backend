@@ -10,6 +10,6 @@ namespace For_The_Potato_Backend.Services
         Task<object> PostData(SaveDto save);
         Task<object> PutData(SaveDto save);
         Task<object> PutDataFromWPF(SaveDtoFromWPF save);
-        Task<object> DeleteData(Guid id);
+        Task<object> DeleteData(string id);
     }
 }

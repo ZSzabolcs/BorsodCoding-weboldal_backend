@@ -41,7 +41,6 @@ namespace For_The_Potato_Backend
             });
 
             builder.Services.AddDbContext<ForThePotatoContext>();
-            builder.Services.AddScoped<IUser, UserService>();
             builder.Services.AddScoped<ISave, SaveService>();
             builder.Services.AddScoped<ResponseDto>();
 

@@ -8,7 +8,7 @@
         "DebugTarget": "https"
       },
       {
-        "Path": "C:\\Users\\Krisz\\Desktop\\AuthApiCsut\\AuthApi\\AuthApi.csproj",
+        "Path": "AuthApi\\AuthApi.csproj",
         "Action": "Start",
         "DebugTarget": "https"
       }

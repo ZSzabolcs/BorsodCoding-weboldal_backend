@@ -7,7 +7,7 @@ namespace For_The_Potato_Backend.Models.Dto
         private string? language;
 
         [Required]
-        public Guid Id { get; set; }
+        public string Id { get; set; }
         [Required]
         public int Points { get; set; }
         [Required]

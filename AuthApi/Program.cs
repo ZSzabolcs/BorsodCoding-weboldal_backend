@@ -1,4 +1,10 @@
 
+using AuthApi.Datas;
+using AuthApi.Models;
+using AuthApi.Services;
+using AuthApi.Services.IAuthService;
+using Microsoft.AspNetCore.Identity;
+
 namespace AuthApi
 {
     public class Program
@@ -6,6 +12,26 @@ namespace AuthApi
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAll", policy =>
+                {
+                    policy.AllowAnyOrigin()
+                          .AllowAnyMethod()
+                          .AllowAnyHeader();
+                });
+            });
+
+            builder.Services.AddDbContext<AppDbContext>();
+            builder.Services.AddScoped<IAuth, Auth>();
+            builder.Services.AddScoped<ITokenGenerator, TokenGenerator>();
+
+            builder.Services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFrameworkStores<AppDbContext>()
+            .AddDefaultTokenProviders();
+
+            builder.Services.Configure<JwtOptions>(builder.Configuration.GetSection("AuthSettings:JwtOptions"));
+
 
             // Add services to the container.
 
@@ -15,6 +41,8 @@ namespace AuthApi
             builder.Services.AddSwaggerGen();
 
             var app = builder.Build();
+
+            app.UseCors("AllowAll");
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
