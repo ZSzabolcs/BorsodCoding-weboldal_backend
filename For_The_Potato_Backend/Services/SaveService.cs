@@ -110,7 +110,7 @@ namespace For_The_Potato_Backend.Services
                 {
                     var nincsenSave = await _context.Aspnetusers
                         .Include(u => u.Save)
-                        .FirstOrDefaultAsync(u => u.UserName == save.Name && u.Save == null);
+                        .FirstOrDefaultAsync(u => u.NormalizedUserName == save.Name.ToUpper() && u.Save == null);
 
 
                     if (nincsenSave == null)
@@ -158,7 +158,7 @@ namespace For_The_Potato_Backend.Services
                 {
                     var user = await _context.Aspnetusers
                         .Include(u => u.Save)
-                        .FirstOrDefaultAsync(us => us.UserName == save.Name);
+                        .FirstOrDefaultAsync(us => us.NormalizedUserName == save.Name.ToUpper());
 
                     if (user.Save != null)
                     {

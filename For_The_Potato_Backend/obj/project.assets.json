@@ -3472,23 +3472,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Krisz\\.nuget\\packages\\": {},
+    "C:\\Users\\CsKrisz\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Munka\\Iskola\\vegso_projekt\\BorsodCoding-weboldal_backend\\For_The_Potato_Backend\\For_The_Potato_Backend.csproj",
+      "projectUniqueName": "C:\\Users\\CsKrisz\\Desktop\\BorsodCoding-weboldal_backend\\For_The_Potato_Backend\\For_The_Potato_Backend.csproj",
       "projectName": "For_The_Potato_Backend",
-      "projectPath": "D:\\Munka\\Iskola\\vegso_projekt\\BorsodCoding-weboldal_backend\\For_The_Potato_Backend\\For_The_Potato_Backend.csproj",
-      "packagesPath": "C:\\Users\\Krisz\\.nuget\\packages\\",
-      "outputPath": "D:\\Munka\\Iskola\\vegso_projekt\\BorsodCoding-weboldal_backend\\For_The_Potato_Backend\\obj\\",
+      "projectPath": "C:\\Users\\CsKrisz\\Desktop\\BorsodCoding-weboldal_backend\\For_The_Potato_Backend\\For_The_Potato_Backend.csproj",
+      "packagesPath": "C:\\Users\\CsKrisz\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\CsKrisz\\Desktop\\BorsodCoding-weboldal_backend\\For_The_Potato_Backend\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Krisz\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\CsKrisz\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -3564,7 +3564,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.308/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.306/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
