@@ -30,13 +30,11 @@ namespace For_The_Potato_Backend.Services
                     return _responseDto;
                 }
                 _responseDto.Message = "Sikertelen törlés";
-                _responseDto.Value = null;
                 return _responseDto;
             }
             catch (Exception ex)
             {
                 _responseDto.Message = ex.Message;
-                _responseDto.Value = null;
                 return _responseDto;
             }
         }
@@ -53,7 +51,6 @@ namespace For_The_Potato_Backend.Services
             catch (Exception ex)
             {
                 _responseDto.Message = ex.Message;
-                _responseDto.Value = null;
                 return _responseDto;
             }
         }
@@ -73,14 +70,12 @@ namespace For_The_Potato_Backend.Services
                 }
 
                 _responseDto.Message = "Sikertelen lekérdezés";
-                _responseDto.Value = null;
                 return _responseDto;
 
             }
             catch (Exception ex)
             {
                 _responseDto.Message = ex.Message;
-                _responseDto.Value = null;
                 return _responseDto;
             }
         }
@@ -97,7 +92,6 @@ namespace For_The_Potato_Backend.Services
             catch (Exception ex)
             {
                 _responseDto.Message = ex.Message;
-                _responseDto.Value = null;
                 return _responseDto;
             }
         }
@@ -116,7 +110,6 @@ namespace For_The_Potato_Backend.Services
                     if (nincsenSave == null)
                     {
                         _responseDto.Message = "Már van mentése";
-                        _responseDto.Value = null;
                         return _responseDto;
                     }
                     
@@ -125,8 +118,8 @@ namespace For_The_Potato_Backend.Services
                             Points = save.Points,
                             Level = save.Level,
                             Language = save.Language,
-                            Id = nincsenSave.Id
-
+                            Id = nincsenSave.Id,
+                            RegDate = DateTime.Now,
                     };
                     await _context.Saves.AddAsync(newSave);
                     await _context.SaveChangesAsync();
@@ -137,14 +130,12 @@ namespace For_The_Potato_Backend.Services
                 }
 
                 _responseDto.Message = "Sikertelen mentés";
-                _responseDto.Value = null;
                 return _responseDto;
 
             }
             catch (Exception ex)
             {
                 _responseDto.Message = ex.Message;
-                _responseDto.Value = null;
                 return _responseDto;
             }
         }
@@ -175,7 +166,6 @@ namespace For_The_Potato_Backend.Services
                     else
                     {
                         _responseDto.Message = "Nincsen mentése";
-                        _responseDto.Value = null;
                         return _responseDto;
                     }
 
@@ -183,13 +173,11 @@ namespace For_The_Potato_Backend.Services
                 }
 
                 _responseDto.Message = "Sikertelen módosítás";
-                _responseDto.Value = null;
                 return _responseDto;
             }
             catch (Exception ex)
             {
                 _responseDto.Message = ex.Message;
-                _responseDto.Value = null;
                 return _responseDto;
             }
         }
@@ -219,7 +207,6 @@ namespace For_The_Potato_Backend.Services
                     else
                     {
                         _responseDto.Message = "Nincsen mentése";
-                        _responseDto.Value = null;
                         return _responseDto;
                     }
 
@@ -227,13 +214,11 @@ namespace For_The_Potato_Backend.Services
                 }
 
                 _responseDto.Message = "Sikertelen módosítás";
-                _responseDto.Value = null;
                 return _responseDto;
             }
             catch (Exception ex)
             {
                 _responseDto.Message = ex.Message;
-                _responseDto.Value = null;
                 return _responseDto;
             }
         }

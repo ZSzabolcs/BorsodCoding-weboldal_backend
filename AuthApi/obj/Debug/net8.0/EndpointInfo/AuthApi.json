@@ -210,10 +210,6 @@
           "email": {
             "type": "string",
             "nullable": true
-          },
-          "birthDate": {
-            "type": "string",
-            "format": "date-time"
           }
         },
         "additionalProperties": false

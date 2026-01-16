@@ -3,7 +3,7 @@
     public class ResponseDto
     {
         public string? Message { get;  set; }
-        public object? Value { get; set; }
+        public object? Value { get; set; } = null;
 
     }
 }

@@ -13,9 +13,9 @@ public partial class Save
 
     public string Language { get; set; } = null!;
 
-    public DateTime RegDate { get; set; } = DateTime.Now;
+    public DateTime RegDate { get; set; }
 
-    public DateTime ModDate { get; set; } = DateTime.Now;
+    public DateTime ModDate { get; set; }
 
     public virtual Aspnetuser IdNavigation { get; set; } = null!;
 }

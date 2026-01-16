@@ -84,12 +84,11 @@ namespace AuthApi.Services
 
         public async Task<object> Register(RegisterRequestDto registerRequestDto)
         {
-            registerRequestDto.BirthDate = DateTime.Now;
             var user = new ApplicationUser
             {
                 UserName = registerRequestDto.UserName,
                 Email = registerRequestDto.Email,
-                Birthdate = registerRequestDto.BirthDate
+                Birthdate = DateTime.Now,
             };
 
             var result = await userManager.CreateAsync(user, registerRequestDto.Password);
@@ -106,7 +105,6 @@ namespace AuthApi.Services
 
         public async Task<object> UpdateUserData(RegisterRequestDto updateUserDto)
         {
-            updateUserDto.BirthDate = DateTime.Now;
 
             var user = await _dbContext.applicationUsers.FirstOrDefaultAsync(u => u.NormalizedUserName == updateUserDto.UserName.ToUpper());
             if (user != null) 
@@ -121,7 +119,7 @@ namespace AuthApi.Services
                     if (isPasswordAdded.Succeeded)
                     {
                         user.Email = updateUserDto.Email;
-                        user.ModDate = updateUserDto.BirthDate;
+                        user.ModDate = DateTime.Now;
 
                        var updated = await userManager.UpdateAsync(user);
 
