@@ -43,7 +43,7 @@ namespace For_The_Potato_Backend.Services
         {
             try
             {
-                var saves = await _context.Saves.ToArrayAsync();
+                var saves = _context.Saves;
                 _responseDto.Message = "Sikeres lekérés";
                 _responseDto.Value = saves;
                 return _responseDto;
@@ -55,30 +55,6 @@ namespace For_The_Potato_Backend.Services
             }
         }
 
-        public async Task<object> GetAllDataToWPF()
-        {
-            try
-            {
-                var saves = await _context.Saves.Select(s => new { s.Id, s.Points, s.Level, s.Language, s.RegDate, s.ModDate }).ToArrayAsync();
-
-
-                if (saves != null)
-                {
-                    _responseDto.Message = "Sikeres lekérdezés";
-                    _responseDto.Value = saves;
-                    return _responseDto;
-                }
-
-                _responseDto.Message = "Sikertelen lekérdezés";
-                return _responseDto;
-
-            }
-            catch (Exception ex)
-            {
-                _responseDto.Message = ex.Message;
-                return _responseDto;
-            }
-        }
 
         public async Task<object> GetDbJatekos()
         {

@@ -100,16 +100,6 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "For_The_Potato_Backend.Controllers.SaveController",
-    "Method": "GetAllDataToWPF",
-    "RelativePath": "api/Save/ToWPF",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": []
-  },
-  {
     "ContainingType": "For_The_Potato_Backend.Controllers.SetupController",
     "Method": "DownloadFile",
     "RelativePath": "api/Setup/download",

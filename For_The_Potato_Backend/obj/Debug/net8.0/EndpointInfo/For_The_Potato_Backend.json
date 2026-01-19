@@ -128,18 +128,6 @@
         }
       }
     },
-    "/api/Save/ToWPF": {
-      "get": {
-        "tags": [
-          "Save"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
     "/api/Save/FromWPF": {
       "put": {
         "tags": [

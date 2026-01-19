@@ -43,9 +43,25 @@ namespace AuthApi.Services
             return "Sikertelen hozzárendelés";
         }
 
-        public Task<object> DeleteUserData()
+        public async Task<object> DeleteUserData(string id)
         {
-            throw new NotImplementedException();
+            var user = await _dbContext.applicationUsers.FirstOrDefaultAsync(user => user.Id == id);
+            if (user != null) 
+            {
+               var delete = await userManager.DeleteAsync(user);
+                if (delete.Succeeded)
+                {
+                    return new ResponseDto() { Value = user, Message = "Sikeres törlés" };
+                }
+            }
+
+            return "Sikertelen törlés";
+        }
+
+        public async Task<object> GetAllUser()
+        {
+            var users = _dbContext.applicationUsers;
+            return new ResponseDto() { Value = users, Message = "Sikeres lekérés" };
         }
 
         public async Task<object> GetOneUserData(string userName)

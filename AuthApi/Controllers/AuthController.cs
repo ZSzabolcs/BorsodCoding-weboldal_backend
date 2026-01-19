@@ -60,6 +60,18 @@ namespace AuthApi.Controllers
             return BadRequest(res);
         }
 
+        [HttpDelete]
+        public async Task<ActionResult> DeleteAnUser(string id)
+        {
+            var response = await auth.DeleteUserData(id);
+            if (response is string)
+            {
+                return NotFound(response);
+            }
+
+            return Ok(response);
+        }
+
         [HttpGet("Fiok/{userName}")]
         public async Task<ActionResult> GetOneUserData(string userName)
         {
@@ -70,6 +82,14 @@ namespace AuthApi.Controllers
            }
 
            return Ok(response);
+
+        }
+
+        [HttpGet]
+        public async Task<ActionResult> getAllUsers()
+        {
+            var response = await auth.GetAllUser();
+            return Ok(response);
 
         }
 

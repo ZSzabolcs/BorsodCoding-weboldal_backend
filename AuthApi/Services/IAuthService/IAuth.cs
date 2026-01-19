@@ -10,9 +10,10 @@ namespace AuthApi.Services.IAuthService
 
         Task<object> UpdateUserData(RegisterRequestDto updateUserDto);
 
-        Task<object> DeleteUserData();
+        Task<object> DeleteUserData(string id);
 
         Task<object> GetOneUserData(string userName);
         Task<object> GetOneUserDataById(string id);
+        Task<object> GetAllUser();
     }
 }

@@ -16,9 +16,9 @@
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="8.0.3" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
   </ItemGroup>
-
+	
   <ItemGroup>
     <Folder Include="Setups\" />
   </ItemGroup>
-
+	
 </Project>

@@ -43,12 +43,6 @@ namespace For_The_Potato_Backend.Controllers
             return Ok(response);
         }
 
-        [HttpGet("ToWPF")]
-        public async Task<object> GetAllDataToWPF()
-        {
-            var response = await _save.GetAllDataToWPF();
-            return Ok(response);
-        }
 
         [HttpPost]
         public async Task<object> PostData(SaveDto save)
