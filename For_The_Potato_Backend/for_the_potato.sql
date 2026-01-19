@@ -1,14 +1,31 @@
+-- phpMyAdmin SQL Dump
+-- version 5.2.1
+-- https://www.phpmyadmin.net/
+--
+-- Gép: 127.0.0.1
+-- Létrehozás ideje: 2026. Jan 19. 20:26
+-- Kiszolgáló verziója: 10.4.32-MariaDB
+-- PHP verzió: 8.2.12
+
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
+
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
 
-CREATE DATABASE IF NOT EXISTS `for_the_potato` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE `for_the_potato`;
+--
+-- Adatbázis: `for_the_potato`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Tábla szerkezet ehhez a táblához `aspnetroleclaims`
+--
 
 CREATE TABLE `aspnetroleclaims` (
   `Id` int(11) NOT NULL,
@@ -17,6 +34,12 @@ CREATE TABLE `aspnetroleclaims` (
   `ClaimValue` longtext DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
+-- --------------------------------------------------------
+
+--
+-- Tábla szerkezet ehhez a táblához `aspnetroles`
+--
+
 CREATE TABLE `aspnetroles` (
   `Id` varchar(255) NOT NULL,
   `Name` varchar(256) DEFAULT NULL,
@@ -24,8 +47,18 @@ CREATE TABLE `aspnetroles` (
   `ConcurrencyStamp` longtext DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
+--
+-- A tábla adatainak kiíratása `aspnetroles`
+--
+
 INSERT INTO `aspnetroles` (`Id`, `Name`, `NormalizedName`, `ConcurrencyStamp`) VALUES
 ('60acdb17-28d7-4dc6-a584-e8061e2a0506', 'Player', 'PLAYER', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Tábla szerkezet ehhez a táblához `aspnetuserclaims`
+--
 
 CREATE TABLE `aspnetuserclaims` (
   `Id` int(11) NOT NULL,
@@ -34,6 +67,12 @@ CREATE TABLE `aspnetuserclaims` (
   `ClaimValue` longtext DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
+-- --------------------------------------------------------
+
+--
+-- Tábla szerkezet ehhez a táblához `aspnetuserlogins`
+--
+
 CREATE TABLE `aspnetuserlogins` (
   `LoginProvider` varchar(255) NOT NULL,
   `ProviderKey` varchar(255) NOT NULL,
@@ -41,13 +80,29 @@ CREATE TABLE `aspnetuserlogins` (
   `UserId` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
+-- --------------------------------------------------------
+
+--
+-- Tábla szerkezet ehhez a táblához `aspnetuserroles`
+--
+
 CREATE TABLE `aspnetuserroles` (
   `UserId` varchar(255) NOT NULL,
   `RoleId` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
+--
+-- A tábla adatainak kiíratása `aspnetuserroles`
+--
+
 INSERT INTO `aspnetuserroles` (`UserId`, `RoleId`) VALUES
 ('d34a6556-831d-4772-af6e-ac2a7158e4a1', '60acdb17-28d7-4dc6-a584-e8061e2a0506');
+
+-- --------------------------------------------------------
+
+--
+-- Tábla szerkezet ehhez a táblához `aspnetusers`
+--
 
 CREATE TABLE `aspnetusers` (
   `Id` varchar(255) NOT NULL,
@@ -70,6 +125,10 @@ CREATE TABLE `aspnetusers` (
   `ModDate` datetime(6) NOT NULL DEFAULT '0001-01-01 00:00:00.000000'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
+--
+-- A tábla adatainak kiíratása `aspnetusers`
+--
+
 INSERT INTO `aspnetusers` (`Id`, `FullName`, `Birthdate`, `UserName`, `NormalizedUserName`, `Email`, `NormalizedEmail`, `EmailConfirmed`, `PasswordHash`, `SecurityStamp`, `ConcurrencyStamp`, `PhoneNumber`, `PhoneNumberConfirmed`, `TwoFactorEnabled`, `LockoutEnd`, `LockoutEnabled`, `AccessFailedCount`, `ModDate`) VALUES
 ('00547544-3e9e-4655-84d3-2cc18b322aef', NULL, '2026-01-11 17:41:37.015119', 'aspratlingd', 'ASPRATLINGD', 'NULL', 'NULL', 0, 'AQAAAAIAAYagAAAAEDoDMXMHwqDLENvpt3jtGYMMDT8MTNLtjlfZZBR2zoFjpJLFheidE+yCAkt3UA4czA==', 'P3L5QHMDVC7ME45DDOL5JLQ6DMRMVUR3', 'a93cc536-0c45-4807-8d6b-423802408c27', NULL, 0, 0, NULL, 1, 0, '0001-01-01 00:00:00.000000'),
 ('02a22381-f46a-4c54-8f67-af709ca666ad', NULL, '2026-01-12 00:21:25.547220', 'v', 'V', 'dsdfsdf@hjhjd.com', 'DSDFSDF@HJHJD.COM', 0, 'AQAAAAIAAYagAAAAEKXLm0bmmN3vw5P5KueoH6VcQt+dql4geGPljp4lCYst3K7tPOtbG1EN73cVLKXCdg==', '4IXWE4PQ2VTW2GJ5OOEPYO3AJNSNO4EA', 'be9e4db9-3339-46f4-a75d-c6130e59f63c', NULL, 0, 0, NULL, 1, 0, '2026-01-12 02:23:16.638855'),
@@ -91,6 +150,7 @@ INSERT INTO `aspnetusers` (`Id`, `FullName`, `Birthdate`, `UserName`, `Normalize
 ('3295eb67-a832-465f-96d5-d17e3a4ac843', NULL, '2026-01-11 17:41:33.212760', 'aderill14', 'ADERILL14', 'NULL', 'NULL', 0, 'AQAAAAIAAYagAAAAEIVr4Tb8cp+A4w9THKRbpc5zT5fUUVDPJwaxNAQXTH6qBra4I5Ps6mYHXCgdpnSc/g==', 'NRVRUOYUYUHUTV6BHRWHK4SN652RRWOZ', '308abdc8-88e2-4839-a716-cdeddc94aa9e', NULL, 0, 0, NULL, 1, 0, '0001-01-01 00:00:00.000000'),
 ('33229062-e640-45d2-b593-b32cea0b4154', NULL, '2026-01-11 17:41:31.222718', 'hrodriguez1n', 'HRODRIGUEZ1N', 'NULL', 'NULL', 0, 'AQAAAAIAAYagAAAAED8QtHhi9Slj6HrfXiEuxz3iuw5HfeehagO35iTxiYHfXjmI7mZMLqpofDgQgnimwQ==', 'OLAERPLGANERAOE2V36DL3HVAF4Z5LOB', '4e8db52c-3553-438d-9e09-f170a0ace4d3', NULL, 0, 0, NULL, 1, 0, '0001-01-01 00:00:00.000000'),
 ('3404b26a-9374-4002-95cb-835514f7f0d6', NULL, '2026-01-11 17:41:35.728796', 'apoles1b', 'APOLES1B', 'NULL', 'NULL', 0, 'AQAAAAIAAYagAAAAELqwSaYCmuKply5BxPp5E+K/AIMYfXQTlqfH0E0zaz28AYFas3cv77qGV11qu+9cdw==', '3PT3E4EIUDIVXMMQCNX2XRYBBG5Q6TIX', '620460b5-4072-433f-a291-8001bbacfe31', NULL, 0, 0, NULL, 1, 0, '0001-01-01 00:00:00.000000'),
+('362ddaa9-ec88-4385-99b5-d334d3ef7ac3', NULL, '2026-01-19 18:26:07.550161', 'krisz', 'KRISZ', 'string@gfrfdg.com', 'STRING@GFRFDG.COM', 0, 'AQAAAAIAAYagAAAAECevugBRBvObjKF33tCbu87TSHRQOlFfef/441rS+81Mb7Un3hqPQtx2KEm4k6/4Mg==', 'FY5K5EHQC5264G3DL5MPQMSAZ5H4VDBA', '1aedd3b9-d2fe-4291-8bd6-b1baf63598f7', NULL, 0, 0, NULL, 1, 0, '2026-01-19 20:23:41.026950'),
 ('37949c22-9565-4010-90e5-588627f94213', NULL, '2026-01-11 17:41:38.936893', 'acarnier1l', 'ACARNIER1L', 'NULL', 'NULL', 0, 'AQAAAAIAAYagAAAAEEaYNr96t8SGIrn8i2BQ0MyV+15JqIWuQVe02iRaTZR99FKWg45n1XekBTGin41T9g==', 'ZL4X4SZCZTSVBHDYE5ASMEWO5ZT536DF', 'b1255424-deb2-479f-bbb2-e316d0ddc0ff', NULL, 0, 0, NULL, 1, 0, '0001-01-01 00:00:00.000000'),
 ('385179d9-de88-42ed-b310-ff3631660e76', NULL, '2026-01-11 17:41:36.854967', 'dbenbow15', 'DBENBOW15', 'NULL', 'NULL', 0, 'AQAAAAIAAYagAAAAENYFAfEHpDykVtWIB3tIPxyfTQ7p2G0iHIRKR2BSyUiYJslXQItN9KwJ1AGtCsnKXA==', 'FXPI77GCFCELIGYSR2FHKHYAKV3UZRLB', 'e1f55295-fa79-4ccb-a109-b6b72b72c43d', NULL, 0, 0, NULL, 1, 0, '0001-01-01 00:00:00.000000'),
 ('3915ca68-8d80-4578-b99a-d831d45de0ce', NULL, '2026-01-11 17:41:32.143514', 'ilindeboom1u', 'ILINDEBOOM1U', 'NULL', 'NULL', 0, 'AQAAAAIAAYagAAAAEK6ysWBwFgz7ITmeAv02ngDK89990UploxUY3Ng8/i/4tXa+aK17ZEEjfQoWeKGeEQ==', '2G6MHGT5GQECIYGUS7J66JBKKEQTSMWW', 'f868cde1-8ead-46d2-b6e3-a6a8b2ba66a0', NULL, 0, 0, NULL, 1, 0, '0001-01-01 00:00:00.000000'),
@@ -177,6 +237,12 @@ INSERT INTO `aspnetusers` (`Id`, `FullName`, `Birthdate`, `UserName`, `Normalize
 ('fc022d0e-9866-4d4f-a5e0-acbe67f038da', NULL, '2026-01-11 17:41:38.617295', 'rfieldersx', 'RFIELDERSX', 'NULL', 'NULL', 0, 'AQAAAAIAAYagAAAAEIO3ZjrY23AoMJsP0FsD7uH93HRRed3HAfwhU4LXQy1Y73JXB3dz5a3h8O6S5tzF+g==', 'YRVQE7EZX2THN35QHNEZ7JYFMVDNVRHR', 'cee8e63f-f457-4f36-8db1-5f6ce8a3b736', NULL, 0, 0, NULL, 1, 0, '0001-01-01 00:00:00.000000'),
 ('ff4a9d48-49d3-40c3-ac7b-5e4493067c57', NULL, '2026-01-11 17:41:34.356762', 'fpowys1s', 'FPOWYS1S', 'NULL', 'NULL', 0, 'AQAAAAIAAYagAAAAEOzHH6oPRdF+MJwJeV7HhITs5rAK6K8BMJlXT1wNemBtzFF4w1KzwX52SdbpeMNp3Q==', 'K6M6OO6WPU3JZXMINAFXQA6WWHAD55OD', '6135048b-6a2b-4629-a3f9-169a123451fd', NULL, 0, 0, NULL, 1, 0, '0001-01-01 00:00:00.000000');
 
+-- --------------------------------------------------------
+
+--
+-- Tábla szerkezet ehhez a táblához `aspnetusertokens`
+--
+
 CREATE TABLE `aspnetusertokens` (
   `UserId` varchar(255) NOT NULL,
   `LoginProvider` varchar(255) NOT NULL,
@@ -184,25 +250,70 @@ CREATE TABLE `aspnetusertokens` (
   `Value` longtext DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
+--
+-- A tábla adatainak kiíratása `aspnetusertokens`
+--
+
 INSERT INTO `aspnetusertokens` (`UserId`, `LoginProvider`, `Name`, `Value`) VALUES
 ('d34a6556-831d-4772-af6e-ac2a7158e4a1', 'JWTProvider', 'AccessToken', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJiaXJ0aGRhdGUiOiIyMDI2LiAwMS4gMTEuIDE2OjQzOjQzIiwibmFtZSI6InZhbGFraSIsInN1YiI6ImQzNGE2NTU2LTgzMWQtNDc3Mi1hZjZlLWFjMmE3MTU4ZTRhMSIsInJvbGUiOiJQbGF5ZXIiLCJuYmYiOjE3NjgxNTA4NzMsImV4cCI6MTc2ODIzNzI3MiwiaWF0IjoxNzY4MTUwODczLCJpc3MiOiJhdXRoLWFwaSIsImF1ZCI6ImF1dGgtY2xpZW50In0.dGQhruhUf0G5Ul4UfdASspIz5Ic13ln8zZ_F8074uA4');
+
+-- --------------------------------------------------------
+
+--
+-- A nézet helyettes szerkezete `mentesek`
+-- (Lásd alább az aktuális nézetet)
+--
 CREATE TABLE `mentesek` (
 `DB` bigint(21)
 );
+
+-- --------------------------------------------------------
+
+--
+-- A nézet helyettes szerkezete `nyelvarany`
+-- (Lásd alább az aktuális nézetet)
+--
 CREATE TABLE `nyelvarany` (
 `Language` varchar(2)
 ,`Szazalek` decimal(10,1)
 );
+
+-- --------------------------------------------------------
+
+--
+-- A nézet helyettes szerkezete `pontaranyegyt`
+-- (Lásd alább az aktuális nézetet)
+--
 CREATE TABLE `pontaranyegyt` (
 `Points` int(11)
 ,`Szazalek` decimal(10,1)
 );
+
+-- --------------------------------------------------------
+
+--
+-- A nézet helyettes szerkezete `pontok`
+-- (Lásd alább az aktuális nézetet)
+--
 CREATE TABLE `pontok` (
 `Points` int(11)
 );
+
+-- --------------------------------------------------------
+
+--
+-- A nézet helyettes szerkezete `pontok2`
+-- (Lásd alább az aktuális nézetet)
+--
 CREATE TABLE `pontok2` (
 `Points` int(11)
 );
+
+-- --------------------------------------------------------
+
+--
+-- Tábla szerkezet ehhez a táblához `save`
+--
 
 CREATE TABLE `save` (
   `Id` varchar(255) NOT NULL,
@@ -212,99 +323,220 @@ CREATE TABLE `save` (
   `RegDate` datetime(6) NOT NULL DEFAULT '0001-01-01 00:00:00.000000',
   `ModDate` datetime(6) NOT NULL DEFAULT '0001-01-01 00:00:00.000000'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- A tábla adatainak kiíratása `save`
+--
+
+INSERT INTO `save` (`Id`, `Points`, `Level`, `Language`, `RegDate`, `ModDate`) VALUES
+('02a22381-f46a-4c54-8f67-af709ca666ad', 0, 0, 'en', '2026-01-19 17:29:39.916901', '0001-01-01 00:00:00.000000'),
+('362ddaa9-ec88-4385-99b5-d334d3ef7ac3', 0, 0, 'hu', '2026-01-19 19:06:46.181507', '0001-01-01 00:00:00.000000');
+
+-- --------------------------------------------------------
+
+--
+-- A nézet helyettes szerkezete `szintarany`
+-- (Lásd alább az aktuális nézetet)
+--
 CREATE TABLE `szintarany` (
 `Level` int(11)
 ,`Szazalek` decimal(10,1)
 );
+
+-- --------------------------------------------------------
+
+--
+-- Tábla szerkezet ehhez a táblához `__efmigrationshistory`
+--
 
 CREATE TABLE `__efmigrationshistory` (
   `MigrationId` varchar(150) NOT NULL,
   `ProductVersion` varchar(32) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- A tábla adatainak kiíratása `__efmigrationshistory`
+--
+
 INSERT INTO `__efmigrationshistory` (`MigrationId`, `ProductVersion`) VALUES
 ('20250116082329_CreateAuthDb', '8.0.22'),
 ('20251129211633_CreateGUIDIdColumn', '8.0.22'),
 ('20251201173521_EmailColumnAddedInUserTable', '8.0.22'),
 ('20260109201027_AddModDateColumnToUsers', '8.0.22');
+
+-- --------------------------------------------------------
+
+--
+-- Nézet szerkezete `mentesek`
+--
 DROP TABLE IF EXISTS `mentesek`;
 
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `mentesek`  AS SELECT count(`save`.`Id`) AS `DB` FROM `save` ;
+
+-- --------------------------------------------------------
+
+--
+-- Nézet szerkezete `nyelvarany`
+--
 DROP TABLE IF EXISTS `nyelvarany`;
 
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `nyelvarany`  AS SELECT `save`.`Language` AS `Language`, cast(count(`save`.`Id`) / `mentesek`.`DB` * 100 as decimal(10,1)) AS `Szazalek` FROM (`save` join `mentesek`) GROUP BY `save`.`Language` ;
+
+-- --------------------------------------------------------
+
+--
+-- Nézet szerkezete `pontaranyegyt`
+--
 DROP TABLE IF EXISTS `pontaranyegyt`;
 
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `pontaranyegyt`  AS SELECT `save`.`Points` AS `Points`, cast(count(`save`.`Id`) / `mentesek`.`DB` * 100 as decimal(10,1)) AS `Szazalek` FROM (`save` join `mentesek`) GROUP BY `save`.`Points` ;
+
+-- --------------------------------------------------------
+
+--
+-- Nézet szerkezete `pontok`
+--
 DROP TABLE IF EXISTS `pontok`;
 
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `pontok`  AS   (select `pontaranyegyt`.`Points` AS `Points` from `pontaranyegyt` order by `pontaranyegyt`.`Szazalek` desc)  ;
+
+-- --------------------------------------------------------
+
+--
+-- Nézet szerkezete `pontok2`
+--
 DROP TABLE IF EXISTS `pontok2`;
 
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `pontok2`  AS   (select `pontaranyegyt`.`Points` AS `Points` from `pontaranyegyt` order by `pontaranyegyt`.`Szazalek` desc limit 1)  ;
+
+-- --------------------------------------------------------
+
+--
+-- Nézet szerkezete `szintarany`
+--
 DROP TABLE IF EXISTS `szintarany`;
 
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `szintarany`  AS SELECT `save`.`Level` AS `Level`, cast(count(`save`.`Id`) / `mentesek`.`DB` * 100 as decimal(10,1)) AS `Szazalek` FROM (`save` join `mentesek`) GROUP BY `save`.`Level` ;
 
+--
+-- Indexek a kiírt táblákhoz
+--
 
+--
+-- A tábla indexei `aspnetroleclaims`
+--
 ALTER TABLE `aspnetroleclaims`
   ADD PRIMARY KEY (`Id`),
   ADD KEY `IX_AspNetRoleClaims_RoleId` (`RoleId`);
 
+--
+-- A tábla indexei `aspnetroles`
+--
 ALTER TABLE `aspnetroles`
   ADD PRIMARY KEY (`Id`),
   ADD UNIQUE KEY `RoleNameIndex` (`NormalizedName`);
 
+--
+-- A tábla indexei `aspnetuserclaims`
+--
 ALTER TABLE `aspnetuserclaims`
   ADD PRIMARY KEY (`Id`),
   ADD KEY `IX_AspNetUserClaims_UserId` (`UserId`);
 
+--
+-- A tábla indexei `aspnetuserlogins`
+--
 ALTER TABLE `aspnetuserlogins`
   ADD PRIMARY KEY (`LoginProvider`,`ProviderKey`),
   ADD KEY `IX_AspNetUserLogins_UserId` (`UserId`);
 
+--
+-- A tábla indexei `aspnetuserroles`
+--
 ALTER TABLE `aspnetuserroles`
   ADD PRIMARY KEY (`UserId`,`RoleId`),
   ADD KEY `IX_AspNetUserRoles_RoleId` (`RoleId`);
 
+--
+-- A tábla indexei `aspnetusers`
+--
 ALTER TABLE `aspnetusers`
   ADD PRIMARY KEY (`Id`),
   ADD UNIQUE KEY `UserNameIndex` (`NormalizedUserName`),
   ADD KEY `EmailIndex` (`NormalizedEmail`);
 
+--
+-- A tábla indexei `aspnetusertokens`
+--
 ALTER TABLE `aspnetusertokens`
   ADD PRIMARY KEY (`UserId`,`LoginProvider`,`Name`);
 
+--
+-- A tábla indexei `save`
+--
 ALTER TABLE `save`
   ADD PRIMARY KEY (`Id`);
 
+--
+-- A tábla indexei `__efmigrationshistory`
+--
 ALTER TABLE `__efmigrationshistory`
   ADD PRIMARY KEY (`MigrationId`);
 
+--
+-- A kiírt táblák AUTO_INCREMENT értéke
+--
 
+--
+-- AUTO_INCREMENT a táblához `aspnetroleclaims`
+--
 ALTER TABLE `aspnetroleclaims`
   MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
 
+--
+-- AUTO_INCREMENT a táblához `aspnetuserclaims`
+--
 ALTER TABLE `aspnetuserclaims`
   MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
 
+--
+-- Megkötések a kiírt táblákhoz
+--
 
+--
+-- Megkötések a táblához `aspnetroleclaims`
+--
 ALTER TABLE `aspnetroleclaims`
   ADD CONSTRAINT `FK_AspNetRoleClaims_AspNetRoles_RoleId` FOREIGN KEY (`RoleId`) REFERENCES `aspnetroles` (`Id`) ON DELETE CASCADE;
 
+--
+-- Megkötések a táblához `aspnetuserclaims`
+--
 ALTER TABLE `aspnetuserclaims`
   ADD CONSTRAINT `FK_AspNetUserClaims_AspNetUsers_UserId` FOREIGN KEY (`UserId`) REFERENCES `aspnetusers` (`Id`) ON DELETE CASCADE;
 
+--
+-- Megkötések a táblához `aspnetuserlogins`
+--
 ALTER TABLE `aspnetuserlogins`
   ADD CONSTRAINT `FK_AspNetUserLogins_AspNetUsers_UserId` FOREIGN KEY (`UserId`) REFERENCES `aspnetusers` (`Id`) ON DELETE CASCADE;
 
+--
+-- Megkötések a táblához `aspnetuserroles`
+--
 ALTER TABLE `aspnetuserroles`
   ADD CONSTRAINT `FK_AspNetUserRoles_AspNetRoles_RoleId` FOREIGN KEY (`RoleId`) REFERENCES `aspnetroles` (`Id`) ON DELETE CASCADE,
   ADD CONSTRAINT `FK_AspNetUserRoles_AspNetUsers_UserId` FOREIGN KEY (`UserId`) REFERENCES `aspnetusers` (`Id`) ON DELETE CASCADE;
 
+--
+-- Megkötések a táblához `aspnetusertokens`
+--
 ALTER TABLE `aspnetusertokens`
   ADD CONSTRAINT `FK_AspNetUserTokens_AspNetUsers_UserId` FOREIGN KEY (`UserId`) REFERENCES `aspnetusers` (`Id`) ON DELETE CASCADE;
 
+--
+-- Megkötések a táblához `save`
+--
 ALTER TABLE `save`
   ADD CONSTRAINT `save_ibfk_1` FOREIGN KEY (`Id`) REFERENCES `aspnetusers` (`Id`) ON DELETE CASCADE;
 COMMIT;

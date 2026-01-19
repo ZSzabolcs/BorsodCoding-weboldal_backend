@@ -96,6 +96,42 @@ namespace For_The_Potato_Backend.Services
             }
         }
 
+        public async Task<object> GetStatistic(string username)
+        {
+            try
+            {
+                var vanMentese = await _context.Aspnetusers.FirstOrDefaultAsync(a => a.NormalizedUserName == username.ToUpper() && a.Save != null);
+
+                if (vanMentese != null)
+                {
+                    string id = vanMentese.Id;
+                    var save = await _context.Saves.FirstOrDefaultAsync(s => s.Id == id);
+                    var ertek = new
+                    {
+                        save.Points,
+                        save.Level,
+                        save.Language,
+                        save.RegDate,
+                        save.ModDate,
+                        PontArany = _context.Pontaranyegyts.FirstOrDefault().Szazalek,
+                        SzintArany = _context.Szintaranies.FirstOrDefault().Szazalek,
+                        NyelvArany = _context.Nyelvaranies.FirstOrDefault().Szazalek,
+
+                    };
+                    _responseDto.Message = "Sikeres lekérés";
+                    _responseDto.Value = ertek;
+                    return _responseDto;
+                }
+
+                return "Nincsen mentése";
+               
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
+        }
+
         public async Task<object> PostData(SaveDto save)
         {
             try
@@ -107,26 +143,27 @@ namespace For_The_Potato_Backend.Services
                         .FirstOrDefaultAsync(u => u.NormalizedUserName == save.Name.ToUpper() && u.Save == null);
 
 
-                    if (nincsenSave == null)
+                    if (nincsenSave != null)
                     {
-                        _responseDto.Message = "Már van mentése";
-                        return _responseDto;
-                    }
-                    
-                    Save newSave = new Save()
-                    {
+                        Save newSave = new Save()
+                        {
                             Points = save.Points,
                             Level = save.Level,
                             Language = save.Language,
                             Id = nincsenSave.Id,
                             RegDate = DateTime.Now,
-                    };
-                    await _context.Saves.AddAsync(newSave);
-                    await _context.SaveChangesAsync();
-                    _responseDto.Message = "Sikeres mentés";
-                    _responseDto.Value = save;
-                    return _responseDto;
-                    
+                        };
+                        await _context.Saves.AddAsync(newSave);
+                        await _context.SaveChangesAsync();
+                        _responseDto.Message = "Sikeres mentés";
+                        _responseDto.Value = save;
+                        return _responseDto;
+                    }
+                    else
+                    {
+                        _responseDto.Message = "Már van mentése";
+                        return _responseDto;
+                    }
                 }
 
                 _responseDto.Message = "Sikertelen mentés";

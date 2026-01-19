@@ -9,7 +9,7 @@ namespace For_The_Potato_Backend.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class SaveController : ControllerBase
+    public class SaveController : ControllerBase, ISave
     {
         private readonly ISave _save;
 
@@ -19,23 +19,41 @@ namespace For_The_Potato_Backend.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult> GetAllData()
+        public async Task<object> GetAllData()
         {
             var data = await _save.GetAllData();
             return Ok(data);
         }
 
-        [HttpGet("JatekosokSzama")]
-        public async Task<ActionResult> JatekosokSzama()
+        [HttpGet("Dbjatekos")]
+        public Task<object> GetDbJatekos()
         {
-            var data = await _save.GetDbJatekos();
-            return Ok(data);
+            throw new NotImplementedException();
+        }
+
+        [HttpGet("Statisztika/{username}")]
+        public async Task<object> GetStatistic(string username)
+        {
+            var response = await _save.GetStatistic(username);
+            if (response is string)
+            {
+                NotFound(response);
+            }
+
+            return Ok(response);
+        }
+
+        [HttpGet("ToWPF")]
+        public async Task<object> GetAllDataToWPF()
+        {
+            var response = await _save.GetAllDataToWPF();
+            return Ok(response);
         }
 
         [HttpPost]
-        public async Task<ActionResult> InsertSaveData([FromBody] SaveDto Save)
+        public async Task<object> PostData(SaveDto save)
         {
-            var response = await _save.PostData(Save);
+            var response = await _save.PostData(save);
             var responseDto = response as ResponseDto;
             if (responseDto.Value != null)
             {
@@ -43,23 +61,11 @@ namespace For_The_Potato_Backend.Controllers
             }
             return BadRequest(responseDto);
         }
-       
-        
 
-        [HttpGet("ToWPF")]
-        public async Task<ActionResult> GetAllSaveToWPF()
+        [HttpPut]
+        public async Task<object> PutData(SaveDto save)
         {
-            var response = await _save.GetAllDataToWPF();
-            return Ok(response);
-
-
-        }
-        
-
-       [HttpPut]
-       public async Task<ActionResult> UpdateUserSave([FromBody] SaveDto saveobj)
-       {
-            var response = await _save.PutData(saveobj);
+            var response = await _save.PutData(save);
             var responseDto = response as ResponseDto;
             if (responseDto.Value != null)
             {
@@ -67,13 +73,12 @@ namespace For_The_Potato_Backend.Controllers
             }
 
             return NotFound(responseDto);
-
-       }
+        }
 
         [HttpPut("FromWPF")]
-        public async Task<ActionResult> UpdateSaveFromWPF([FromBody] SaveDtoFromWPF saveobj)
+        public async Task<object> PutDataFromWPF(SaveDtoFromWPF save)
         {
-            var response = await _save.PutDataFromWPF(saveobj);
+            var response = await _save.PutDataFromWPF(save);
             var responseDto = response as ResponseDto;
             if (responseDto.Value != null)
             {
@@ -81,12 +86,11 @@ namespace For_The_Potato_Backend.Controllers
             }
 
             return NotFound(responseDto);
-
         }
 
         [HttpDelete]
-       public async Task<ActionResult> RemoveASave(string id)
-       {
+        public async Task<object> DeleteData(string id)
+        {
             var response = await _save.DeleteData(id);
             var responseDto = response as ResponseDto;
             if (responseDto.Value != null)
@@ -95,11 +99,7 @@ namespace For_The_Potato_Backend.Controllers
             }
 
             return NotFound(responseDto);
-
-
         }
-       
-
     }
 
 }

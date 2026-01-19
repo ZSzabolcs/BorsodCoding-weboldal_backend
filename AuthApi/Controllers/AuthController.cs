@@ -21,14 +21,14 @@ namespace AuthApi.Controllers
         [HttpPost("register")]
         public async Task<ActionResult> AddNewUser(RegisterRequestDto registerRequestDto)
         {
-            var user = await auth.Register(registerRequestDto);
+            var resp = await auth.Register(registerRequestDto);
 
-            if (user != null)
+            if (resp is string)
             {
-                return StatusCode(201, user);
+                return BadRequest(resp);
             }
+            return StatusCode(201, resp);
 
-            return BadRequest(new { result = "", message = "Sikertelen regisztráció." });
         }
 
 
@@ -37,12 +37,14 @@ namespace AuthApi.Controllers
         {
             var res = await auth.Login(loginRequestDto);
 
-            if (res != null)
+            if (res is string)
             {
-                return StatusCode(200, res);
+                return NotFound(res);
+
             }
 
-            return NotFound(res);
+            return Ok(res);
+
         }
 
         [HttpPost("assignrole")]
@@ -59,18 +61,28 @@ namespace AuthApi.Controllers
         }
 
         [HttpGet("Fiok/{userName}")]
-        [ProducesResponseType(typeof(object), 200)]
-        [ProducesResponseType(typeof(Response), 404)]
         public async Task<ActionResult> GetOneUserData(string userName)
         {
            var response = await auth.GetOneUserData(userName);
-           if (response is Response)
+           if (response is string)
            {
-                var result = (Response)response;
-                return NotFound(result.Message);
+                return NotFound(response);
            }
 
            return Ok(response);
+
+        }
+
+        [HttpGet("FiokById/{id}")]
+        public async Task<ActionResult> GetOneUserDataById(string id)
+        {
+            var response = await auth.GetOneUserDataById(id);
+            if (response is string)
+            {
+                return NotFound(response);
+            }
+
+            return Ok(response);
 
         }
 
@@ -78,10 +90,9 @@ namespace AuthApi.Controllers
         public async Task<ActionResult> UpdateUserData(RegisterRequestDto updateUserDto)
         {
             var response = await auth.UpdateUserData(updateUserDto);
-            if (response is Response)
+            if (response is string)
             {
-                var result = (Response)response;
-                return BadRequest(result.Message);
+                return BadRequest(response);
             }
 
             return Ok(response);

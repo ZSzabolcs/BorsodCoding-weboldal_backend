@@ -94,10 +94,32 @@
         }
       }
     },
-    "/api/Save/JatekosokSzama": {
+    "/api/Save/Dbjatekos": {
       "get": {
         "tags": [
           "Save"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Save/Statisztika/{username}": {
+      "get": {
+        "tags": [
+          "Save"
+        ],
+        "parameters": [
+          {
+            "name": "username",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
         ],
         "responses": {
           "200": {

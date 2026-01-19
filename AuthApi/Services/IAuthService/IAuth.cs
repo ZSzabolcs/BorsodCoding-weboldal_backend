@@ -12,8 +12,7 @@ namespace AuthApi.Services.IAuthService
 
         Task<object> DeleteUserData();
 
-        Task<object> GetUserData();
-
         Task<object> GetOneUserData(string userName);
+        Task<object> GetOneUserDataById(string id);
     }
 }

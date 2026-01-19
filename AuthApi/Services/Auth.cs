@@ -37,10 +37,10 @@ namespace AuthApi.Services
 
                 await userManager.AddToRoleAsync(user, roleName);
 
-                return new { result = user, message = "Sikeres hozzárendelés." };
+                return new ResponseDto(){ Value = user, Message = "Sikeres hozzárendelés." };
             }
 
-            return new { result = "", message = "Sikertelen hozzárendelés." };
+            return "Sikertelen hozzárendelés";
         }
 
         public Task<object> DeleteUserData()
@@ -54,15 +54,24 @@ namespace AuthApi.Services
 
             if (oneuser != null)
             {
-                return new { value = oneuser, message = "Sikeres lekérés"};
+                return new ResponseDto(){ Value = oneuser, Message = "Sikeres lekérés" };
             }
 
-            return new Response("Sikertelen lekérés");
+            return "Sikertelen lekérés";
         }
 
-        public Task<object> GetUserData()
+        public async Task<object> GetOneUserDataById(string id)
         {
-            throw new NotImplementedException();
+            var oneUser = await _dbContext.applicationUsers.FirstOrDefaultAsync(u => u.Id == id);
+
+            if (oneUser != null)
+            {
+                return new ResponseDto(){ Value = oneUser, Message = "Sikeres lekérés"};
+            }
+
+            return "Sikertelen lekérés";
+
+
         }
 
         public async Task<object> Login(LoginRequestDto loginRequestDto)
@@ -76,10 +85,10 @@ namespace AuthApi.Services
                 var roles = await userManager.GetRolesAsync(user);
                 var jwtToken = tokenGenerator.GenerateToken(user, roles);
 
-                return new { value = user.UserName, message = "Sikeres beléptetés.", token = jwtToken };
+                return new LoginResponseDto(){ Value = user.UserName, Message = "Sikeres beléptetés.", Token = jwtToken };
             }
 
-            return new { value = "", message = "Nem regisztrált.", token = "" };
+            return "Nem regisztrált.";
         }
 
         public async Task<object> Register(RegisterRequestDto registerRequestDto)
@@ -97,46 +106,69 @@ namespace AuthApi.Services
             {
                 var userReturn = await _dbContext.applicationUsers.FirstOrDefaultAsync(user => user.UserName == registerRequestDto.UserName);
 
-                return new { value = userReturn.UserName, message = "Sikeres regisztráció." };
+                return new ResponseDto(){ Value = userReturn.UserName, Message = "Sikeres regisztráció." };
             }
 
-            return new { value = "", message = result.Errors.FirstOrDefault().Description };
+            return $"Sikertelen regisztráció \n{result.Errors.FirstOrDefault().Description}";
         }
 
         public async Task<object> UpdateUserData(RegisterRequestDto updateUserDto)
         {
 
             var user = await _dbContext.applicationUsers.FirstOrDefaultAsync(u => u.NormalizedUserName == updateUserDto.UserName.ToUpper());
+            bool changedEmail = false;
+
             if (user != null) 
-            { 
-
-                var isRemovePassword = await userManager.RemovePasswordAsync(user);
-
-                if (isRemovePassword.Succeeded) 
+            {
+                if (updateUserDto.Email != null)
                 {
-                   var isPasswordAdded =  await userManager.AddPasswordAsync(user, updateUserDto.Password);
-
-                    if (isPasswordAdded.Succeeded)
+                    user.Email = updateUserDto.Email;
+                    var update = await userManager.UpdateAsync(user);
+                    if (update.Succeeded)
                     {
-                        user.Email = updateUserDto.Email;
                         user.ModDate = DateTime.Now;
+                        changedEmail = true;
+                    }
+                }
 
-                       var updated = await userManager.UpdateAsync(user);
+                if (updateUserDto.Password != null)
+                {
 
-                        if (updated.Succeeded) 
+                    var isRemovePassword = await userManager.RemovePasswordAsync(user);
+
+                    if (isRemovePassword.Succeeded)
+                    {
+                        var isPasswordAdded = await userManager.AddPasswordAsync(user, updateUserDto.Password);
+
+                        if (isPasswordAdded.Succeeded)
                         {
-                            return new { value = user, message = "Sikeres módosítás" };
+
+
+                            var updated = await userManager.UpdateAsync(user);
+
+                            if (updated.Succeeded)
+                            {
+                                if (!changedEmail)
+                                {
+                                    user.ModDate = DateTime.Now;
+                                }
+
+                                return new ResponseDto() { Value = user, Message = "Sikeres módosítás" };
+                            }
                         }
+
                     }
 
                 }
+            }
 
-
-                
+            if (changedEmail)
+            {
+                return new ResponseDto() { Value = user, Message = "Sikeres módosítás" };
             }
 
 
-            return new Response("Sikertelen módosítás");
+            return "Sikertelen módosítás";
         }
     }
 }

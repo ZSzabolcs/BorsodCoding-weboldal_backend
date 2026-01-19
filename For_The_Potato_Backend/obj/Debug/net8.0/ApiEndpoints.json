@@ -11,14 +11,14 @@
   },
   {
     "ContainingType": "For_The_Potato_Backend.Controllers.SaveController",
-    "Method": "InsertSaveData",
+    "Method": "PostData",
     "RelativePath": "api/Save",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "Save",
+        "Name": "save",
         "Type": "For_The_Potato_Backend.Models.Dto.SaveDto",
         "IsRequired": true
       }
@@ -27,14 +27,14 @@
   },
   {
     "ContainingType": "For_The_Potato_Backend.Controllers.SaveController",
-    "Method": "UpdateUserSave",
+    "Method": "PutData",
     "RelativePath": "api/Save",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "saveobj",
+        "Name": "save",
         "Type": "For_The_Potato_Backend.Models.Dto.SaveDto",
         "IsRequired": true
       }
@@ -43,7 +43,7 @@
   },
   {
     "ContainingType": "For_The_Potato_Backend.Controllers.SaveController",
-    "Method": "RemoveASave",
+    "Method": "DeleteData",
     "RelativePath": "api/Save",
     "HttpMethod": "DELETE",
     "IsController": true,
@@ -59,24 +59,8 @@
   },
   {
     "ContainingType": "For_The_Potato_Backend.Controllers.SaveController",
-    "Method": "UpdateSaveFromWPF",
-    "RelativePath": "api/Save/FromWPF",
-    "HttpMethod": "PUT",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "saveobj",
-        "Type": "For_The_Potato_Backend.Models.Dto.SaveDtoFromWPF",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "For_The_Potato_Backend.Controllers.SaveController",
-    "Method": "JatekosokSzama",
-    "RelativePath": "api/Save/JatekosokSzama",
+    "Method": "GetDbJatekos",
+    "RelativePath": "api/Save/Dbjatekos",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -85,7 +69,39 @@
   },
   {
     "ContainingType": "For_The_Potato_Backend.Controllers.SaveController",
-    "Method": "GetAllSaveToWPF",
+    "Method": "PutDataFromWPF",
+    "RelativePath": "api/Save/FromWPF",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "save",
+        "Type": "For_The_Potato_Backend.Models.Dto.SaveDtoFromWPF",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "For_The_Potato_Backend.Controllers.SaveController",
+    "Method": "GetStatistic",
+    "RelativePath": "api/Save/Statisztika/{username}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "username",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "For_The_Potato_Backend.Controllers.SaveController",
+    "Method": "GetAllDataToWPF",
     "RelativePath": "api/Save/ToWPF",
     "HttpMethod": "GET",
     "IsController": true,
