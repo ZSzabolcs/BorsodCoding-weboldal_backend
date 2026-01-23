@@ -22,6 +22,7 @@ namespace For_The_Potato_Backend
             {
                 option.UseMySQL(builder.Configuration.GetConnectionString("MySql"));
             });
+
             var settingsSection = builder.Configuration.GetSection("AuthSettings:JwtOptions");
 
             var secret = settingsSection.GetValue<string>("Secret");

@@ -240,7 +240,7 @@
     "securitySchemes": {
       "Bearer": {
         "type": "http",
-        "description": "Kérlek írd be a tokent így: Bearer {token}",
+        "description": "Írd be a tokent",
         "scheme": "bearer",
         "bearerFormat": "JWT"
       }

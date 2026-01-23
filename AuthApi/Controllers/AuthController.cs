@@ -53,12 +53,12 @@ namespace AuthApi.Controllers
         {
             var res = await auth.AssignRole(UserName, roleName);
 
-            if (res != null)
+            if (res is string)
             {
-                return Ok(res);
+                return BadRequest(res);
             }
+            return Ok(res);
 
-            return BadRequest(res);
         }
 
         [HttpDelete]
