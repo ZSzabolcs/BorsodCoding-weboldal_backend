@@ -1,8 +1,8 @@
 {
   "openapi": "3.0.1",
   "info": {
-    "title": "For_The_Potato_Backend",
-    "version": "1.0"
+    "title": "BorsodCoding API",
+    "version": "v1"
   },
   "paths": {
     "/api/Save": {
@@ -230,6 +230,19 @@
         },
         "additionalProperties": false
       }
+    },
+    "securitySchemes": {
+      "Bearer": {
+        "type": "http",
+        "description": "Kérlek írd be a tokent így: Bearer {token}",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
     }
-  }
+  },
+  "security": [
+    {
+      "Bearer": [ ]
+    }
+  ]
 }

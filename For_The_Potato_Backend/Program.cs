@@ -5,6 +5,8 @@ using For_The_Potato_Backend.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
+using System.Security.Claims;
 using System.Text;
 using System.Text.Json.Serialization;
 
@@ -41,8 +43,41 @@ namespace For_The_Potato_Backend
                     ValidateIssuer = true,
                     ValidIssuer = issuer,
                     ValidAudience = auidience,
-                    ValidateAudience = true
+                    ValidateAudience = true,
+                    RoleClaimType = ClaimTypes.Role,
                 };
+            });
+
+            builder.Services.AddSwaggerGen(opt =>
+            {
+                opt.SwaggerDoc("v1", new OpenApiInfo { Title = "BorsodCoding API", Version = "v1" });
+
+                // 1. Definíció hozzáadása (Hogyan nézzen ki a beviteli mezõ)
+                opt.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+                {
+                    In = ParameterLocation.Header,
+                    Description = "Írd be a tokent",
+                    Name = "Authorization",
+                    Type = SecuritySchemeType.Http,
+                    BearerFormat = "JWT",
+                    Scheme = "bearer"
+                });
+
+                // 2. Globális követelmény (Minden végponthoz jelenjen meg a lakat)
+                opt.AddSecurityRequirement(new OpenApiSecurityRequirement
+    {
+        {
+            new OpenApiSecurityScheme
+            {
+                Reference = new OpenApiReference
+                {
+                    Type = ReferenceType.SecurityScheme,
+                    Id = "Bearer"
+                }
+            },
+            new string[]{}
+        }
+    });
             });
 
             builder.Services.AddDbContext<ForThePotatoContext>();

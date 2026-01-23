@@ -5,6 +5,7 @@ using System.Collections.ObjectModel;
 using System.Net.Http;
 using System.Text.Json;
 using AuthApi.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AuthApi.Controllers
 {
@@ -85,6 +86,8 @@ namespace AuthApi.Controllers
 
         }
 
+
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public async Task<ActionResult> getAllUsers()
         {
