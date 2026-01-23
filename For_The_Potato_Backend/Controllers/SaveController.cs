@@ -27,12 +27,6 @@ namespace For_The_Potato_Backend.Controllers
             return Ok(data);
         }
 
-        [HttpGet("Dbjatekos")]
-        public Task<object> GetDbJatekos()
-        {
-            throw new NotImplementedException();
-        }
-
         [HttpGet("Statisztika/{username}")]
         public async Task<object> GetStatistic(string username)
         {

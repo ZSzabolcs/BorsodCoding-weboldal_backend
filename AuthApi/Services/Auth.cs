@@ -122,7 +122,15 @@ namespace AuthApi.Services
             {
                 var userReturn = await _dbContext.applicationUsers.FirstOrDefaultAsync(user => user.UserName == registerRequestDto.UserName);
 
-                return new ResponseDto(){ Value = userReturn.UserName, Message = "Sikeres regisztráció." };
+                var roleSet =  await userManager.AddToRoleAsync(userReturn, "Player");
+
+                if (roleSet.Succeeded)
+                {
+                    return new ResponseDto() { Value = userReturn.UserName, Message = "Sikeres regisztráció." };
+                }
+
+                
+
             }
 
             return $"Sikertelen regisztráció \n{result.Errors.FirstOrDefault().Description}";

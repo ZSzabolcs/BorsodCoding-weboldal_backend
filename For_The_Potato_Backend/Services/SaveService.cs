@@ -56,21 +56,6 @@ namespace For_The_Potato_Backend.Services
         }
 
 
-        public async Task<object> GetDbJatekos()
-        {
-            try
-            {
-                var mentesek = await _context.Menteseks.FirstOrDefaultAsync();
-                _responseDto.Message = "Játékosok száma";
-                _responseDto.Value = mentesek.Db;
-                return _responseDto;
-            }
-            catch (Exception ex)
-            {
-                _responseDto.Message = ex.Message;
-                return _responseDto;
-            }
-        }
 
         public async Task<object> GetStatistic(string username)
         {
@@ -82,6 +67,7 @@ namespace For_The_Potato_Backend.Services
                 {
                     string id = vanMentese.Id;
                     var save = await _context.Saves.FirstOrDefaultAsync(s => s.Id == id);
+
                     var ertek = new
                     {
                         save.Points,
@@ -89,9 +75,10 @@ namespace For_The_Potato_Backend.Services
                         save.Language,
                         save.RegDate,
                         save.ModDate,
-                        PontArany = _context.Pontaranyegyts.FirstOrDefault().Szazalek,
-                        SzintArany = _context.Szintaranies.FirstOrDefault().Szazalek,
-                        NyelvArany = _context.Nyelvaranies.FirstOrDefault().Szazalek,
+                        PontArany =  _context.Pontaranyegyts.FirstOrDefault(p => p.Points == save.Points).Szazalek,
+                        SzintArany = _context.Szintaranies.FirstOrDefault(sz => sz.Level == save.Level).Szazalek,
+                        NyelvArany = _context.Nyelvaranies.FirstOrDefault(ny => ny.Language == save.Language).Szazalek,
+                        jatekosDb = _context.Menteseks.FirstOrDefault().Db
 
                     };
                     _responseDto.Message = "Sikeres lekérés";
@@ -99,7 +86,7 @@ namespace For_The_Potato_Backend.Services
                     return _responseDto;
                 }
 
-                return "Nincsen mentése";
+                return "Nincsen mentése!";
                
             }
             catch (Exception ex)

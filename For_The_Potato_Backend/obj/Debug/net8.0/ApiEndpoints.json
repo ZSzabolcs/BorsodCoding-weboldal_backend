@@ -59,16 +59,6 @@
   },
   {
     "ContainingType": "For_The_Potato_Backend.Controllers.SaveController",
-    "Method": "GetDbJatekos",
-    "RelativePath": "api/Save/Dbjatekos",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "For_The_Potato_Backend.Controllers.SaveController",
     "Method": "PutDataFromWPF",
     "RelativePath": "api/Save/FromWPF",
     "HttpMethod": "PUT",
