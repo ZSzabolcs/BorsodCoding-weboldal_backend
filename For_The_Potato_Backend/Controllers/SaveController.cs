@@ -1,6 +1,7 @@
 ﻿using For_The_Potato_Backend.Models;
 using For_The_Potato_Backend.Models.Dto;
 using For_The_Potato_Backend.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -18,6 +19,7 @@ namespace For_The_Potato_Backend.Controllers
             _save = save;
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public async Task<object> GetAllData()
         {

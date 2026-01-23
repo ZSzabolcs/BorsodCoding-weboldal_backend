@@ -3,6 +3,7 @@ using For_The_Potato_Backend.Models;
 using For_The_Potato_Backend.Models.Dto;
 using For_The_Potato_Backend.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using System.Text.Json.Serialization;
@@ -15,6 +16,10 @@ namespace For_The_Potato_Backend
         {
             var builder = WebApplication.CreateBuilder(args);
 
+            builder.Services.AddDbContext<ForThePotatoContext>(option =>
+            {
+                option.UseMySQL(builder.Configuration.GetConnectionString("MySql"));
+            });
             var settingsSection = builder.Configuration.GetSection("AuthSettings:JwtOptions");
 
             var secret = settingsSection.GetValue<string>("Secret");
