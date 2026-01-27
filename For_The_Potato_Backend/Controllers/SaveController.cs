@@ -26,7 +26,7 @@ namespace For_The_Potato_Backend.Controllers
             var data = await _save.GetAllData();
             return Ok(data);
         }
-
+        [Authorize(Roles = "Admin,Player")]
         [HttpGet("Statisztika/{username}")]
         public async Task<object> GetStatistic(string username)
         {
@@ -39,7 +39,7 @@ namespace For_The_Potato_Backend.Controllers
             return Ok(response);
         }
 
-
+        [Authorize(Roles = "Admin,Player")]
         [HttpPost]
         public async Task<object> PostData(SaveDto save)
         {
@@ -51,7 +51,7 @@ namespace For_The_Potato_Backend.Controllers
             }
             return BadRequest(responseDto);
         }
-
+        [Authorize(Roles = "Admin,Player")]
         [HttpPut]
         public async Task<object> PutData(SaveDto save)
         {
@@ -64,7 +64,7 @@ namespace For_The_Potato_Backend.Controllers
 
             return NotFound(responseDto);
         }
-
+        [Authorize(Roles = "Admin")]
         [HttpPut("FromWPF")]
         public async Task<object> PutDataFromWPF(SaveDtoFromWPF save)
         {
@@ -77,7 +77,7 @@ namespace For_The_Potato_Backend.Controllers
 
             return NotFound(responseDto);
         }
-
+        [Authorize(Roles = "Admin")]
         [HttpDelete]
         public async Task<object> DeleteData(string id)
         {

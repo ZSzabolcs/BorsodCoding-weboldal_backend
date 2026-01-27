@@ -47,7 +47,7 @@ namespace AuthApi.Controllers
             return Ok(res);
 
         }
-
+        [Authorize(Roles = "Admin")]
         [HttpPost("assignrole")]
         public async Task<ActionResult> AddRole(string UserName, string roleName)
         {
@@ -60,7 +60,7 @@ namespace AuthApi.Controllers
             return Ok(res);
 
         }
-
+        [Authorize(Roles = "Admin")]
         [HttpDelete]
         public async Task<ActionResult> DeleteAnUser(string id)
         {
@@ -72,7 +72,7 @@ namespace AuthApi.Controllers
 
             return Ok(response);
         }
-
+        [Authorize(Roles = "Admin,Player")]
         [HttpGet("Fiok/{userName}")]
         public async Task<ActionResult> GetOneUserData(string userName)
         {
@@ -95,7 +95,7 @@ namespace AuthApi.Controllers
             return Ok(response);
 
         }
-
+        [Authorize(Roles = "Admin,Player")]
         [HttpGet("FiokById/{id}")]
         public async Task<ActionResult> GetOneUserDataById(string id)
         {
@@ -108,7 +108,7 @@ namespace AuthApi.Controllers
             return Ok(response);
 
         }
-
+        [Authorize(Roles = "Admin,Player")]
         [HttpPut("Modositas")]
         public async Task<ActionResult> UpdateUserData(RegisterRequestDto updateUserDto)
         {

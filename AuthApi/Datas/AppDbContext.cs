@@ -10,14 +10,6 @@ namespace AuthApi.Datas
         {
         }
         public DbSet<ApplicationUser> applicationUsers { get; set; } = null!;
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            if (!optionsBuilder.IsConfigured)
-            {
-                string conn = "Server=localhost;Port=3306;Database=for_the_potato;user=root;password=";
-
-                optionsBuilder.UseMySQL(conn);
-            }
-        }
+       
     }
 }
