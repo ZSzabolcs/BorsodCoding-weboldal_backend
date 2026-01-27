@@ -25,8 +25,6 @@ namespace AuthApi.Services
 
             var claimList = new List<Claim>
             {
-                new Claim(JwtRegisteredClaimNames.Birthdate, applicationUser.Birthdate.ToString()),
-                new Claim(JwtRegisteredClaimNames.Name, applicationUser.UserName.ToString()),
                 new Claim(JwtRegisteredClaimNames.Sub, applicationUser.Id)
 
             };
