@@ -7,7 +7,6 @@ public partial class Aspnetuser
 {
     public string Id { get; set; } = null!;
 
-    public string? FullName { get; set; }
 
     public DateTime Birthdate { get; set; }
 

@@ -96,7 +96,6 @@ public partial class ForThePotatoContext : DbContext
             entity.Property(e => e.Email)
                 .HasMaxLength(256)
                 .HasDefaultValueSql("'NULL'");
-            entity.Property(e => e.FullName).HasDefaultValueSql("'NULL'");
             entity.Property(e => e.LockoutEnd)
                 .HasDefaultValueSql("'NULL'")
                 .HasColumnType("datetime");
