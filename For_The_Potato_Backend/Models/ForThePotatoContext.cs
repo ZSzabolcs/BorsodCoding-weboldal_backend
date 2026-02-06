@@ -6,13 +6,11 @@ namespace For_The_Potato_Backend.Models;
 
 public partial class ForThePotatoContext : DbContext
 {
-    public ForThePotatoContext()
-    {
-    }
 
     public ForThePotatoContext(DbContextOptions<ForThePotatoContext> options)
         : base(options)
     {
+        Database.EnsureCreated();
     }
 
     public virtual DbSet<Aspnetrole> Aspnetroles { get; set; }

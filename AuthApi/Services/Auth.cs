@@ -121,8 +121,14 @@ namespace AuthApi.Services
             if (result.Succeeded)
             {
                 var userReturn = await _dbContext.applicationUsers.FirstOrDefaultAsync(user => user.UserName == registerRequestDto.UserName);
+                string player = "Player";
 
-                var roleSet =  await userManager.AddToRoleAsync(userReturn, "Player");
+                if (!roleManager.RoleExistsAsync(player).GetAwaiter().GetResult())
+                {
+                    roleManager.CreateAsync(new IdentityRole(player)).GetAwaiter().GetResult();
+                }
+                
+                var roleSet =  await userManager.AddToRoleAsync(userReturn, player);
 
                 if (roleSet.Succeeded)
                 {
