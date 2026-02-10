@@ -7,7 +7,6 @@ public partial class Aspnetuser
 {
     public string Id { get; set; } = null!;
 
-
     public DateTime Birthdate { get; set; }
 
     public string? UserName { get; set; }
@@ -47,6 +46,8 @@ public partial class Aspnetuser
     public virtual ICollection<Aspnetusertoken> Aspnetusertokens { get; set; } = new List<Aspnetusertoken>();
 
     public virtual Save? Save { get; set; }
+
+    public virtual Velemeny? Velemeny { get; set; }
 
     public virtual ICollection<Aspnetrole> Roles { get; set; } = new List<Aspnetrole>();
 }

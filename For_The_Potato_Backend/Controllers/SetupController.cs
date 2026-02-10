@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.StaticFiles;
 using System.IO;
@@ -10,6 +11,7 @@ namespace For_The_Potato_Backend.Controllers
     [ApiController]
     public class SetupController : ControllerBase
     {
+        [Authorize(Roles = "Admin,Player")]
         [HttpGet("download")]
         public IActionResult DownloadFile()
         {

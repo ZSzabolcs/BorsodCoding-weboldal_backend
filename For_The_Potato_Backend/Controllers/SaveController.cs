@@ -1,6 +1,6 @@
 ﻿using For_The_Potato_Backend.Models;
 using For_The_Potato_Backend.Models.Dto;
-using For_The_Potato_Backend.Services;
+using For_The_Potato_Backend.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;

@@ -1,5 +1,6 @@
 ﻿using For_The_Potato_Backend.Models;
 using For_The_Potato_Backend.Models.Dto;
+using For_The_Potato_Backend.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace For_The_Potato_Backend.Services

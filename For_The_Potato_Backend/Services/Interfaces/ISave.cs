@@ -1,6 +1,6 @@
 ﻿using For_The_Potato_Backend.Models.Dto;
 
-namespace For_The_Potato_Backend.Services
+namespace For_The_Potato_Backend.Services.Interfaces
 {
     public interface ISave
     {

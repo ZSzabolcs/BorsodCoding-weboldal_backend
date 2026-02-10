@@ -3,6 +3,7 @@ using System;
 using For_The_Potato_Backend.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace For_The_Potato_Backend.Migrations
 {
     [DbContext(typeof(ForThePotatoContext))]
-    partial class ForThePotatoContextModelSnapshot : ModelSnapshot
+    [Migration("20260210175017_Velemeny")]
+    partial class Velemeny
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

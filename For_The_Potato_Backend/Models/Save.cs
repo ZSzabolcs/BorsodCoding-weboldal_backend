@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text.Json.Serialization;
 
 namespace For_The_Potato_Backend.Models;
 
@@ -18,6 +17,5 @@ public partial class Save
 
     public DateTime ModDate { get; set; }
 
-    [JsonIgnore]
     public virtual Aspnetuser IdNavigation { get; set; } = null!;
 }

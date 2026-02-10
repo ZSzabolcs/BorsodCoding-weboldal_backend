@@ -6,11 +6,13 @@ namespace For_The_Potato_Backend.Models;
 
 public partial class ForThePotatoContext : DbContext
 {
+    public ForThePotatoContext()
+    {
+    }
 
     public ForThePotatoContext(DbContextOptions<ForThePotatoContext> options)
         : base(options)
     {
-        Database.EnsureCreated();
     }
 
     public virtual DbSet<Aspnetrole> Aspnetroles { get; set; }
@@ -33,13 +35,11 @@ public partial class ForThePotatoContext : DbContext
 
     public virtual DbSet<Pontaranyegyt> Pontaranyegyts { get; set; }
 
-    public virtual DbSet<Pontok> Pontoks { get; set; }
-
-    public virtual DbSet<Pontok2> Pontok2s { get; set; }
-
     public virtual DbSet<Save> Saves { get; set; }
 
     public virtual DbSet<Szintarany> Szintaranies { get; set; }
+
+    public virtual DbSet<Velemeny> Velemenies { get; set; }
 
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -220,30 +220,13 @@ public partial class ForThePotatoContext : DbContext
                 .HasDefaultValueSql("'NULL'");
         });
 
-        modelBuilder.Entity<Pontok>(entity =>
-        {
-            entity
-                .HasNoKey()
-                .ToView("pontok");
-
-            entity.Property(e => e.Points).HasColumnType("int(11)");
-        });
-
-        modelBuilder.Entity<Pontok2>(entity =>
-        {
-            entity
-                .HasNoKey()
-                .ToView("pontok2");
-
-            entity.Property(e => e.Points).HasColumnType("int(11)");
-        });
-
         modelBuilder.Entity<Save>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("PRIMARY");
 
             entity.ToTable("save");
 
+            entity.Property(e => e.Id).IsFixedLength();
             entity.Property(e => e.Language).HasMaxLength(2);
             entity.Property(e => e.Level).HasColumnType("int(11)");
             entity.Property(e => e.ModDate)
@@ -256,7 +239,7 @@ public partial class ForThePotatoContext : DbContext
 
             entity.HasOne(d => d.IdNavigation).WithOne(p => p.Save)
                 .HasForeignKey<Save>(d => d.Id)
-                .HasConstraintName("save_ibfk_1");
+                .HasConstraintName("FK_Save_User_UserId");
         });
 
         modelBuilder.Entity<Szintarany>(entity =>
@@ -269,6 +252,20 @@ public partial class ForThePotatoContext : DbContext
             entity.Property(e => e.Szazalek)
                 .HasPrecision(10, 1)
                 .HasDefaultValueSql("'NULL'");
+        });
+
+        modelBuilder.Entity<Velemeny>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PRIMARY");
+
+            entity.ToTable("velemeny");
+
+            entity.Property(e => e.Ertekeles).HasMaxLength(50);
+            entity.Property(e => e.Megjegyzes).HasColumnType("text");
+
+            entity.HasOne(d => d.IdNavigation).WithOne(p => p.Velemeny)
+                .HasForeignKey<Velemeny>(d => d.Id)
+                .HasConstraintName("FK_Velemeny");
         });
 
         OnModelCreatingPartial(modelBuilder);
