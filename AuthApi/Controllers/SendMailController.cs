@@ -1,5 +1,5 @@
 ﻿using AuthApi.Services.Dtos;
-using For_The_Potato_Backend.Services.Interfaces;
+using AuthApi.Services.Interfaces.IAuthService;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 

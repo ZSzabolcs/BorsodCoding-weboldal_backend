@@ -1,10 +1,8 @@
-
-using AuthApi.Controllers;
 using AuthApi.Datas;
 using AuthApi.Models;
 using AuthApi.Services;
-using AuthApi.Services.IAuthService;
-using For_The_Potato_Backend.Services.Interfaces;
+using AuthApi.Services.Interfaces.IForThePotato;
+using AuthApi.Services.Interfaces.IAuthService;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -12,6 +10,7 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Security.Claims;
 using System.Text;
+using AuthApi.Services.Dtos;
 
 namespace AuthApi
 {
@@ -37,9 +36,12 @@ namespace AuthApi
             });
 
             builder.Services.AddDbContext<AppDbContext>();
+            builder.Services.AddScoped<ResponseDto>();
             builder.Services.AddScoped<IAuth, Auth>();
             builder.Services.AddScoped<ISend, GoogleMail>();
             builder.Services.AddScoped<ITokenGenerator, TokenGenerator>();
+            builder.Services.AddScoped<IVelemeny, VelemenyService>();
+            builder.Services.AddScoped<ISave, SaveService>();
 
             builder.Services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFrameworkStores<AppDbContext>()
             .AddDefaultTokenProviders();

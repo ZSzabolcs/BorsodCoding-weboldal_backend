@@ -1,7 +1,7 @@
 ﻿using AuthApi.Datas;
 using AuthApi.Models;
 using AuthApi.Services.Dtos;
-using AuthApi.Services.IAuthService;
+using AuthApi.Services.Interfaces.IAuthService;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System.Text.Json;

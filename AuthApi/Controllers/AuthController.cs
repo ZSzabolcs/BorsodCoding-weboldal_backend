@@ -1,11 +1,11 @@
 ﻿using AuthApi.Services.Dtos;
-using AuthApi.Services.IAuthService;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.ObjectModel;
 using System.Net.Http;
 using System.Text.Json;
 using AuthApi.Models;
 using Microsoft.AspNetCore.Authorization;
+using AuthApi.Services.Interfaces.IAuthService;
 
 namespace AuthApi.Controllers
 {

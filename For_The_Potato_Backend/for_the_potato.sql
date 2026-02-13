@@ -17,15 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
 
---
--- Adatbázis: `for_the_potato`
---
 
--- --------------------------------------------------------
-
---
--- Tábla szerkezet ehhez a táblához `aspnetroleclaims`
---
 
 CREATE TABLE `aspnetroleclaims` (
   `Id` int(11) NOT NULL,
@@ -335,196 +327,106 @@ CREATE TABLE `velemeny` (
 INSERT INTO `velemeny` (`Id`, `Ertekeles`, `Megjegyzes`) VALUES
 ('f52d6229-eb21-402b-a358-ea6d90969b06', 'Nagyon jó', 'Ez egy vicces játék');
 
--- --------------------------------------------------------
 
---
--- Tábla szerkezet ehhez a táblához `__efmigrationshistory`
---
 
-CREATE TABLE `__efmigrationshistory` (
-  `MigrationId` varchar(150) NOT NULL,
-  `ProductVersion` varchar(32) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- A tábla adatainak kiíratása `__efmigrationshistory`
---
-
-INSERT INTO `__efmigrationshistory` (`MigrationId`, `ProductVersion`) VALUES
-('20250116082329_CreateAuthDb', '8.0.22'),
-('20251129211633_CreateGUIDIdColumn', '8.0.22'),
-('20251201173521_EmailColumnAddedInUserTable', '8.0.22'),
-('20260109201027_AddModDateColumnToUsers', '8.0.22');
-
--- --------------------------------------------------------
-
---
--- Nézet szerkezete `mentesek`
---
 DROP TABLE IF EXISTS `mentesek`;
 
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `mentesek`  AS SELECT count(`save`.`Id`) AS `DB` FROM `save` ;
 
--- --------------------------------------------------------
 
---
--- Nézet szerkezete `nyelvarany`
---
 DROP TABLE IF EXISTS `nyelvarany`;
 
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `nyelvarany`  AS SELECT `save`.`Language` AS `Language`, cast(count(`save`.`Id`) / `mentesek`.`DB` * 100 as decimal(10,1)) AS `Szazalek` FROM (`save` join `mentesek`) GROUP BY `save`.`Language` ;
 
--- --------------------------------------------------------
-
---
--- Nézet szerkezete `pontaranyegyt`
---
 DROP TABLE IF EXISTS `pontaranyegyt`;
 
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `pontaranyegyt`  AS SELECT `save`.`Points` AS `Points`, cast(count(`save`.`Id`) / `mentesek`.`DB` * 100 as decimal(10,1)) AS `Szazalek` FROM (`save` join `mentesek`) GROUP BY `save`.`Points` ;
 
--- --------------------------------------------------------
 
---
--- Nézet szerkezete `szintarany`
---
 DROP TABLE IF EXISTS `szintarany`;
 
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `szintarany`  AS SELECT `save`.`Level` AS `Level`, cast(count(`save`.`Id`) / `mentesek`.`DB` * 100 as decimal(10,1)) AS `Szazalek` FROM (`save` join `mentesek`) GROUP BY `save`.`Level` ;
 
---
--- Indexek a kiírt táblákhoz
---
 
---
--- A tábla indexei `aspnetroleclaims`
---
 ALTER TABLE `aspnetroleclaims`
   ADD PRIMARY KEY (`Id`),
   ADD KEY `IX_AspNetRoleClaims_RoleId` (`RoleId`);
 
---
--- A tábla indexei `aspnetroles`
---
+
 ALTER TABLE `aspnetroles`
   ADD PRIMARY KEY (`Id`),
   ADD UNIQUE KEY `RoleNameIndex` (`NormalizedName`);
 
---
--- A tábla indexei `aspnetuserclaims`
---
+
 ALTER TABLE `aspnetuserclaims`
   ADD PRIMARY KEY (`Id`),
   ADD KEY `IX_AspNetUserClaims_UserId` (`UserId`);
 
---
--- A tábla indexei `aspnetuserlogins`
---
+
 ALTER TABLE `aspnetuserlogins`
   ADD PRIMARY KEY (`LoginProvider`,`ProviderKey`),
   ADD KEY `IX_AspNetUserLogins_UserId` (`UserId`);
 
---
--- A tábla indexei `aspnetuserroles`
---
+
 ALTER TABLE `aspnetuserroles`
   ADD PRIMARY KEY (`UserId`,`RoleId`),
   ADD KEY `IX_AspNetUserRoles_RoleId` (`RoleId`);
 
---
--- A tábla indexei `aspnetusers`
---
 ALTER TABLE `aspnetusers`
   ADD PRIMARY KEY (`Id`),
   ADD UNIQUE KEY `UserNameIndex` (`NormalizedUserName`),
   ADD KEY `EmailIndex` (`NormalizedEmail`);
 
---
--- A tábla indexei `aspnetusertokens`
---
+
 ALTER TABLE `aspnetusertokens`
   ADD PRIMARY KEY (`UserId`,`LoginProvider`,`Name`);
 
---
--- A tábla indexei `save`
---
+
 ALTER TABLE `save`
   ADD PRIMARY KEY (`Id`),
   ADD KEY `Id` (`Id`);
 
---
--- A tábla indexei `velemeny`
---
+
 ALTER TABLE `velemeny`
   ADD PRIMARY KEY (`Id`),
   ADD KEY `Id` (`Id`);
 
---
--- A tábla indexei `__efmigrationshistory`
---
-ALTER TABLE `__efmigrationshistory`
-  ADD PRIMARY KEY (`MigrationId`);
 
---
--- A kiírt táblák AUTO_INCREMENT értéke
---
 
---
--- AUTO_INCREMENT a táblához `aspnetroleclaims`
---
 ALTER TABLE `aspnetroleclaims`
   MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
 
---
--- AUTO_INCREMENT a táblához `aspnetuserclaims`
---
+
 ALTER TABLE `aspnetuserclaims`
   MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
 
---
--- Megkötések a kiírt táblákhoz
---
 
---
--- Megkötések a táblához `aspnetroleclaims`
---
 ALTER TABLE `aspnetroleclaims`
   ADD CONSTRAINT `FK_AspNetRoleClaims_AspNetRoles_RoleId` FOREIGN KEY (`RoleId`) REFERENCES `aspnetroles` (`Id`) ON DELETE CASCADE;
 
---
--- Megkötések a táblához `aspnetuserclaims`
---
+
 ALTER TABLE `aspnetuserclaims`
   ADD CONSTRAINT `FK_AspNetUserClaims_AspNetUsers_UserId` FOREIGN KEY (`UserId`) REFERENCES `aspnetusers` (`Id`) ON DELETE CASCADE;
 
---
--- Megkötések a táblához `aspnetuserlogins`
---
+
 ALTER TABLE `aspnetuserlogins`
   ADD CONSTRAINT `FK_AspNetUserLogins_AspNetUsers_UserId` FOREIGN KEY (`UserId`) REFERENCES `aspnetusers` (`Id`) ON DELETE CASCADE;
 
---
--- Megkötések a táblához `aspnetuserroles`
---
+
 ALTER TABLE `aspnetuserroles`
   ADD CONSTRAINT `FK_AspNetUserRoles_AspNetRoles_RoleId` FOREIGN KEY (`RoleId`) REFERENCES `aspnetroles` (`Id`) ON DELETE CASCADE,
   ADD CONSTRAINT `FK_AspNetUserRoles_AspNetUsers_UserId` FOREIGN KEY (`UserId`) REFERENCES `aspnetusers` (`Id`) ON DELETE CASCADE;
 
---
--- Megkötések a táblához `aspnetusertokens`
---
+
 ALTER TABLE `aspnetusertokens`
   ADD CONSTRAINT `FK_AspNetUserTokens_AspNetUsers_UserId` FOREIGN KEY (`UserId`) REFERENCES `aspnetusers` (`Id`) ON DELETE CASCADE;
 
---
--- Megkötések a táblához `save`
---
+
 ALTER TABLE `save`
   ADD CONSTRAINT `FK_Save_User_UserId` FOREIGN KEY (`Id`) REFERENCES `aspnetusers` (`Id`) ON DELETE CASCADE;
 
---
--- Megkötések a táblához `velemeny`
---
+
 ALTER TABLE `velemeny`
   ADD CONSTRAINT `FK_Velemeny` FOREIGN KEY (`Id`) REFERENCES `aspnetusers` (`Id`) ON DELETE CASCADE;
 COMMIT;

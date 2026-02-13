@@ -16,7 +16,7 @@ namespace AuthApi.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.22")
+                .HasAnnotation("ProductVersion", "8.0.23")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
             modelBuilder.Entity("AuthApi.Models.ApplicationUser", b =>
@@ -40,9 +40,6 @@ namespace AuthApi.Migrations
 
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("tinyint(1)");
-
-                    b.Property<string>("FullName")
-                        .HasColumnType("longtext");
 
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("tinyint(1)");
@@ -90,6 +87,39 @@ namespace AuthApi.Migrations
                         .HasDatabaseName("UserNameIndex");
 
                     b.ToTable("AspNetUsers", (string)null);
+                });
+
+            modelBuilder.Entity("AuthApi.Models.Save", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("varchar(255)");
+
+                    b.Property<string>("Language")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<int>("Level")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("ModDate")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int>("Points")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("RegDate")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("varchar(255)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId")
+                        .IsUnique();
+
+                    b.ToTable("Saves");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -220,6 +250,17 @@ namespace AuthApi.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("AuthApi.Models.Save", b =>
+                {
+                    b.HasOne("AuthApi.Models.ApplicationUser", "User")
+                        .WithOne("Save")
+                        .HasForeignKey("AuthApi.Models.Save", "UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -269,6 +310,11 @@ namespace AuthApi.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("AuthApi.Models.ApplicationUser", b =>
+                {
+                    b.Navigation("Save");
                 });
 #pragma warning restore 612, 618
         }

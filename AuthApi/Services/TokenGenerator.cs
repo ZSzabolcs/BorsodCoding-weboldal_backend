@@ -1,5 +1,5 @@
 ﻿using AuthApi.Models;
-using AuthApi.Services.IAuthService;
+using AuthApi.Services.Interfaces.IAuthService;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;

@@ -2,7 +2,7 @@
 using MimeKit;
 using MimeKit.Text;
 using MailKit.Net.Smtp;
-using For_The_Potato_Backend.Services.Interfaces;
+using AuthApi.Services.Interfaces.IAuthService;
 
 namespace AuthApi.Services
 {
