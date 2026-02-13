@@ -1,5 +1,21 @@
 [
   {
+    "ContainingType": "AuthApi.Controllers.SendMailController",
+    "Method": "SendMail",
+    "RelativePath": "api/SendMail",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "sendMailDTO",
+        "Type": "AuthApi.Services.Dtos.SendMailDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "AuthApi.Controllers.AuthController",
     "Method": "DeleteAnUser",
     "RelativePath": "auth",
