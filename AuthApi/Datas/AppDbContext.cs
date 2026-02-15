@@ -60,22 +60,26 @@ namespace AuthApi.Datas
             builder.Entity<Mentesek>(en =>
             {
                 en.HasNoKey();
+                en.ToView("mentesek");
             });
 
 
             builder.Entity<Nyelvarany>(en =>
             {
                 en.HasNoKey();
+                en.ToView("nyelvarany");
             });
 
             builder.Entity<Pontaranyegyt>(en =>
             {
                 en.HasNoKey();
+                en.ToView("pontaranyegyt");
             });
 
             builder.Entity<Szintarany>(en =>
             {
                 en.HasNoKey();
+                en.ToView("szintarany");
             });
 
         }
