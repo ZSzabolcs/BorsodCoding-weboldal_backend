@@ -190,6 +190,38 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "AuthApi.Controllers.VelemenyController",
+    "Method": "UpdateFromWPFVelemeny",
+    "RelativePath": "api/Velemeny/FromWPF",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "velemenyDto",
+        "Type": "AuthApi.Services.Dtos.FromWPFVelemenyDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AuthApi.Controllers.VelemenyController",
+    "Method": "DeleteFromWPFVelemeny",
+    "RelativePath": "api/Velemeny/FromWPF",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "AuthApi.Controllers.AuthController",
     "Method": "DeleteAnUser",
     "RelativePath": "auth",

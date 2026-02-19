@@ -98,6 +98,49 @@ namespace AuthApi.Controllers
             }
         }
 
+        [Authorize(Roles = "Admin")]
+        [HttpPut("FromWPF")]
+        public async Task<ActionResult> UpdateFromWPFVelemeny(FromWPFVelemenyDto velemenyDto)
+        {
+            try
+            {
+                var response = await _velemeny.UpdateFromWPFVelemeny(velemenyDto);
+
+                if (response is string)
+                {
+                    return BadRequest(response);
+                }
+
+                return Ok(response);
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest(ex.Message);
+            }
+        }
+        [Authorize(Roles = "Admin")]
+        [HttpDelete("FromWPF")]
+        public async Task<ActionResult> DeleteFromWPFVelemeny(string id)
+        {
+            try
+            {
+                var response = await _velemeny.DeleteFromWPFVelemeny(id);
+
+                if (response is string)
+                {
+                    NotFound(response);
+                }
+
+                return Ok(response);
+
+            }
+            catch (Exception ex)
+            {
+                return NotFound(ex.Message);
+            }
+        }
+
         [Authorize(Roles = "Admin,Player")]
         [HttpDelete]
         public async Task<ActionResult> DeleteVelemeny(string userName)

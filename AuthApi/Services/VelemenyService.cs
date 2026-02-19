@@ -17,6 +17,31 @@ namespace AuthApi.Services
             _responseDto = responseDto;
         }
 
+        public async Task<object> DeleteFromWPFVelemeny(string id)
+        {
+            try
+            {
+                var record = await _context.Velemeny.FirstOrDefaultAsync(v => v.Id == id);
+
+                if (record != null)
+                {
+                    _context.Remove(record);
+                    await _context.SaveChangesAsync();
+                    _responseDto.Value = record;
+                    _responseDto.Message = "Sikeres törlés";
+                    return _responseDto;
+                }
+
+                return "Sikertelen törlés";
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
+
+
+        }
+
         public async Task<object> DeleteVelemeny(string userName)
         {
             try
@@ -127,6 +152,37 @@ namespace AuthApi.Services
             }
         }
 
+        public async Task<object> UpdateFromWPFVelemeny(FromWPFVelemenyDto velemenyDto)
+        {
+            try
+            {
+                if (velemenyDto != null)
+                {
+                    
+                        var velemeny = await _context.Velemeny.FirstOrDefaultAsync(v => v.Id == velemenyDto.Id);
+
+                        if (velemeny != null)
+                        {
+                            velemeny.Ertekeles = velemenyDto.Ertekeles;
+                            velemeny.Megjegyzes = velemenyDto.Megjegyzes;
+
+                            _context.Velemeny.Update(velemeny);
+                            await _context.SaveChangesAsync();
+                            _responseDto.Message = "A módosított vélemény sikeresen elmentve";
+                            _responseDto.Value = velemenyDto;
+                            return _responseDto;
+                        }
+                    
+                }
+
+                return "Sikertelen módosítás. Próbálja újra később.";
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
+        }
+
         public async Task<object> UpdateVelemeny(VelemenyDto velemenyDto)
         {
             try
@@ -160,5 +216,6 @@ namespace AuthApi.Services
                 return ex.Message;  
             }
         }
+
     }
 }
