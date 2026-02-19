@@ -1,16 +1,17 @@
 using AuthApi.Datas;
 using AuthApi.Models;
 using AuthApi.Services;
-using AuthApi.Services.Interfaces.IForThePotato;
+using AuthApi.Services.Dtos;
 using AuthApi.Services.Interfaces.IAuthService;
+using AuthApi.Services.Interfaces.IForThePotato;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Security.Claims;
 using System.Text;
-using AuthApi.Services.Dtos;
 
 namespace AuthApi
 {
