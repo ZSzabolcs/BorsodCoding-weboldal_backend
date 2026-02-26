@@ -183,7 +183,7 @@ namespace AuthApi.Services
                                     user.ModDate = DateTime.Now;
                                 }
 
-                                return new ResponseDto() { Value = user, Message = "Sikeres módosítás" };
+                                return new ResponseDto() { Value = user.UserName, Message = "Sikeres módosítás" };
                             }
                         }
 
@@ -194,7 +194,7 @@ namespace AuthApi.Services
 
             if (changedEmail)
             {
-                return new ResponseDto() { Value = user, Message = "Sikeres módosítás" };
+                return new ResponseDto() { Value = user.UserName, Message = "Sikeres módosítás" };
             }
 
 

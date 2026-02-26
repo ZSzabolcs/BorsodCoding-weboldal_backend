@@ -333,7 +333,8 @@ CREATE TABLE `velemeny` (
 --
 
 INSERT INTO `velemeny` (`Id`, `Ertekeles`, `Megjegyzes`) VALUES
-('f52d6229-eb21-402b-a358-ea6d90969b06', 'Nagyon jó', 'Ez egy vicces játék');
+('f52d6229-eb21-402b-a358-ea6d90969b06', '4', 'Ez egy vicces játék');
+
 
 -- --------------------------------------------------------
 
