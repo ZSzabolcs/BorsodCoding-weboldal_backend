@@ -13,12 +13,12 @@ namespace AuthApi.Services
     public class GoogleMail : ISend
     {
         private readonly IConfiguration _configuration;
-        private readonly AppDbContext _context;
+        private readonly UserManager<ApplicationUser> _userManager;
 
-        public GoogleMail(IConfiguration configuration, AppDbContext context)
+        public GoogleMail(IConfiguration configuration, UserManager<ApplicationUser> userManager)
         {
             _configuration = configuration;
-            _context = context;
+            _userManager = userManager;
         }
 
         public void SendMail(SendMailDto sendMailDto)
@@ -51,10 +51,10 @@ namespace AuthApi.Services
             if (sendMailByUserNameDto != null)
             {
 
-                var user = await _context.applicationUsers.FirstOrDefaultAsync(u => u.NormalizedUserName == sendMailByUserNameDto.UserName.ToUpper());
+                var user = await _userManager.FindByNameAsync(sendMailByUserNameDto.UserName);
 
 
-                if (user.Email != null && user != null)
+                if (user != null)
                 {
                     var email = new MimeMessage();
                     email.From.Add(MailboxAddress.Parse(_configuration.GetSection("EmailSettings:EmailUserName").Value));
@@ -88,8 +88,11 @@ namespace AuthApi.Services
                     smtp.Disconnect(true);
                     return "Sikeres bejelentkezés vagy regisztráció";
                 }
+                else
+                {
+                    return "Sikertelen bejelentkezés vagy regisztráció";
+                }
 
-                return "Sikertelen bejelentkezés vagy regisztráció";
                 
             }
 
