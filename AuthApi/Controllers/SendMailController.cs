@@ -2,6 +2,7 @@
 using AuthApi.Services.Interfaces.IAuthService;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 
 namespace AuthApi.Controllers
 {
@@ -21,6 +22,13 @@ namespace AuthApi.Controllers
         {
             _send.SendMail(sendMailDTO);
             return Ok(new { Result = "Sikeres email küldés!" });
+        }
+
+        [HttpPost("ByUserName")]
+        public async Task<ActionResult> SendMailByUserName(SendMailByUserNameDto sendMailByUserNameDto)
+        {
+            var response = await _send.SendMailByUserName(sendMailByUserNameDto);
+            return Ok(response);
         }
     }
 }

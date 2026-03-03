@@ -104,7 +104,7 @@ namespace AuthApi.Services
                 return new LoginResponseDto(){ Value = user.UserName, Message = "Sikeres beléptetés.", Token = jwtToken };
             }
 
-            return "Nem regisztrált.";
+            return "Nem regisztrált. Vagy a felhasználónév vagy a jelszó helytelen";
         }
 
         public async Task<object> Register(RegisterRequestDto registerRequestDto)

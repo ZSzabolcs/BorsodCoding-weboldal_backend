@@ -718,3 +718,7 @@ D:\Munka\Iskola\vegso_projekt\BorsodCoding-weboldal_backend\AuthApi\bin\Debug\ne
 D:\Munka\Iskola\vegso_projekt\BorsodCoding-weboldal_backend\AuthApi\bin\Debug\net8.0\MimeKit.dll
 D:\Munka\Iskola\vegso_projekt\BorsodCoding-weboldal_backend\AuthApi\bin\Debug\net8.0\System.Security.Cryptography.Pkcs.dll
 D:\Munka\Iskola\vegso_projekt\BorsodCoding-weboldal_backend\AuthApi\bin\Debug\net8.0\runtimes\win\lib\net8.0\System.Security.Cryptography.Pkcs.dll
+C:\Users\CsigerIK\vegso_projekt\BorsodCoding-weboldal_backend\AuthApi\bin\Debug\net8.0\MailKit.dll
+C:\Users\CsigerIK\vegso_projekt\BorsodCoding-weboldal_backend\AuthApi\bin\Debug\net8.0\MimeKit.dll
+C:\Users\CsigerIK\vegso_projekt\BorsodCoding-weboldal_backend\AuthApi\bin\Debug\net8.0\System.Security.Cryptography.Pkcs.dll
+C:\Users\CsigerIK\vegso_projekt\BorsodCoding-weboldal_backend\AuthApi\bin\Debug\net8.0\runtimes\win\lib\net8.0\System.Security.Cryptography.Pkcs.dll

@@ -106,6 +106,22 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "AuthApi.Controllers.SendMailController",
+    "Method": "SendMailByUserName",
+    "RelativePath": "api/SendMail/ByUserName",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "sendMailByUserNameDto",
+        "Type": "AuthApi.Services.Dtos.SendMailByUserNameDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "AuthApi.Controllers.SetupController",
     "Method": "DownloadFile",
     "RelativePath": "api/Setup/download",
