@@ -54,7 +54,7 @@ namespace AuthApi.Services
                 var user = await _userManager.FindByNameAsync(sendMailByUserNameDto.UserName);
 
 
-                if (user != null)
+                if (user != null && (user.Email != null || user.Email != ""))
                 {
                     var email = new MimeMessage();
                     email.From.Add(MailboxAddress.Parse(_configuration.GetSection("EmailSettings:EmailUserName").Value));

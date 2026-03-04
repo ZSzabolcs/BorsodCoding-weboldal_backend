@@ -10,7 +10,6 @@ namespace AuthApi.Services
 {
     public class Auth : IAuth
     {
-        private readonly AppDbContext _dbContext;
         private readonly UserManager<ApplicationUser> userManager;
         private readonly RoleManager<IdentityRole> roleManager;
 
@@ -18,7 +17,6 @@ namespace AuthApi.Services
 
         public Auth(AppDbContext dbContext, UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager, ITokenGenerator tokenGenerator)
         {
-            _dbContext = dbContext;
             this.userManager = userManager;
             this.roleManager = roleManager;
             this.tokenGenerator = tokenGenerator;
@@ -26,7 +24,7 @@ namespace AuthApi.Services
 
         public async Task<object> AssignRole(string UserName, string roleName)
         {
-            var user = await _dbContext.applicationUsers.FirstOrDefaultAsync(user => user.NormalizedUserName == UserName.ToUpper());
+            var user = await userManager.FindByNameAsync(UserName);
 
             if (user != null)
             {
@@ -45,7 +43,7 @@ namespace AuthApi.Services
 
         public async Task<object> DeleteUserData(string id)
         {
-            var user = await _dbContext.applicationUsers.FirstOrDefaultAsync(user => user.Id == id);
+            var user = await userManager.FindByIdAsync(id);
             if (user != null) 
             {
                var delete = await userManager.DeleteAsync(user);
@@ -60,17 +58,17 @@ namespace AuthApi.Services
 
         public async Task<object> GetAllUser()
         {
-            var users = _dbContext.applicationUsers;
+            var users = userManager.Users;
             return new ResponseDto() { Value = users, Message = "Sikeres lekérés" };
         }
 
         public async Task<object> GetOneUserData(string userName)
         {
-            var oneuser = await _dbContext.applicationUsers.FirstOrDefaultAsync(u => u.NormalizedUserName == userName.ToUpper());
+            var oneuser = await userManager.FindByNameAsync(userName);
 
             if (oneuser != null)
             {
-                return new ResponseDto(){ Value = oneuser, Message = "Sikeres lekérés" };
+                return new ResponseDto(){ Value = new { oneuser.Email, oneuser.Birthdate, oneuser.ModDate }, Message = "Sikeres lekérés" };
             }
 
             return "Sikertelen lekérés";
@@ -78,7 +76,7 @@ namespace AuthApi.Services
 
         public async Task<object> GetOneUserDataById(string id)
         {
-            var oneUser = await _dbContext.applicationUsers.FirstOrDefaultAsync(u => u.Id == id);
+            var oneUser = await userManager.FindByIdAsync(id);
 
             if (oneUser != null)
             {
@@ -92,7 +90,7 @@ namespace AuthApi.Services
 
         public async Task<object> Login(LoginRequestDto loginRequestDto)
         {
-            var user = await _dbContext.applicationUsers.FirstOrDefaultAsync(user => user.NormalizedUserName == loginRequestDto.UserName.ToUpper());
+            var user = await userManager.FindByNameAsync(loginRequestDto.UserName);
 
             bool isValid = await userManager.CheckPasswordAsync(user, loginRequestDto.Password);
 
@@ -104,7 +102,7 @@ namespace AuthApi.Services
                 return new LoginResponseDto(){ Value = user.UserName, Message = "Sikeres beléptetés.", Token = jwtToken };
             }
 
-            return "Nem regisztrált. Vagy a felhasználónév vagy a jelszó helytelen";
+            return "Nem regisztrált. Vagy a felhasználónév vagy a jelszó helytelen!";
         }
 
         public async Task<object> Register(RegisterRequestDto registerRequestDto)
@@ -120,7 +118,7 @@ namespace AuthApi.Services
 
             if (result.Succeeded)
             {
-                var userReturn = await _dbContext.applicationUsers.FirstOrDefaultAsync(user => user.UserName == registerRequestDto.UserName);
+                var userReturn = await userManager.FindByNameAsync(registerRequestDto.UserName);
                 string player = "Player";
 
                 if (!roleManager.RoleExistsAsync(player).GetAwaiter().GetResult())
@@ -139,13 +137,13 @@ namespace AuthApi.Services
 
             }
 
-            return $"Sikertelen regisztráció \n{result.Errors.FirstOrDefault().Description}";
+            return $"Sikertelen regisztráció! Lehet a felhasználó létezik!";
         }
 
         public async Task<object> UpdateUserData(RegisterRequestDto updateUserDto)
         {
 
-            var user = await _dbContext.applicationUsers.FirstOrDefaultAsync(u => u.NormalizedUserName == updateUserDto.UserName.ToUpper());
+            var user = await userManager.FindByNameAsync(updateUserDto.UserName);
             bool changedEmail = false;
 
             if (user != null) 
