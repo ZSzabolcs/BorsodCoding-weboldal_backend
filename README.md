@@ -1,9 +1,13 @@
 # FOR THE POTATO BACKEND
-Hogy egy létező adatabázisból alakítsa ki .NET Web API szerkezetet, modulokat, nekem úgy sikerült, hogy letelepítjük Pomelo.EntityFrameworkCore.MySql-t és megírjuk ezt a parancsot:
 
-`Scaffold-DbContext "server=localhost;database=for_the_potato;user=root;password=;ssl mode=none;" Pomelo.EntityFrameworkCore.MySql -OutputDir Models -f`
+## Technológia
+Visual Studio 2022 ASP .NET Core Web API
 
-VAGY SSL mode=none nélkül:
-`Scaffold-DbContext "server=localhost;database=for_the_potato;user=root;password=" Mysql.EntityFrameWorkCore -OutputDir Models -f
-`
+Hogy egy létező adatabázisból alakítsa ki .NET Web API szerkezetté  hogy elérhető legyen. Előszőr letelepítjük Mysql.EntityFrameWorkCore-t és beírjuk ezt a parancsot:
+`Scaffold-DbContext "server=localhost;database=for_the_potato;user=root;password=" Mysql.EntityFrameWorkCore -OutputDir Models -f`
+
+## Adatbázis
+Az adatbázis létrehozásához és adatok feltöltésével egy Migration fájlt használunk.
+Visual Studio 2022 Package Manager Consolbe kell írni a parancsot a végrahajtásához:
+`update-database`
 
