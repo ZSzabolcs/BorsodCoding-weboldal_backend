@@ -35,7 +35,7 @@ namespace AuthApi.Services
 
                 await userManager.AddToRoleAsync(user, roleName);
 
-                return new ResponseDto(){ Value = user, Message = "Sikeres hozzárendelés." };
+                return new ResponseDto(){ Value = user.UserName, Message = "Sikeres hozzárendelés." };
             }
 
             return "Sikertelen hozzárendelés";
@@ -107,18 +107,18 @@ namespace AuthApi.Services
 
         public async Task<object> Register(RegisterRequestDto registerRequestDto)
         {
-            var user = new ApplicationUser
+            ApplicationUser user = new ApplicationUser
             {
                 UserName = registerRequestDto.UserName,
                 Email = registerRequestDto.Email,
                 Birthdate = DateTime.Now,
             };
 
-            var result = await userManager.CreateAsync(user, registerRequestDto.Password);
+            var userCreate = await userManager.CreateAsync(user, registerRequestDto.Password);
 
-            if (result.Succeeded)
+            if (userCreate.Succeeded)
             {
-                var userReturn = await userManager.FindByNameAsync(registerRequestDto.UserName);
+                var foundUser = await userManager.FindByNameAsync(registerRequestDto.UserName);
                 string player = "Player";
 
                 if (!roleManager.RoleExistsAsync(player).GetAwaiter().GetResult())
@@ -126,11 +126,13 @@ namespace AuthApi.Services
                     roleManager.CreateAsync(new IdentityRole(player)).GetAwaiter().GetResult();
                 }
                 
-                var roleSet =  await userManager.AddToRoleAsync(userReturn, player);
+                var roleSet =  await userManager.AddToRoleAsync(foundUser, player);
 
                 if (roleSet.Succeeded)
                 {
-                    return new ResponseDto() { Value = userReturn.UserName, Message = "Sikeres regisztráció." };
+                    var roles = await userManager.GetRolesAsync(foundUser);
+                    var jwtToken = tokenGenerator.GenerateToken(foundUser, roles);
+                    return new LoginResponseDto() { Value = foundUser.UserName, Message = "Sikeres regisztráció.", Token =jwtToken  };
                 }
 
                 

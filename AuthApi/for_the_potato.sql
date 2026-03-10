@@ -1,12 +1,3 @@
--- phpMyAdmin SQL Dump
--- version 5.2.1
--- https://www.phpmyadmin.net/
---
--- Gép: 127.0.0.1
--- Létrehozás ideje: 2026. Feb 10. 22:09
--- Kiszolgáló verziója: 10.4.32-MariaDB
--- PHP verzió: 8.2.12
-
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
@@ -17,15 +8,6 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
 
---
--- Adatbázis: `for_the_potato`
---
-
--- --------------------------------------------------------
-
---
--- Tábla szerkezet ehhez a táblához `aspnetroleclaims`
---
 
 CREATE TABLE `aspnetroleclaims` (
   `Id` int(11) NOT NULL,
@@ -232,7 +214,7 @@ INSERT INTO `aspnetusers` (`Id`, `Birthdate`, `UserName`, `NormalizedUserName`, 
 ('ecf9d9e0-bfbe-445f-9cc7-2d14c1706cf2', '2025-06-04 00:00:00.000000', 'edominique7', 'EDOMINIQUE7', NULL, NULL, 0, 'AQAAAAIAAYagAAAAED1lEY27t4qTR0jJKjOvf8lIoBELL5QpamJQaf3wazNOi9s02NInAVloWWNsf64HVg==', 'GEWMORQD32OQIAXRT5W3E7UJTMAOIMJ3', 'fb103384-d7e5-469d-a4e4-c5d9a7ab042a', NULL, 0, 0, NULL, 1, 0, '0001-01-01 00:00:00.000000'),
 ('ee906ccd-feba-473a-a2c9-a65485ce8f41', '2025-05-30 00:00:00.000000', 'slacknere', 'SLACKNERE', NULL, NULL, 0, 'AQAAAAIAAYagAAAAEEHq85RAMrNHFEg1Tzg78FaPXx8OcF4w9qQ9bgZSIOZGvLvHBQenUp5GunMDBm1dfg==', '63WCJZC5HXIYSVPT4RMQYYCUTH6H3JAM', 'a7bc5b80-0637-4edc-8d2d-f12a9b395839', NULL, 0, 0, NULL, 1, 0, '0001-01-01 00:00:00.000000'),
 ('eee111f4-9d1f-4e92-b0e8-a10600d02e47', '2025-09-26 00:00:00.000000', 'gbrasseur2g', 'GBRASSEUR2G', NULL, NULL, 0, 'AQAAAAIAAYagAAAAECpeLlj8RflEszRKDrgJPIh8X0/EpHuGoCfvZBOi1JqqtfFhkvqZVnTbXd7hAZdOMw==', 'VS32Y2CRABKAV7MSAPJQNBJXVGLTXREI', 'fe75a33c-d0ee-4e7c-9db9-fc636ee45bd9', NULL, 0, 0, NULL, 1, 0, '0001-01-01 00:00:00.000000'),
-('f52d6229-eb21-402b-a358-ea6d90969b06', '2026-01-23 17:37:54.586156', 'krisz', 'KRISZ', '', '', 0, 'AQAAAAIAAYagAAAAEEd8xXOEYzB9ZBB002x45GCgTiY1zrRhSuxFtN4VLWpUOrjVsGsJwtgClLrB8Ade7Q==', 'N77UTQSHNXS7ZOXDG3FXYRHACAGYO4F3', '8e825b55-788c-40ea-b0a1-afe610b45825', NULL, 0, 0, NULL, 1, 0, '0001-01-01 00:00:00.000000'),
+('f52d6229-eb21-402b-a358-ea6d90969b06', '2026-01-23 17:37:54.586156', 'krisz', 'KRISZ', 'csigeri@kkszki.hu', '', 0, 'AQAAAAIAAYagAAAAEEd8xXOEYzB9ZBB002x45GCgTiY1zrRhSuxFtN4VLWpUOrjVsGsJwtgClLrB8Ade7Q==', 'N77UTQSHNXS7ZOXDG3FXYRHACAGYO4F3', '8e825b55-788c-40ea-b0a1-afe610b45825', NULL, 0, 0, NULL, 1, 0, '0001-01-01 00:00:00.000000'),
 ('fd638f13-a602-4241-a2e9-a15131851645', '2025-06-17 00:00:00.000000', 'ikyner', 'IKYNER', NULL, NULL, 0, 'AQAAAAIAAYagAAAAEL5ZX0Di8MHkWz5Wpu2IAxO77g5sAucnQXavQY9UiyX6hzYUVorsla2QjL2HDH36EQ==', 'G5ZAMF777EPMABA4KB5KS5CF3DVOCJED', '75f45046-36ab-40e9-bfe6-6bea42bd4bdf', NULL, 0, 0, NULL, 1, 0, '0001-01-01 00:00:00.000000');
 
 -- --------------------------------------------------------
@@ -303,7 +285,8 @@ INSERT INTO `saves` (`Id`, `Points`, `Level`, `Language`, `RegDate`, `ModDate`) 
 ('003d8e8f-e893-486f-a448-b0c34a3e769c', 1000, 6, 'en', '2025-11-09 00:00:00.000000', '2025-01-25 00:00:00.000000'),
 ('03541a6c-7130-4515-af42-1923e02a7d03', 100, 1, 'en', '2026-02-10 21:56:24.778836', '0001-01-01 00:00:00.000000'),
 ('05696491-7390-47fd-9c80-07067d33b1d0', 1200, 6, 'en', '2026-02-10 21:57:00.378336', '0001-01-01 00:00:00.000000'),
-('06454455-e423-4e45-87c9-e1660fd46da7', 600, 3, 'hu', '2026-02-10 21:57:44.792999', '0001-01-01 00:00:00.000000');
+('06454455-e423-4e45-87c9-e1660fd46da7', 600, 3, 'hu', '2026-02-10 21:57:44.792999', '0001-01-01 00:00:00.000000'),
+('f52d6229-eb21-402b-a358-ea6d90969b06', 500, 2, 'hu', '2026-03-07 22:33:00.000000', '0001-01-01 00:00:00.000000');
 
 -- --------------------------------------------------------
 
@@ -324,7 +307,7 @@ CREATE TABLE `szintarany` (
 
 CREATE TABLE `velemeny` (
   `Id` varchar(255) NOT NULL,
-  `Ertekeles` varchar(50) NOT NULL,
+  `Ertekeles` char(1) NOT NULL,
   `Megjegyzes` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 

@@ -70,6 +70,7 @@ namespace AuthApi.Services
                         email.Subject = "Sikeres regisztráció";
                         szoveg += "<p>Így hivatalosan fiókja lett a BorsodCoding-ban!</p>";
                     }
+                    szoveg += "<p><i>Ez egy rendszer által küldött automatikus üzenet! Kérjük ne válaszoljon feleslegesen erre az üzenetre!</i></p>";
 
                     email.Body = new TextPart(TextFormat.Html)
                     {
