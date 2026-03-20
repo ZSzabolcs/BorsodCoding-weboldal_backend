@@ -1,6 +1,6 @@
 ﻿namespace AuthApi.Services.Dtos
 {
-    public class FromWPFVelemenyDto
+    public class VelemenyFromWPFDto
     {
         public string Id { get;  set; }
         public string Ertekeles { get; set; }

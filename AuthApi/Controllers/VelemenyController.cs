@@ -100,7 +100,7 @@ namespace AuthApi.Controllers
 
         [Authorize(Roles = "Admin")]
         [HttpPut("FromWPF")]
-        public async Task<ActionResult> UpdateFromWPFVelemeny(FromWPFVelemenyDto velemenyDto)
+        public async Task<ActionResult> UpdateFromWPFVelemeny(VelemenyFromWPFDto velemenyDto)
         {
             try
             {

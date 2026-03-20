@@ -9,7 +9,7 @@ namespace AuthApi.Services.Interfaces.IForThePotato
         Task<object> UpdateVelemeny(VelemenyDto velemenyDto);
         Task<object> DeleteVelemeny(string id);
         Task<object> PostVelemeny(VelemenyDto velemenyDto);
-        Task<object> UpdateFromWPFVelemeny(FromWPFVelemenyDto velemenyDto);
+        Task<object> UpdateFromWPFVelemeny(VelemenyFromWPFDto velemenyDto);
         Task<object> DeleteFromWPFVelemeny(string id);
 
         

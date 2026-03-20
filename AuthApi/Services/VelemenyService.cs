@@ -152,7 +152,7 @@ namespace AuthApi.Services
             }
         }
 
-        public async Task<object> UpdateFromWPFVelemeny(FromWPFVelemenyDto velemenyDto)
+        public async Task<object> UpdateFromWPFVelemeny(VelemenyFromWPFDto velemenyDto)
         {
             try
             {
