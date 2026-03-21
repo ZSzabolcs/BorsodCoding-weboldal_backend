@@ -2,6 +2,7 @@
 using AuthApi.Models;
 using AuthApi.Services.Dtos;
 using AuthApi.Services.Interfaces.IAuthService;
+using K4os.Compression.LZ4.Internal;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System.Text.Json;
@@ -146,22 +147,20 @@ namespace AuthApi.Services
         {
 
             var user = await userManager.FindByNameAsync(updateUserDto.UserName);
-            bool changedEmail = false;
-
-            if (user != null) 
+            if (user != null)
             {
-                if (updateUserDto.Email != null)
+                if ((updateUserDto.Email != null && updateUserDto.Password == null) || (updateUserDto.Password == "" && updateUserDto.Email != ""))
                 {
                     user.Email = updateUserDto.Email;
+                    user.ModDate = DateTime.Now;
                     var update = await userManager.UpdateAsync(user);
                     if (update.Succeeded)
                     {
-                        user.ModDate = DateTime.Now;
-                        changedEmail = true;
+                        return new ResponseDto() { Value = user.UserName, Message = "Sikeres módosítás" };
                     }
                 }
 
-                if (updateUserDto.Password != null)
+                else if ((updateUserDto.Password != null && updateUserDto.Email == null) || (updateUserDto.Password != "" && updateUserDto.Email == ""))
                 {
 
                     var isRemovePassword = await userManager.RemovePasswordAsync(user);
@@ -173,32 +172,50 @@ namespace AuthApi.Services
                         if (isPasswordAdded.Succeeded)
                         {
 
-
+                            user.ModDate = DateTime.Now;
                             var updated = await userManager.UpdateAsync(user);
 
                             if (updated.Succeeded)
-                            {
-                                if (!changedEmail)
-                                {
-                                    user.ModDate = DateTime.Now;
-                                }
-
-                                return new ResponseDto() { Value = user.UserName, Message = "Sikeres módosítás" };
+                            { 
+                               return new ResponseDto() { Value = user.UserName, Message = "Sikeres módosítás" };
                             }
                         }
 
                     }
 
                 }
+                else if ((updateUserDto.Password != null && updateUserDto.Email != null) || (updateUserDto.Password != "" && updateUserDto.Email != ""))
+                {
+                   
+                    user.Email = updateUserDto.Email;
+                    var isRemovePassword = await userManager.RemovePasswordAsync(user);
+
+                    if (isRemovePassword.Succeeded)
+                    {
+                        var isPasswordAdded = await userManager.AddPasswordAsync(user, updateUserDto.Password);
+
+                        if (isPasswordAdded.Succeeded)
+                        {
+
+                            user.ModDate = DateTime.Now;
+                            var updated = await userManager.UpdateAsync(user);
+
+                            if (updated.Succeeded)
+                            {
+                                return new ResponseDto() { Value = user.UserName, Message = "Sikeres módosítás" };
+                            }
+                        }
+
+                    }
+                }
             }
 
-            if (changedEmail)
+            if (user == null)
             {
-                return new ResponseDto() { Value = user.UserName, Message = "Sikeres módosítás" };
+                return "A felhasználó nem létezik";
             }
 
-
-            return "Sikertelen módosítás";
+             return "Sikertelen módosítás. Hibás a JSON adatok";
         }
     }
 }
