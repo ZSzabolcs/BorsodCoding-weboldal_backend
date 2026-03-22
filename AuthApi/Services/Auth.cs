@@ -133,7 +133,7 @@ namespace AuthApi.Services
                 {
                     var roles = await userManager.GetRolesAsync(foundUser);
                     var jwtToken = tokenGenerator.GenerateToken(foundUser, roles);
-                    return new LoginResponseDto() { Value = foundUser.UserName, Message = "Sikeres regisztráció.", Token =jwtToken  };
+                    return new LoginResponseDto() { Value = foundUser.UserName, Message = "Sikeres regisztráció.", Token = jwtToken  };
                 }
 
                 
