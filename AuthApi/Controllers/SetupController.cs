@@ -15,7 +15,7 @@ namespace AuthApi.Controllers
         [HttpGet("download")]
         public IActionResult DownloadFile()
         {
-            var filePath = Path.Combine(Directory.GetCurrentDirectory(), "Setups", "For The Potato Setup.exe");
+            var filePath = Path.Combine(Directory.GetCurrentDirectory(), "Setups", "For The Potato Demo Setup.exe");
 
             if (!System.IO.File.Exists(filePath))
             {
@@ -30,7 +30,7 @@ namespace AuthApi.Controllers
 
             var fileStream = new FileStream(filePath, FileMode.Open, FileAccess.Read);
 
-            return File(fileStream, contentType, "For The Potato Setup.exe");
+            return File(fileStream, contentType, "For The Potato Demo Setup.exe");
         }
     }
 }
