@@ -26,6 +26,7 @@ namespace AuthApi.Controllers
             var data = await _save.GetAllData();
             return Ok(data);
         }
+
         [Authorize(Roles = "Admin,Player")]
         [HttpGet("Statisztika/{username}")]
         public async Task<object> GetStatistic(string username)
@@ -51,6 +52,7 @@ namespace AuthApi.Controllers
             }
             return BadRequest(responseDto);
         }
+
         [Authorize(Roles = "Admin,Player")]
         [HttpPut]
         public async Task<object> PutData(SaveDto save)
@@ -64,6 +66,7 @@ namespace AuthApi.Controllers
 
             return NotFound(responseDto);
         }
+
         [Authorize(Roles = "Admin")]
         [HttpPut("FromWPF")]
         public async Task<object> PutDataFromWPF(SaveDtoFromWPF save)
@@ -77,6 +80,7 @@ namespace AuthApi.Controllers
 
             return NotFound(responseDto);
         }
+
         [Authorize(Roles = "Admin")]
         [HttpDelete]
         public async Task<object> DeleteData(string id)
@@ -85,7 +89,7 @@ namespace AuthApi.Controllers
             var responseDto = response as ResponseDto;
             if (responseDto.Value != null)
             {
-                return StatusCode(201, responseDto);
+                return StatusCode(200, responseDto);
             }
 
             return NotFound(responseDto);

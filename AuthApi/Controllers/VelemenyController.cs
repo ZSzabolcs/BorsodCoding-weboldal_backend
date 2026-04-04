@@ -57,7 +57,7 @@ namespace AuthApi.Controllers
 
         [Authorize(Roles = "Admin,Player")]
         [HttpPost]
-        public async Task<ActionResult> PostAVelemeny(VelemenyDto velemenyDto)
+        public async Task<ActionResult> PostVelemeny(VelemenyDto velemenyDto)
         {
             try
             {
@@ -89,7 +89,7 @@ namespace AuthApi.Controllers
                     return BadRequest(response);
                 }
 
-                return Ok(response);
+                return StatusCode(201, response);
             }
             catch (Exception ex)
             {
@@ -154,7 +154,7 @@ namespace AuthApi.Controllers
                     NotFound(response);
                 }
 
-                return StatusCode(203, response);
+                return StatusCode(200, response);
 
             }
             catch (Exception ex)

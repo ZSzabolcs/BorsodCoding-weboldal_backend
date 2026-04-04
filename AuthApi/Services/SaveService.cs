@@ -130,7 +130,7 @@ namespace AuthApi.Services
                     }
                     else
                     {
-                        _responseDto.Message = "Sikertelen mentés";
+                        _responseDto.Message = "Már van mentése";
                         return _responseDto;
                     }
                 }

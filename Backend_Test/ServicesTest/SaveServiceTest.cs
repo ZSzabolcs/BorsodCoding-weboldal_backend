@@ -18,8 +18,14 @@ namespace Backend_Test.ServicesTest
 
             ];
 
+        private static SaveDto GetSampleSaveDto() => new SaveDto() { Name = "valaki", Language = "hu", Level = 2, Points = 500 };
+
         private static ResponseDto GetSampleResponseDto() => new ResponseDto { Message = "Sikeres lekérés", Value = GetSampleSaves() };
-        private static ResponseDto PostSampleResponseDto() => new ResponseDto() { Message = "Sikeres mentés", Value = new SaveDto() {  } };
+
+        private static ResponseDto PostSuccesfullSampleResponseDto() => new ResponseDto() { Message = "Sikeres mentés", Value = GetSampleSaveDto() };
+
+        private static ResponseDto PostErrorSampleResponseDto() => new ResponseDto { Message = "Sikertelen mentés", Value = null };
+
 
         [Fact]
         public async Task GetAllSavesAsync_ShouldReturnAllSaves()
@@ -46,26 +52,48 @@ namespace Backend_Test.ServicesTest
         }
 
         [Fact]
-        public async Task PostSaveAsync_ShouldBeSaveDto()
+        public async Task PostSaveAsync_ShouldBeSuccesfull()
         {
 
             var mockRepo = new Mock<ISaveRepository>();
 
             mockRepo
                 .Setup(repo => repo.PostData(It.IsAny<SaveDto>()))
-                .ReturnsAsync((SaveDto s) => {  return s; });
+                .ReturnsAsync(PostSuccesfullSampleResponseDto());
 
             var service = new MockSaveService(mockRepo.Object);
 
 
-            var result = await service.PostData(new SaveDto()
-            {
-                Language = "hu", Level = 2,
-                Points = 400, Name = "valaki"
-            });
+            var result = await service.PostData(GetSampleSaveDto());
 
-            (result as SaveDto).Points.Should().Be(400);
+            result.Should().BeAssignableTo<ResponseDto>();
+            var response = (ResponseDto)result;
+            response.Value.Should().BeAssignableTo<SaveDto>();
+            (response.Value as SaveDto).Level.Should().Be(2);
 
+
+            mockRepo.Verify(repo => repo.PostData(It.IsAny<SaveDto>()), Times.Once);
+
+        }
+
+        [Fact]
+        public async Task PostSaveAsync_ShouldBeErrorIfSaveDtoEmpty()
+        {
+
+            var mockRepo = new Mock<ISaveRepository>();
+
+            mockRepo
+                .Setup(repo => repo.PostData(It.IsAny<SaveDto>()))
+                .ReturnsAsync(PostErrorSampleResponseDto());
+
+            var service = new MockSaveService(mockRepo.Object);
+
+
+            var result = await service.PostData(new SaveDto());
+
+            result.Should().BeAssignableTo<ResponseDto>();
+            var response = result as ResponseDto;
+            response.Value.Should().BeNull();
 
             mockRepo.Verify(repo => repo.PostData(It.IsAny<SaveDto>()), Times.Once);
 
