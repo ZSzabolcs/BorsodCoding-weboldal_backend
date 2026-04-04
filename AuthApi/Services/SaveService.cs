@@ -103,19 +103,23 @@ namespace AuthApi.Services
             {
                 if (save != null)
                 {
-                    var nincsenSave = await _context.Users
-                        .Include(u => u.Save)
-                        .FirstOrDefaultAsync(u => u.NormalizedUserName == save.Name.ToUpper() && u.Save == null);
+                    var user = await _context.Users
+                        .FirstOrDefaultAsync(u => u.NormalizedUserName == save.Name.ToUpper());
 
+                    if (user == null)
+                    {
+                        _responseDto.Message = "Nincs ilyen felhasználó";
+                        return _responseDto;
+                    }
 
-                    if (nincsenSave != null)
+                    if (user.Save == null)
                     {
                         Save newSave = new Save()
                         {
                             Points = save.Points,
                             Level = save.Level,
                             Language = save.Language,
-                            Id = nincsenSave.Id,
+                            Id = user.Id,
                             RegDate = DateTime.Now,
                         };
                         await _context.Saves.AddAsync(newSave);
@@ -126,7 +130,7 @@ namespace AuthApi.Services
                     }
                     else
                     {
-                        _responseDto.Message = "Már van mentése";
+                        _responseDto.Message = "Sikertelen mentés";
                         return _responseDto;
                     }
                 }
@@ -150,8 +154,13 @@ namespace AuthApi.Services
                 if (save != null)
                 {
                     var user = await _context.Users
-                        .Include(u => u.Save)
                         .FirstOrDefaultAsync(us => us.NormalizedUserName == save.Name.ToUpper());
+
+                    if (user == null)
+                    {
+                        _responseDto.Message = "Nincsen ilyen felhasználó";
+                        return _responseDto;
+                    }
 
                     if (user.Save != null)
                     {
@@ -193,6 +202,13 @@ namespace AuthApi.Services
                     var user = await _context.Users
                         .Include(u => u.Save)
                         .FirstOrDefaultAsync(us => us.Id == save.Id);
+
+                    if (user == null)
+                    {
+                        _responseDto.Message = "Nincsen mentése";
+                        return _responseDto;
+                    }
+
 
                     if (user.Save != null)
                     {
