@@ -31,15 +31,15 @@ namespace AuthApi.Mock.Services
 
         public async Task<object> PostData(SaveDto save)
         {
-            var newSave = new SaveDto()
+            var saveDto =  new SaveDto()
             {
                 Language = save.Language,
                 Points = save.Points,
                 Level = save.Level,
-
+                Name = save.Name,
             };
 
-            return await _repository.PostData(newSave);
+            return await _repository.PostData(saveDto);
         }
 
         public async Task<object> PutData(SaveDto save)

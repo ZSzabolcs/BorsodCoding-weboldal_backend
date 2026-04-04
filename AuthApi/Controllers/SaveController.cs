@@ -10,7 +10,7 @@ namespace AuthApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class SaveController : ControllerBase, ISave
+    public class SaveController : ControllerBase
     {
         private readonly ISave _save;
 

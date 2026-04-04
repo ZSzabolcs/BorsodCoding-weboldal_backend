@@ -24,6 +24,8 @@ namespace Backend_Test.ControllersTest
         ];
 
         private static ResponseDto GetSampleResponseDto() => new ResponseDto { Message = "Sikeres lekérés", Value = GetSampleSaves() };
+        private static ResponseDto PostSampleResponseDto() => new ResponseDto { Message = "Sikeres mentés!", Value = new SaveDto() { Language = "hu", Level = 1, Name = "valaki", Points = 400 } };
+        private static ResponseDto PutSampleResponseDto() => new ResponseDto { Message = "Sikeres frissítés", Value = new SaveDto() { Language = "hu", Level = 1, Name = "valaki", Points = 400 } };
 
         [Fact]
         public async Task GetAll_ShouldReturn200WithSaves()
@@ -44,5 +46,49 @@ namespace Backend_Test.ControllersTest
             var saves = okResult.Value.Should().BeAssignableTo<ResponseDto>().Subject;
             (saves.Value as List<Save>).Should().HaveCount(2);
         }
+
+        [Fact]
+        public async Task PostSave_ShouldReturn201WithSaveDto()
+        {
+            var mockService = new Mock<ISave>();
+            var saveDto = new SaveDto() { Language = "hu", Level = 1, Name = "valaki", Points =  400};
+            mockService
+                .Setup(s => s.PostData(saveDto))
+                .ReturnsAsync(PostSampleResponseDto());
+
+            var controller = new SaveController(mockService.Object);
+
+            var actionResult = await controller.PostData(saveDto);
+
+            var result = actionResult.Should().BeOfType<ObjectResult>().Subject;
+            result.StatusCode.Should().Be(201);
+            
+            var response = result.Value.Should().BeAssignableTo<ResponseDto>().Subject;
+            response.Value.Should().BeAssignableTo<SaveDto>();
+            (response.Value as SaveDto).Level.Should().Be(1);
+        }
+        
+        [Fact]
+        public async Task PutSave_ShouldReturn201WithSaveDto()
+        {
+            var mockService = new Mock<ISave>();
+            var saveDto = new SaveDto() { Language = "hu", Level = 1, Name = "valaki", Points =  400};
+            mockService
+                .Setup(s => s.PutData(saveDto))
+                .ReturnsAsync(PutSampleResponseDto());
+
+            var controller = new SaveController(mockService.Object);
+
+            var actionResult = await controller.PutData(saveDto);
+
+            var result = actionResult.Should().BeOfType<ObjectResult>().Subject;
+            result.StatusCode.Should().Be(201);
+            
+            var response = result.Value.Should().BeAssignableTo<ResponseDto>().Subject;
+            response.Value.Should().BeAssignableTo<SaveDto>();
+            (response.Value as SaveDto).Level.Should().Be(1); 
+            
+        }
+        
     }
 }
