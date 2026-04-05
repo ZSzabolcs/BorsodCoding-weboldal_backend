@@ -28,10 +28,10 @@ namespace AuthApi.Services
                     _context.Remove(record);
                     await _context.SaveChangesAsync();
                     _responseDto.Value = record;
-                    _responseDto.Message = "Sikeres törlés";
+                    _responseDto.Message = "Sikeres törlés!";
                     return _responseDto;
                 }
-                _responseDto.Message = "Sikertelen törlés";
+                _responseDto.Message = "Sikertelen törlés!";
                 return _responseDto;
             }
             catch (Exception ex)
@@ -109,7 +109,7 @@ namespace AuthApi.Services
 
                     if (user == null)
                     {
-                        _responseDto.Message = "Nincs ilyen felhasználó";
+                        _responseDto.Message = "Nincs ilyen felhasználó!";
                         return _responseDto;
                     }
 
@@ -127,11 +127,11 @@ namespace AuthApi.Services
                         };
                         if (save.Language == "en")
                         {
-                            textMessage = "Sucessfully saved";
+                            textMessage = "Successfully saved!";
                         }
                         else
                         {
-                            textMessage = "Sikeres mentés";
+                            textMessage = "Sikeres mentés!";
                         }
                         await _context.Saves.AddAsync(newSave);
                         await _context.SaveChangesAsync();
@@ -140,12 +140,12 @@ namespace AuthApi.Services
                         return _responseDto;
                     }
                     
-                     _responseDto.Message = "Már van mentése";
+                     _responseDto.Message = "Már van mentése!";
                      return _responseDto;
                     
                 }
 
-                _responseDto.Message = "Sikertelen mentés";
+                _responseDto.Message = "Sikertelen mentés!";
                 return _responseDto;
 
             }
@@ -169,7 +169,7 @@ namespace AuthApi.Services
 
                     if (user == null)
                     {
-                        _responseDto.Message = "Nincsen ilyen felhasználó";
+                        _responseDto.Message = "Nincsen ilyen felhasználó!";
                         return _responseDto;
                     }
 
@@ -182,11 +182,11 @@ namespace AuthApi.Services
                         user.Save.ModDate = DateTime.Now;
                         if (save.Language == "en")
                         {
-                            textMessage = "Sucessfully updated";
+                            textMessage = "Successfully updated!";
                         }
                         else
                         {
-                            textMessage = "Sikeres frissítés";
+                            textMessage = "Sikeres frissítés!";
                         }
                         _context.Saves.Update(user.Save);
                         await _context.SaveChangesAsync();
@@ -195,14 +195,14 @@ namespace AuthApi.Services
                         return _responseDto;
                     }
 
-                     _responseDto.Message = "Nincsen mentése";
+                     _responseDto.Message = "Nincsen mentése!";
                      return _responseDto;
                     
 
 
                 }
 
-                _responseDto.Message = "Sikertelen módosítás";
+                _responseDto.Message = "Sikertelen módosítás!";
                 return _responseDto;
             }
             catch (Exception ex)
@@ -224,7 +224,7 @@ namespace AuthApi.Services
 
                     if (user == null)
                     {
-                        _responseDto.Message = "Nincsen mentése";
+                        _responseDto.Message = "Nincsen mentése!";
                         return _responseDto;
                     }
 
@@ -237,19 +237,19 @@ namespace AuthApi.Services
                         user.Save.ModDate = DateTime.Now;
                         _context.Saves.Update(user.Save);
                         await _context.SaveChangesAsync();
-                        _responseDto.Message = "Sikeres frissítés";
+                        _responseDto.Message = "Sikeres frissítés!";
                         _responseDto.Value = save;
                         return _responseDto;
                     }
 
-                     _responseDto.Message = "Nincsen mentése";
+                     _responseDto.Message = "Nincsen mentése!";
                      return _responseDto;
                     
 
 
                 }
 
-                _responseDto.Message = "Sikertelen módosítás";
+                _responseDto.Message = "Sikertelen módosítás!";
                 return _responseDto;
             }
             catch (Exception ex)

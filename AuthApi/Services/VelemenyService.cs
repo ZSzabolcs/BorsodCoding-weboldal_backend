@@ -107,7 +107,7 @@ namespace AuthApi.Services
                     return "Még nem adtál véleményt!";
                 }
 
-                return "Nem létezik ilyen fiók";
+                return "Nem létezik ilyen fiók!";
 
             }
             catch (Exception ex)
@@ -144,7 +144,7 @@ namespace AuthApi.Services
                 
                 }
 
-                return "Sikertelen mentés. Próbálja újra később.";
+                return "Sikertelen mentés! Próbálja újra később!";
             }
             catch (Exception ex)
             {
@@ -168,14 +168,14 @@ namespace AuthApi.Services
 
                             _context.Velemeny.Update(velemeny);
                             await _context.SaveChangesAsync();
-                            _responseDto.Message = "A módosított vélemény sikeresen elmentve";
+                            _responseDto.Message = "A módosított véleményed sikeresen elmentve!";
                             _responseDto.Value = velemenyDto;
                             return _responseDto;
                         }
                     
                 }
 
-                return "Sikertelen módosítás. Próbálja újra később.";
+                return "Sikertelen módosítás! Próbálja újra később!";
             }
             catch (Exception ex)
             {
@@ -202,14 +202,14 @@ namespace AuthApi.Services
 
                             _context.Velemeny.Update(velemeny);
                             await _context.SaveChangesAsync();
-                            _responseDto.Message = "A módosított véleményed sikeresen elmentve";
+                            _responseDto.Message = "A módosított véleményed sikeresen elmentve!";
                             _responseDto.Value = velemenyDto;
                             return _responseDto;
                         }
                     }
                 }
 
-                return "Sikertelen módosítás. Próbálja újra később.";
+                return "Sikertelen módosítás! Próbálja újra később!";
             }
             catch (Exception ex)
             {

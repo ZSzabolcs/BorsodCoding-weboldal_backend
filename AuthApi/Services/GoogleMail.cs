@@ -87,11 +87,11 @@ namespace AuthApi.Services
                         );
                     smtp.Send(email);
                     smtp.Disconnect(true);
-                    return "Sikeres bejelentkezés vagy regisztráció";
+                    return "Sikeres bejelentkezés vagy regisztráció!";
                 }
                 else
                 {
-                    return "Sikertelen bejelentkezés vagy regisztráció";
+                    return "Sikertelen bejelentkezés vagy regisztráció!";
                 }
 
                 
