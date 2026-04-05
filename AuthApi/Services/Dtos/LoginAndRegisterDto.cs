@@ -10,5 +10,4 @@
     }
     public record LoginRequestDto(string UserName, string Password);
 
-    public record Response(string Message);
 }
