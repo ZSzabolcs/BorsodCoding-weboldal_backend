@@ -1,11 +1,3 @@
--- phpMyAdmin SQL Dump
--- version 5.2.1
--- https://www.phpmyadmin.net/
---
--- Gép: 127.0.0.1
--- Létrehozás ideje: 2026. Ápr 05. 04:49
--- Kiszolgáló verziója: 10.4.32-MariaDB
--- PHP verzió: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -17,15 +9,9 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
 
---
--- Adatbázis: `for_the_potato`
---
-
--- --------------------------------------------------------
-
---
--- Tábla szerkezet ehhez a táblához `aspnetroleclaims`
---
+DROP DATABASE IF EXISTS for_the_potato;
+CREATE DATABASE for_the_potato;
+USE for_the_potato;
 
 CREATE TABLE `aspnetroleclaims` (
   `Id` int(11) NOT NULL,
@@ -475,8 +461,6 @@ CREATE TABLE `__efmigrationshistory` (
 -- A tábla adatainak kiíratása `__efmigrationshistory`
 --
 
-INSERT INTO `__efmigrationshistory` (`MigrationId`, `ProductVersion`) VALUES
-('20260213155153_SaveTableAdded', '8.0.25');
 
 -- --------------------------------------------------------
 

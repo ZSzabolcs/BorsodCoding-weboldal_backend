@@ -77,7 +77,6 @@ namespace AuthApi
             {
                 opt.SwaggerDoc("v1", new OpenApiInfo { Title = "BorsodCoding API", Version = "v1" });
 
-                // 1. Definíció hozzáadása (Hogyan nézzen ki a beviteli mezõ)
                 opt.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
                 {
                     In = ParameterLocation.Header,
@@ -88,7 +87,6 @@ namespace AuthApi
                     Scheme = "bearer"
                 });
 
-                // 2. Globális követelmény (Minden végponthoz jelenjen meg a lakat)
                 opt.AddSecurityRequirement(new OpenApiSecurityRequirement
     {
         {

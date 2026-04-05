@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using Microsoft.EntityFrameworkCore.Migrations;
 using MySql.EntityFrameworkCore.Metadata;
 
@@ -21,7 +22,7 @@ namespace AuthApi.Migrations
             }
             else
             {
-                throw new FileNotFoundException("Nem találom az SQL fájlt a migrációhoz!");
+                throw new FileNotFoundException("Nem található az SQL fájl a migrációhoz!");
             }
         }
 
