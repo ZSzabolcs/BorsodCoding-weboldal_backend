@@ -115,6 +115,7 @@ namespace AuthApi.Services
 
                     if (user.Save == null)
                     {
+                        string textMessage;
                         Save newSave = new Save()
                         {
                             Points = save.Points,
@@ -124,9 +125,17 @@ namespace AuthApi.Services
                             RegDate = DateTime.Now,
                             ModDate = DateTime.MinValue
                         };
+                        if (save.Language == "en")
+                        {
+                            textMessage = "Sucessfully saved";
+                        }
+                        else
+                        {
+                            textMessage = "Sikeres mentés";
+                        }
                         await _context.Saves.AddAsync(newSave);
                         await _context.SaveChangesAsync();
-                        _responseDto.Message = "Sikeres mentés";
+                        _responseDto.Message = textMessage;
                         _responseDto.Value = save;
                         return _responseDto;
                     }
@@ -166,13 +175,22 @@ namespace AuthApi.Services
 
                     if (user.Save != null)
                     {
+                        string textMessage;
                         user.Save.Level = save.Level;
                         user.Save.Points = save.Points;
                         user.Save.Language = save.Language;
                         user.Save.ModDate = DateTime.Now;
+                        if (save.Language == "en")
+                        {
+                            textMessage = "Sucessfully updated";
+                        }
+                        else
+                        {
+                            textMessage = "Sikeres frissítés";
+                        }
                         _context.Saves.Update(user.Save);
                         await _context.SaveChangesAsync();
-                        _responseDto.Message = "Sikeres frissítés";
+                        _responseDto.Message = textMessage;
                         _responseDto.Value = save;
                         return _responseDto;
                     }
