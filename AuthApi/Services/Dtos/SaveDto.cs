@@ -5,10 +5,10 @@ namespace AuthApi.Services.Dtos
 {
     public class SaveDto
     {
-        private string? language;
+        private string language;
 
         [Required]
-        public string? Name { get; set; }
+        public string Name { get; set; }
         [Required]
         public int Points { get; set; }
         [Required]

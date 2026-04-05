@@ -104,6 +104,7 @@ namespace AuthApi.Services
                 if (save != null)
                 {
                     var user = await _context.Users
+                        .Include(u => u.Save)
                         .FirstOrDefaultAsync(u => u.NormalizedUserName == save.Name.ToUpper());
 
                     if (user == null)
@@ -121,6 +122,7 @@ namespace AuthApi.Services
                             Language = save.Language,
                             Id = user.Id,
                             RegDate = DateTime.Now,
+                            ModDate = DateTime.MinValue
                         };
                         await _context.Saves.AddAsync(newSave);
                         await _context.SaveChangesAsync();
@@ -128,11 +130,10 @@ namespace AuthApi.Services
                         _responseDto.Value = save;
                         return _responseDto;
                     }
-                    else
-                    {
-                        _responseDto.Message = "Már van mentése";
-                        return _responseDto;
-                    }
+                    
+                     _responseDto.Message = "Már van mentése";
+                     return _responseDto;
+                    
                 }
 
                 _responseDto.Message = "Sikertelen mentés";
@@ -141,7 +142,7 @@ namespace AuthApi.Services
             }
             catch (Exception ex)
             {
-                _responseDto.Message = ex.Message;
+                _responseDto.Message = $"Error: {ex.Message}";
                 return _responseDto;
             }
         }
@@ -154,6 +155,7 @@ namespace AuthApi.Services
                 if (save != null)
                 {
                     var user = await _context.Users
+                        .Include(u => u.Save)
                         .FirstOrDefaultAsync(us => us.NormalizedUserName == save.Name.ToUpper());
 
                     if (user == null)
@@ -174,11 +176,10 @@ namespace AuthApi.Services
                         _responseDto.Value = save;
                         return _responseDto;
                     }
-                    else
-                    {
-                        _responseDto.Message = "Nincsen mentése";
-                        return _responseDto;
-                    }
+
+                     _responseDto.Message = "Nincsen mentése";
+                     return _responseDto;
+                    
 
 
                 }
@@ -188,7 +189,7 @@ namespace AuthApi.Services
             }
             catch (Exception ex)
             {
-                _responseDto.Message = ex.Message;
+                _responseDto.Message = $"Error: {ex.Message}";
                 return _responseDto;
             }
         }
@@ -222,11 +223,10 @@ namespace AuthApi.Services
                         _responseDto.Value = save;
                         return _responseDto;
                     }
-                    else
-                    {
-                        _responseDto.Message = "Nincsen mentése";
-                        return _responseDto;
-                    }
+
+                     _responseDto.Message = "Nincsen mentése";
+                     return _responseDto;
+                    
 
 
                 }

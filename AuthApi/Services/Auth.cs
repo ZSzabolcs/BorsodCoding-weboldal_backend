@@ -163,13 +163,13 @@ namespace AuthApi.Services
                 else if ((updateUserDto.Password != null && updateUserDto.Email == null) || (updateUserDto.Password != "" && updateUserDto.Email == ""))
                 {
 
-                    var isRemovePassword = await userManager.RemovePasswordAsync(user);
+                    var removePassword = await userManager.RemovePasswordAsync(user);
 
-                    if (isRemovePassword.Succeeded)
+                    if (removePassword.Succeeded)
                     {
-                        var isPasswordAdded = await userManager.AddPasswordAsync(user, updateUserDto.Password);
+                        var passwordAdded = await userManager.AddPasswordAsync(user, updateUserDto.Password);
 
-                        if (isPasswordAdded.Succeeded)
+                        if (passwordAdded.Succeeded)
                         {
 
                             user.ModDate = DateTime.Now;
@@ -188,13 +188,13 @@ namespace AuthApi.Services
                 {
                    
                     user.Email = updateUserDto.Email;
-                    var isRemovePassword = await userManager.RemovePasswordAsync(user);
+                    var removePassword = await userManager.RemovePasswordAsync(user);
 
-                    if (isRemovePassword.Succeeded)
+                    if (removePassword.Succeeded)
                     {
-                        var isPasswordAdded = await userManager.AddPasswordAsync(user, updateUserDto.Password);
+                        var passwordAdded = await userManager.AddPasswordAsync(user, updateUserDto.Password);
 
-                        if (isPasswordAdded.Succeeded)
+                        if (passwordAdded.Succeeded)
                         {
 
                             user.ModDate = DateTime.Now;
