@@ -8,7 +8,7 @@ namespace AuthApi.Datas
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
-
+            Database.EnsureCreated();
         }
         public DbSet<ApplicationUser> applicationUsers { get; set; } = null!;
 

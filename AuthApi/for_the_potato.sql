@@ -13,7 +13,7 @@ DROP DATABASE IF EXISTS for_the_potato;
 CREATE DATABASE for_the_potato;
 USE for_the_potato;
 
-CREATE TABLE `aspnetroleclaims` (
+CREATE TABLE `AspNetRoleClaims` (
   `Id` int(11) NOT NULL,
   `RoleId` varchar(255) NOT NULL,
   `ClaimType` longtext DEFAULT NULL,
@@ -23,10 +23,10 @@ CREATE TABLE `aspnetroleclaims` (
 -- --------------------------------------------------------
 
 --
--- Tábla szerkezet ehhez a táblához `aspnetroles`
+-- Tábla szerkezet ehhez a táblához `AspNetRoles`
 --
 
-CREATE TABLE `aspnetroles` (
+CREATE TABLE `AspNetRoles` (
   `Id` varchar(255) NOT NULL,
   `Name` varchar(256) DEFAULT NULL,
   `NormalizedName` varchar(256) DEFAULT NULL,
@@ -34,20 +34,20 @@ CREATE TABLE `aspnetroles` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- A tábla adatainak kiíratása `aspnetroles`
+-- A tábla adatainak kiíratása `AspNetRoles`
 --
 
-INSERT INTO `aspnetroles` (`Id`, `Name`, `NormalizedName`, `ConcurrencyStamp`) VALUES
+INSERT INTO `AspNetRoles` (`Id`, `Name`, `NormalizedName`, `ConcurrencyStamp`) VALUES
 ('60acdb17-28d7-4dc6-a584-e8061e2a0506', 'Player', 'PLAYER', NULL),
 ('dff5dfe8-54ee-4b2c-9233-35d98bf0691d', 'Admin', 'ADMIN', NULL);
 
 -- --------------------------------------------------------
 
 --
--- Tábla szerkezet ehhez a táblához `aspnetuserclaims`
+-- Tábla szerkezet ehhez a táblához `AspNetUserClaims`
 --
 
-CREATE TABLE `aspnetuserclaims` (
+CREATE TABLE `AspNetUserClaims` (
   `Id` int(11) NOT NULL,
   `UserId` varchar(255) NOT NULL,
   `ClaimType` longtext DEFAULT NULL,
@@ -57,10 +57,10 @@ CREATE TABLE `aspnetuserclaims` (
 -- --------------------------------------------------------
 
 --
--- Tábla szerkezet ehhez a táblához `aspnetuserlogins`
+-- Tábla szerkezet ehhez a táblához `AspNetUserLogins`
 --
 
-CREATE TABLE `aspnetuserlogins` (
+CREATE TABLE `AspNetUserLogins` (
   `LoginProvider` varchar(255) NOT NULL,
   `ProviderKey` varchar(255) NOT NULL,
   `ProviderDisplayName` longtext DEFAULT NULL,
@@ -70,19 +70,19 @@ CREATE TABLE `aspnetuserlogins` (
 -- --------------------------------------------------------
 
 --
--- Tábla szerkezet ehhez a táblához `aspnetuserroles`
+-- Tábla szerkezet ehhez a táblához `AspNetUserRoles`
 --
 
-CREATE TABLE `aspnetuserroles` (
+CREATE TABLE `AspNetUserRoles` (
   `UserId` varchar(255) NOT NULL,
   `RoleId` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- A tábla adatainak kiíratása `aspnetuserroles`
+-- A tábla adatainak kiíratása `AspNetUserRoles`
 --
 
-INSERT INTO `aspnetuserroles` (`UserId`, `RoleId`) VALUES
+INSERT INTO `AspNetUserRoles` (`UserId`, `RoleId`) VALUES
 ('003d8e8f-e893-486f-a448-b0c34a3e769c', '60acdb17-28d7-4dc6-a584-e8061e2a0506'),
 ('00e2b2e2-1b6a-4362-9d14-afcd7e2595ca', '60acdb17-28d7-4dc6-a584-e8061e2a0506'),
 ('03541a6c-7130-4515-af42-1923e02a7d03', '60acdb17-28d7-4dc6-a584-e8061e2a0506'),
@@ -190,10 +190,10 @@ INSERT INTO `aspnetuserroles` (`UserId`, `RoleId`) VALUES
 -- --------------------------------------------------------
 
 --
--- Tábla szerkezet ehhez a táblához `aspnetusers`
+-- Tábla szerkezet ehhez a táblához `AspNetUsers`
 --
 
-CREATE TABLE `aspnetusers` (
+CREATE TABLE `AspNetUsers` (
   `Id` varchar(255) NOT NULL,
   `Birthdate` datetime(6) NOT NULL,
   `UserName` varchar(256) DEFAULT NULL,
@@ -214,10 +214,10 @@ CREATE TABLE `aspnetusers` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- A tábla adatainak kiíratása `aspnetusers`
+-- A tábla adatainak kiíratása `AspNetUsers`
 --
 
-INSERT INTO `aspnetusers` (`Id`, `Birthdate`, `UserName`, `NormalizedUserName`, `Email`, `NormalizedEmail`, `EmailConfirmed`, `PasswordHash`, `SecurityStamp`, `ConcurrencyStamp`, `PhoneNumber`, `PhoneNumberConfirmed`, `TwoFactorEnabled`, `LockoutEnd`, `LockoutEnabled`, `AccessFailedCount`, `ModDate`) VALUES
+INSERT INTO `AspNetUsers` (`Id`, `Birthdate`, `UserName`, `NormalizedUserName`, `Email`, `NormalizedEmail`, `EmailConfirmed`, `PasswordHash`, `SecurityStamp`, `ConcurrencyStamp`, `PhoneNumber`, `PhoneNumberConfirmed`, `TwoFactorEnabled`, `LockoutEnd`, `LockoutEnabled`, `AccessFailedCount`, `ModDate`) VALUES
 ('003d8e8f-e893-486f-a448-b0c34a3e769c', '2025-11-09 00:00:00.000000', 'swinstone20', 'SWINSTONE20', NULL, NULL, 0, 'AQAAAAIAAYagAAAAEPlKkdTgS2bwDk/1WSCtvHYE+WOqrFW/oHv6GKOmCMvyQTrIBDJbxPs8DSJR7fLI/Q==', 'FOCZO4FZBFOMNOW6S6E3IXH6PM2TI45H', '06b2b8f5-7f20-4a9c-957c-7d61f62f7a69', NULL, 0, 0, NULL, 1, 0, '0001-01-01 00:00:00.000000'),
 ('00e2b2e2-1b6a-4362-9d14-afcd7e2595ca', '2025-09-29 00:00:00.000000', 'rfieldersx', 'RFIELDERSX', NULL, NULL, 0, 'AQAAAAIAAYagAAAAEEwbGHzzBr4Zwjv49w5nFSHBkGTIFlTKqql403qUO0pNmnJaGOG45nSC1XSo1aTlIw==', '2PPX4DT365MNMBKPDYBFZUU3W7WG5NXA', '6aaca2e9-4ea0-4b72-b498-6eda831ecfa7', NULL, 0, 0, NULL, 1, 0, '0001-01-01 00:00:00.000000'),
 ('03541a6c-7130-4515-af42-1923e02a7d03', '2025-09-10 00:00:00.000000', 'rsinnett2a', 'RSINNETT2A', NULL, NULL, 0, 'AQAAAAIAAYagAAAAEBDE6XOrDMDI2H92xSDgasyeyRItI3XQzr/Fm4oHZ/T/PpBlQRhAjLaiaV8okYs/lw==', 'UBT722POOW32KFKEP4EFGMU3Q57YIBRO', 'fea6e63b-71e4-4c43-b623-b5fee39dc35d', NULL, 0, 0, NULL, 1, 0, '0001-01-01 00:00:00.000000'),
@@ -324,10 +324,10 @@ INSERT INTO `aspnetusers` (`Id`, `Birthdate`, `UserName`, `NormalizedUserName`, 
 -- --------------------------------------------------------
 
 --
--- Tábla szerkezet ehhez a táblához `aspnetusertokens`
+-- Tábla szerkezet ehhez a táblához `AspNetUserTokens`
 --
 
-CREATE TABLE `aspnetusertokens` (
+CREATE TABLE `AspNetUserTokens` (
   `UserId` varchar(255) NOT NULL,
   `LoginProvider` varchar(255) NOT NULL,
   `Name` varchar(255) NOT NULL,
@@ -369,10 +369,10 @@ CREATE TABLE `pontaranyegyt` (
 -- --------------------------------------------------------
 
 --
--- Tábla szerkezet ehhez a táblához `saves`
+-- Tábla szerkezet ehhez a táblához `Saves`
 --
 
-CREATE TABLE `saves` (
+CREATE TABLE `Saves` (
   `Id` char(255) NOT NULL,
   `Points` int(11) NOT NULL,
   `Level` int(11) NOT NULL,
@@ -382,10 +382,10 @@ CREATE TABLE `saves` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- A tábla adatainak kiíratása `saves`
+-- A tábla adatainak kiíratása `Saves`
 --
 
-INSERT INTO `saves` (`Id`, `Points`, `Level`, `Language`, `RegDate`, `ModDate`) VALUES
+INSERT INTO `Saves` (`Id`, `Points`, `Level`, `Language`, `RegDate`, `ModDate`) VALUES
 ('003d8e8f-e893-486f-a448-b0c34a3e769c', 1000, 6, 'en', '2025-11-09 00:00:00.000000', '2025-01-25 00:00:00.000000'),
 ('03541a6c-7130-4515-af42-1923e02a7d03', 100, 1, 'en', '2026-02-10 21:56:24.778836', '0001-01-01 00:00:00.000000'),
 ('05696491-7390-47fd-9c80-07067d33b1d0', 1200, 6, 'en', '2026-02-10 21:57:00.378336', '0001-01-01 00:00:00.000000'),
@@ -416,20 +416,20 @@ CREATE TABLE `szintarany` (
 -- --------------------------------------------------------
 
 --
--- Tábla szerkezet ehhez a táblához `velemeny`
+-- Tábla szerkezet ehhez a táblához `Velemeny`
 --
 
-CREATE TABLE `velemeny` (
+CREATE TABLE `Velemeny` (
   `Id` varchar(255) NOT NULL,
   `Ertekeles` char(1) NOT NULL,
   `Megjegyzes` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- A tábla adatainak kiíratása `velemeny`
+-- A tábla adatainak kiíratása `Velemeny`
 --
 
-INSERT INTO `velemeny` (`Id`, `Ertekeles`, `Megjegyzes`) VALUES
+INSERT INTO `Velemeny` (`Id`, `Ertekeles`, `Megjegyzes`) VALUES
 ('5af671a9-9377-4092-933c-6d197287a004', '3', 'Jó játék'),
 ('5b0a929b-6b47-4dbd-832e-1d51319b5b49', '4', 'Van benne potenciál'),
 ('5e7ba88e-dae3-46ed-86e9-da7fa6300c65', '2', 'Nagyon bugos'),
@@ -449,16 +449,16 @@ INSERT INTO `velemeny` (`Id`, `Ertekeles`, `Megjegyzes`) VALUES
 -- --------------------------------------------------------
 
 --
--- Tábla szerkezet ehhez a táblához `__efmigrationshistory`
+-- Tábla szerkezet ehhez a táblához `__EFMigrationsHistory`
 --
 
-CREATE TABLE `__efmigrationshistory` (
+CREATE TABLE `__EFMigrationsHistory` (
   `MigrationId` varchar(150) NOT NULL,
   `ProductVersion` varchar(32) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- A tábla adatainak kiíratása `__efmigrationshistory`
+-- A tábla adatainak kiíratása `__EFMigrationsHistory`
 --
 
 
@@ -469,7 +469,7 @@ CREATE TABLE `__efmigrationshistory` (
 --
 DROP TABLE IF EXISTS `mentesek`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `mentesek`  AS SELECT count(`saves`.`Id`) AS `DB` FROM `saves` ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `mentesek`  AS SELECT count(`Saves`.`Id`) AS `DB` FROM `Saves` ;
 
 -- --------------------------------------------------------
 
@@ -478,7 +478,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `nyelvarany`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `nyelvarany`  AS SELECT `saves`.`Language` AS `Language`, cast(count(`saves`.`Id`) / `mentesek`.`DB` * 100 as decimal(10,1)) AS `Szazalek` FROM (`saves` join `mentesek`) GROUP BY `saves`.`Language` ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `nyelvarany`  AS SELECT `Saves`.`Language` AS `Language`, cast(count(`Saves`.`Id`) / `mentesek`.`DB` * 100 as decimal(10,1)) AS `Szazalek` FROM (`Saves` join `mentesek`) GROUP BY `Saves`.`Language` ;
 
 -- --------------------------------------------------------
 
@@ -487,7 +487,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `pontaranyegyt`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `pontaranyegyt`  AS SELECT `saves`.`Points` AS `Points`, cast(count(`saves`.`Id`) / `mentesek`.`DB` * 100 as decimal(10,1)) AS `Szazalek` FROM (`saves` join `mentesek`) GROUP BY `saves`.`Points` ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `pontaranyegyt`  AS SELECT `Saves`.`Points` AS `Points`, cast(count(`Saves`.`Id`) / `mentesek`.`DB` * 100 as decimal(10,1)) AS `Szazalek` FROM (`Saves` join `mentesek`) GROUP BY `Saves`.`Points` ;
 
 -- --------------------------------------------------------
 
@@ -496,79 +496,79 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `szintarany`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `szintarany`  AS SELECT `saves`.`Level` AS `Level`, cast(count(`saves`.`Id`) / `mentesek`.`DB` * 100 as decimal(10,1)) AS `Szazalek` FROM (`saves` join `mentesek`) GROUP BY `saves`.`Level` ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `szintarany`  AS SELECT `Saves`.`Level` AS `Level`, cast(count(`Saves`.`Id`) / `mentesek`.`DB` * 100 as decimal(10,1)) AS `Szazalek` FROM (`Saves` join `mentesek`) GROUP BY `Saves`.`Level` ;
 
 --
 -- Indexek a kiírt táblákhoz
 --
 
 --
--- A tábla indexei `aspnetroleclaims`
+-- A tábla indexei `AspNetRoleClaims`
 --
-ALTER TABLE `aspnetroleclaims`
+ALTER TABLE `AspNetRoleClaims`
   ADD PRIMARY KEY (`Id`),
   ADD KEY `IX_AspNetRoleClaims_RoleId` (`RoleId`);
 
 --
--- A tábla indexei `aspnetroles`
+-- A tábla indexei `AspNetRoles`
 --
-ALTER TABLE `aspnetroles`
+ALTER TABLE `AspNetRoles`
   ADD PRIMARY KEY (`Id`),
   ADD UNIQUE KEY `RoleNameIndex` (`NormalizedName`);
 
 --
--- A tábla indexei `aspnetuserclaims`
+-- A tábla indexei `AspNetUserClaims`
 --
-ALTER TABLE `aspnetuserclaims`
+ALTER TABLE `AspNetUserClaims`
   ADD PRIMARY KEY (`Id`),
   ADD KEY `IX_AspNetUserClaims_UserId` (`UserId`);
 
 --
--- A tábla indexei `aspnetuserlogins`
+-- A tábla indexei `AspNetUserLogins`
 --
-ALTER TABLE `aspnetuserlogins`
+ALTER TABLE `AspNetUserLogins`
   ADD PRIMARY KEY (`LoginProvider`,`ProviderKey`),
   ADD KEY `IX_AspNetUserLogins_UserId` (`UserId`);
 
 --
--- A tábla indexei `aspnetuserroles`
+-- A tábla indexei `AspNetUserRoles`
 --
-ALTER TABLE `aspnetuserroles`
+ALTER TABLE `AspNetUserRoles`
   ADD PRIMARY KEY (`UserId`,`RoleId`),
   ADD KEY `IX_AspNetUserRoles_RoleId` (`RoleId`);
 
 --
--- A tábla indexei `aspnetusers`
+-- A tábla indexei `AspNetUsers`
 --
-ALTER TABLE `aspnetusers`
+ALTER TABLE `AspNetUsers`
   ADD PRIMARY KEY (`Id`),
   ADD UNIQUE KEY `UserNameIndex` (`NormalizedUserName`),
   ADD KEY `EmailIndex` (`NormalizedEmail`);
 
 --
--- A tábla indexei `aspnetusertokens`
+-- A tábla indexei `AspNetUserTokens`
 --
-ALTER TABLE `aspnetusertokens`
+ALTER TABLE `AspNetUserTokens`
   ADD PRIMARY KEY (`UserId`,`LoginProvider`,`Name`);
 
 --
--- A tábla indexei `saves`
+-- A tábla indexei `Saves`
 --
-ALTER TABLE `saves`
+ALTER TABLE `Saves`
   ADD PRIMARY KEY (`Id`),
   ADD KEY `Id` (`Id`);
 
 --
--- A tábla indexei `velemeny`
+-- A tábla indexei `Velemeny`
 --
-ALTER TABLE `velemeny`
+ALTER TABLE `Velemeny`
   ADD PRIMARY KEY (`Id`),
   ADD KEY `Id` (`Id`);
 
 --
--- A tábla indexei `__efmigrationshistory`
+-- A tábla indexei `__EFMigrationsHistory`
 --
-ALTER TABLE `__efmigrationshistory`
+ALTER TABLE `__EFMigrationsHistory`
   ADD PRIMARY KEY (`MigrationId`);
 
 --
@@ -576,15 +576,15 @@ ALTER TABLE `__efmigrationshistory`
 --
 
 --
--- AUTO_INCREMENT a táblához `aspnetroleclaims`
+-- AUTO_INCREMENT a táblához `AspNetRoleClaims`
 --
-ALTER TABLE `aspnetroleclaims`
+ALTER TABLE `AspNetRoleClaims`
   MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT a táblához `aspnetuserclaims`
+-- AUTO_INCREMENT a táblához `AspNetUserClaims`
 --
-ALTER TABLE `aspnetuserclaims`
+ALTER TABLE `AspNetUserClaims`
   MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
@@ -592,47 +592,47 @@ ALTER TABLE `aspnetuserclaims`
 --
 
 --
--- Megkötések a táblához `aspnetroleclaims`
+-- Megkötések a táblához `AspNetRoleClaims`
 --
-ALTER TABLE `aspnetroleclaims`
-  ADD CONSTRAINT `FK_AspNetRoleClaims_AspNetRoles_RoleId` FOREIGN KEY (`RoleId`) REFERENCES `aspnetroles` (`Id`) ON DELETE CASCADE;
+ALTER TABLE `AspNetRoleClaims`
+  ADD CONSTRAINT `FK_AspNetRoleClaims_AspNetRoles_RoleId` FOREIGN KEY (`RoleId`) REFERENCES `AspNetRoles` (`Id`) ON DELETE CASCADE;
 
 --
--- Megkötések a táblához `aspnetuserclaims`
+-- Megkötések a táblához `AspNetUserClaims`
 --
-ALTER TABLE `aspnetuserclaims`
-  ADD CONSTRAINT `FK_AspNetUserClaims_AspNetUsers_UserId` FOREIGN KEY (`UserId`) REFERENCES `aspnetusers` (`Id`) ON DELETE CASCADE;
+ALTER TABLE `AspNetUserClaims`
+  ADD CONSTRAINT `FK_AspNetUserClaims_AspNetUsers_UserId` FOREIGN KEY (`UserId`) REFERENCES `AspNetUsers` (`Id`) ON DELETE CASCADE;
 
 --
--- Megkötések a táblához `aspnetuserlogins`
+-- Megkötések a táblához `AspNetUserLogins`
 --
-ALTER TABLE `aspnetuserlogins`
-  ADD CONSTRAINT `FK_AspNetUserLogins_AspNetUsers_UserId` FOREIGN KEY (`UserId`) REFERENCES `aspnetusers` (`Id`) ON DELETE CASCADE;
+ALTER TABLE `AspNetUserLogins`
+  ADD CONSTRAINT `FK_AspNetUserLogins_AspNetUsers_UserId` FOREIGN KEY (`UserId`) REFERENCES `AspNetUsers` (`Id`) ON DELETE CASCADE;
 
 --
--- Megkötések a táblához `aspnetuserroles`
+-- Megkötések a táblához `AspNetUserRoles`
 --
-ALTER TABLE `aspnetuserroles`
-  ADD CONSTRAINT `FK_AspNetUserRoles_AspNetRoles_RoleId` FOREIGN KEY (`RoleId`) REFERENCES `aspnetroles` (`Id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `FK_AspNetUserRoles_AspNetUsers_UserId` FOREIGN KEY (`UserId`) REFERENCES `aspnetusers` (`Id`) ON DELETE CASCADE;
+ALTER TABLE `AspNetUserRoles`
+  ADD CONSTRAINT `FK_AspNetUserRoles_AspNetRoles_RoleId` FOREIGN KEY (`RoleId`) REFERENCES `AspNetRoles` (`Id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `FK_AspNetUserRoles_AspNetUsers_UserId` FOREIGN KEY (`UserId`) REFERENCES `AspNetUsers` (`Id`) ON DELETE CASCADE;
 
 --
--- Megkötések a táblához `aspnetusertokens`
+-- Megkötések a táblához `AspNetUserTokens`
 --
-ALTER TABLE `aspnetusertokens`
-  ADD CONSTRAINT `FK_AspNetUserTokens_AspNetUsers_UserId` FOREIGN KEY (`UserId`) REFERENCES `aspnetusers` (`Id`) ON DELETE CASCADE;
+ALTER TABLE `AspNetUserTokens`
+  ADD CONSTRAINT `FK_AspNetUserTokens_AspNetUsers_UserId` FOREIGN KEY (`UserId`) REFERENCES `AspNetUsers` (`Id`) ON DELETE CASCADE;
 
 --
--- Megkötések a táblához `saves`
+-- Megkötések a táblához `Saves`
 --
-ALTER TABLE `saves`
-  ADD CONSTRAINT `FK_saves_User_UserId` FOREIGN KEY (`Id`) REFERENCES `aspnetusers` (`Id`) ON DELETE CASCADE;
+ALTER TABLE `Saves`
+  ADD CONSTRAINT `FK_Saves_User_UserId` FOREIGN KEY (`Id`) REFERENCES `AspNetUsers` (`Id`) ON DELETE CASCADE;
 
 --
--- Megkötések a táblához `velemeny`
+-- Megkötések a táblához `Velemeny`
 --
-ALTER TABLE `velemeny`
-  ADD CONSTRAINT `FK_Velemeny` FOREIGN KEY (`Id`) REFERENCES `aspnetusers` (`Id`) ON DELETE CASCADE;
+ALTER TABLE `Velemeny`
+  ADD CONSTRAINT `FK_Velemeny` FOREIGN KEY (`Id`) REFERENCES `AspNetUsers` (`Id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
