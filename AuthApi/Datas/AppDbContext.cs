@@ -73,7 +73,7 @@ namespace AuthApi.Datas
             builder.Entity<Pontaranyegyt>(en =>
             {
                 en.HasNoKey();
-                en.ToView("pontaranyegyt");
+                en.ToView("pontarany");
             });
 
             builder.Entity<Szintarany>(en =>
