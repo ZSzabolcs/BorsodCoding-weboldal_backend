@@ -77,10 +77,10 @@ namespace AuthApi.Services
                         save.Language,
                         save.RegDate,
                         save.ModDate,
-                        PontArany =  _context.Pontaranyegyts.FirstOrDefault(p => p.Points == save.Points).Szazalek,
+                        PontArany = _context.Pontaranyegyts.FirstOrDefault(p => p.Points == save.Points).Szazalek,
                         SzintArany = _context.Szintaranies.FirstOrDefault(sz => sz.Level == save.Level).Szazalek,
                         NyelvArany = _context.Nyelvaranies.FirstOrDefault(ny => ny.Language == save.Language).Szazalek,
-                        jatekosDb = _context.Menteseks.FirstOrDefault().Db
+                        jatekosDb = _context.Saves.LongCount()
 
                     };
                     _responseDto.Message = "Sikeres lekérés";

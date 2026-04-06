@@ -16,7 +16,7 @@ namespace AuthApi.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.23")
+                .HasAnnotation("ProductVersion", "8.0.25")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
             modelBuilder.Entity("AuthApi.Models.ApplicationUser", b =>
@@ -89,6 +89,43 @@ namespace AuthApi.Migrations
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
+            modelBuilder.Entity("AuthApi.Models.Mentesek", b =>
+                {
+                    b.Property<long>("Db")
+                        .HasColumnType("bigint");
+
+                    b.ToTable((string)null);
+
+                    b.ToView("mentesek", (string)null);
+                });
+
+            modelBuilder.Entity("AuthApi.Models.Nyelvarany", b =>
+                {
+                    b.Property<string>("Language")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<decimal?>("Szazalek")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.ToTable((string)null);
+
+                    b.ToView("nyelvarany", (string)null);
+                });
+
+            modelBuilder.Entity("AuthApi.Models.Pontaranyegyt", b =>
+                {
+                    b.Property<int>("Points")
+                        .HasColumnType("int");
+
+                    b.Property<decimal?>("Szazalek")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.ToTable((string)null);
+
+                    b.ToView("pontaranyegyt", (string)null);
+                });
+
             modelBuilder.Entity("AuthApi.Models.Save", b =>
                 {
                     b.Property<string>("Id")
@@ -110,16 +147,40 @@ namespace AuthApi.Migrations
                     b.Property<DateTime>("RegDate")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<string>("UserId")
-                        .IsRequired()
+                    b.HasKey("Id");
+
+                    b.ToTable("Saves");
+                });
+
+            modelBuilder.Entity("AuthApi.Models.Szintarany", b =>
+                {
+                    b.Property<int>("Level")
+                        .HasColumnType("int");
+
+                    b.Property<decimal?>("Szazalek")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.ToTable((string)null);
+
+                    b.ToView("szintarany", (string)null);
+                });
+
+            modelBuilder.Entity("AuthApi.Models.Velemeny", b =>
+                {
+                    b.Property<string>("Id")
                         .HasColumnType("varchar(255)");
+
+                    b.Property<string>("Ertekeles")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Megjegyzes")
+                        .IsRequired()
+                        .HasColumnType("longtext");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("UserId")
-                        .IsUnique();
-
-                    b.ToTable("Saves");
+                    b.ToTable("Velemeny");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -254,7 +315,18 @@ namespace AuthApi.Migrations
                 {
                     b.HasOne("AuthApi.Models.ApplicationUser", "User")
                         .WithOne("Save")
-                        .HasForeignKey("AuthApi.Models.Save", "UserId")
+                        .HasForeignKey("AuthApi.Models.Save", "Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("AuthApi.Models.Velemeny", b =>
+                {
+                    b.HasOne("AuthApi.Models.ApplicationUser", "User")
+                        .WithOne("Velemeny")
+                        .HasForeignKey("AuthApi.Models.Velemeny", "Id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -315,6 +387,8 @@ namespace AuthApi.Migrations
             modelBuilder.Entity("AuthApi.Models.ApplicationUser", b =>
                 {
                     b.Navigation("Save");
+
+                    b.Navigation("Velemeny");
                 });
 #pragma warning restore 612, 618
         }

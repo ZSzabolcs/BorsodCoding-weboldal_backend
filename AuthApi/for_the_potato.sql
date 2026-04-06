@@ -336,15 +336,6 @@ CREATE TABLE `AspNetUserTokens` (
 
 -- --------------------------------------------------------
 
---
--- A nézet helyettes szerkezete `mentesek`
--- (Lásd alább az aktuális nézetet)
---
-CREATE TABLE `mentesek` (
-`DB` bigint(21)
-);
-
--- --------------------------------------------------------
 
 --
 -- A nézet helyettes szerkezete `nyelvarany`
@@ -358,10 +349,10 @@ CREATE TABLE `nyelvarany` (
 -- --------------------------------------------------------
 
 --
--- A nézet helyettes szerkezete `pontaranyegyt`
+-- A nézet helyettes szerkezete `pontarany`
 -- (Lásd alább az aktuális nézetet)
 --
-CREATE TABLE `pontaranyegyt` (
+CREATE TABLE `pontarany` (
 `Points` int(11)
 ,`Szazalek` decimal(10,1)
 );
@@ -478,16 +469,16 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `nyelvarany`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `nyelvarany`  AS SELECT `Saves`.`Language` AS `Language`, cast(count(`Saves`.`Id`) / `mentesek`.`DB` * 100 as decimal(10,1)) AS `Szazalek` FROM (`Saves` join `mentesek`) GROUP BY `Saves`.`Language` ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `nyelvarany`  AS SELECT `Saves`.`Language` AS `Language`, cast(count(`Saves`.`Id`) / `mentesek`.`DB` * 100 as decimal(10,1)) AS `Szazalek` FROM (`Saves` join `mentesek`) GROUP BY `Saves`.`Language`, `mentesek`.`DB`;
 
 -- --------------------------------------------------------
 
 --
--- Nézet szerkezete `pontaranyegyt`
+-- Nézet szerkezete `pontarany`
 --
-DROP TABLE IF EXISTS `pontaranyegyt`;
+DROP TABLE IF EXISTS `pontarany`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `pontaranyegyt`  AS SELECT `Saves`.`Points` AS `Points`, cast(count(`Saves`.`Id`) / `mentesek`.`DB` * 100 as decimal(10,1)) AS `Szazalek` FROM (`Saves` join `mentesek`) GROUP BY `Saves`.`Points` ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `pontarany`  AS SELECT `Saves`.`Points` AS `Points`, cast(count(`Saves`.`Points`) / `mentesek`.`DB` * 100 as decimal(10,1)) AS `Szazalek` FROM (`Saves` join `mentesek`) GROUP BY `Saves`.`Points`, `mentesek`.`DB`;
 
 -- --------------------------------------------------------
 
@@ -496,7 +487,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `szintarany`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `szintarany`  AS SELECT `Saves`.`Level` AS `Level`, cast(count(`Saves`.`Id`) / `mentesek`.`DB` * 100 as decimal(10,1)) AS `Szazalek` FROM (`Saves` join `mentesek`) GROUP BY `Saves`.`Level` ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `szintarany`  AS SELECT `Saves`.`Level` AS `Level`, cast(count(`Saves`.`Level`) / `mentesek`.`DB` * 100 as decimal(10,1)) AS `Szazalek` FROM (`Saves` join `mentesek`) GROUP BY `Saves`.`Level`, `mentesek`.`DB`;
 
 --
 -- Indexek a kiírt táblákhoz

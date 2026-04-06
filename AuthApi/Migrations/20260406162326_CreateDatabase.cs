@@ -1,14 +1,11 @@
-﻿using System;
-using System.Diagnostics;
-using Microsoft.EntityFrameworkCore.Migrations;
-using MySql.EntityFrameworkCore.Metadata;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
 namespace AuthApi.Migrations
 {
     /// <inheritdoc />
-    public partial class SaveTableAdded : Migration
+    public partial class CreateDatabase : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
