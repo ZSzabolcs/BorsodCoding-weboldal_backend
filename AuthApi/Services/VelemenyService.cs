@@ -57,12 +57,12 @@ namespace AuthApi.Services
                         _context.Remove(record);
                         await _context.SaveChangesAsync();
                         _responseDto.Value = record;
-                        _responseDto.Message = "Sikeres törlés";
+                        _responseDto.Message = "Sikeres törlés!";
                         return _responseDto;
                     }
 
                 }
-                return "Sikertelen törlés";
+                return "Sikertelen törlés!";
             }
             catch (Exception ex)
             {
