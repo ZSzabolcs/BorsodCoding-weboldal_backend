@@ -57,13 +57,38 @@ namespace AuthApi.Services
             }
         }
 
-
-
-        public async Task<object> GetStatistic(string username)
+        public async Task<object> GetByUserName(string userName)
         {
             try
             {
-                var vanMentese = await _context.Users.FirstOrDefaultAsync(u => u.NormalizedUserName == username.ToUpper() && u.Save != null);
+                var user = await _context.Users.Include(u => u.Save).FirstOrDefaultAsync(s => s.NormalizedUserName == userName.ToUpper());
+
+                if (user == null)
+                {
+                    return "Nem létezik ilyen fiók!";
+                }
+
+                if (user.Save != null) 
+                {
+                    _responseDto.Message = "Sikeres lekérés";
+                    _responseDto.Value = new { user.Save.Level, user.Save.Language, user.Save.Points };
+                    return _responseDto;
+                }
+
+                return "Nincsen mentése!";
+
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
+        }
+
+        public async Task<object> GetStatistic(string userName)
+        {
+            try
+            {
+                var vanMentese = await _context.Users.FirstOrDefaultAsync(u => u.NormalizedUserName == userName.ToUpper() && u.Save != null);
 
                 if (vanMentese != null)
                 {

@@ -24,6 +24,11 @@ namespace AuthApi.Mock.Services
             return await _repository.GetAllData();
         }
 
+        public Task<object> GetByUserName(string userName)
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task<object> GetStatistic(string username)
         {
            return await _repository.GetStatistic(username);

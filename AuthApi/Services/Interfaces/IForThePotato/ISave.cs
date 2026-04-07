@@ -10,7 +10,6 @@ namespace AuthApi.Services.Interfaces.IForThePotato
         Task<object> PutData(SaveDto save);
         Task<object> PutDataFromWPF(SaveDtoFromWPF save);
         Task<object> DeleteData(string id);
-
-        
+        Task<object> GetByUserName(string userName);
     }
 }

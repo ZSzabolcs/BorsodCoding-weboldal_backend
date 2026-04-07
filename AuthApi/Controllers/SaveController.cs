@@ -28,13 +28,26 @@ namespace AuthApi.Controllers
         }
 
         [Authorize(Roles = "Admin,Player")]
-        [HttpGet("Statisztika/{username}")]
-        public async Task<object> GetStatistic(string username)
+        [HttpGet("Statisztika/{userName}")]
+        public async Task<object> GetStatistic(string userName)
         {
-            var response = await _save.GetStatistic(username);
+            var response = await _save.GetStatistic(userName);
             if (response is string)
             {
-                NotFound(response);
+               return NotFound(response);
+            }
+
+            return Ok(response);
+        }
+
+        [Authorize(Roles = "Admin,Player")]
+        [HttpGet("{userName}")]
+        public async Task<object> GetSaveByUserName(string userName)
+        {
+            var response = await _save.GetByUserName(userName);
+            if (response is string)
+            {
+                return NotFound(response);
             }
 
             return Ok(response);
