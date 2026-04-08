@@ -15,12 +15,12 @@ namespace AuthApi.Controllers
         [HttpGet("download")]
         public IActionResult DownloadFile()
         {
-            string fajlNev = "For The Potato Demo Setup.exe";
+            string fajlNev = "For_The_Potato_Demo_SETUP.exe";
             var filePath = Path.Combine(Directory.GetCurrentDirectory(), "Setups", fajlNev);
 
             if (!System.IO.File.Exists(filePath))
             {
-                return NotFound(new { message = "A kért fájl nem található." });
+                return NotFound("A kért fájl nem található!");
             }
 
             var provider = new FileExtensionContentTypeProvider();
