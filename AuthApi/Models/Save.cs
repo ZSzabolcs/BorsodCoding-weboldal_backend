@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
 
 namespace AuthApi.Models;
@@ -14,6 +15,7 @@ public partial class Save
 
     public int Level { get; set; }
 
+    [Column(TypeName = "char(2)")]
     public string Language { get; set; } = null!;
 
     public DateTime RegDate { get; set; }
