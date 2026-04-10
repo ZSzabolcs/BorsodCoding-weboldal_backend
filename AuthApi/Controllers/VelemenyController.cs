@@ -43,7 +43,7 @@ namespace AuthApi.Controllers
 
                 if (response is string)
                 {
-                    NotFound(response);
+                    return NotFound(response);
                 }
 
                 return Ok(response);
@@ -129,7 +129,7 @@ namespace AuthApi.Controllers
 
                 if (response is string)
                 {
-                    NotFound(response);
+                    return NotFound(response);
                 }
 
                 return Ok(response);
@@ -151,7 +151,7 @@ namespace AuthApi.Controllers
 
                 if (response is string)
                 {
-                    NotFound(response);
+                   return NotFound(response);
                 }
 
                 return StatusCode(200, response);
