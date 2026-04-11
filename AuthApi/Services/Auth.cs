@@ -36,7 +36,7 @@ namespace AuthApi.Services
 
                 await userManager.AddToRoleAsync(user, roleName);
 
-                return new ResponseDto(){ Value = user.UserName, Message = "Sikeres hozzárendelés!" };
+                return new ResponseDto() { Value = user.UserName, Message = "Sikeres hozzárendelés!" };
             }
 
             return "Sikertelen hozzárendelés!";
@@ -45,9 +45,9 @@ namespace AuthApi.Services
         public async Task<object> DeleteUserData(string id)
         {
             var user = await userManager.FindByIdAsync(id);
-            if (user != null) 
+            if (user != null)
             {
-               var delete = await userManager.DeleteAsync(user);
+                var delete = await userManager.DeleteAsync(user);
                 if (delete.Succeeded)
                 {
                     return new ResponseDto() { Value = user, Message = "Sikeres törlés!" };
@@ -69,7 +69,7 @@ namespace AuthApi.Services
 
             if (oneuser != null)
             {
-                return new ResponseDto(){ Value = new { oneuser.Email, oneuser.Birthdate, oneuser.ModDate }, Message = "Sikeres lekérés" };
+                return new ResponseDto() { Value = new { oneuser.Email, oneuser.Birthdate, oneuser.ModDate }, Message = "Sikeres lekérés" };
             }
 
             return "Sikertelen lekérés";
@@ -81,7 +81,7 @@ namespace AuthApi.Services
 
             if (oneUser != null)
             {
-                return new ResponseDto(){ Value = oneUser, Message = "Sikeres lekérés"};
+                return new ResponseDto() { Value = oneUser, Message = "Sikeres lekérés" };
             }
 
             return "Sikertelen lekérés";
@@ -100,7 +100,7 @@ namespace AuthApi.Services
                 var roles = await userManager.GetRolesAsync(user);
                 var jwtToken = tokenGenerator.GenerateToken(user, roles);
 
-                return new LoginResponseDto(){ Value = user.UserName, Message = "Sikeres beléptetés!", Token = jwtToken };
+                return new LoginResponseDto() { Value = user.UserName, Message = "Sikeres beléptetés!", Token = jwtToken };
             }
 
             return "Nem regisztrált. Vagy a felhasználónév vagy a jelszó helytelen!";
@@ -126,21 +126,21 @@ namespace AuthApi.Services
                 {
                     roleManager.CreateAsync(new IdentityRole(player)).GetAwaiter().GetResult();
                 }
-                
-                var roleSet =  await userManager.AddToRoleAsync(foundUser, player);
+
+                var roleSet = await userManager.AddToRoleAsync(foundUser, player);
 
                 if (roleSet.Succeeded)
                 {
                     var roles = await userManager.GetRolesAsync(foundUser);
                     var jwtToken = tokenGenerator.GenerateToken(foundUser, roles);
-                    return new LoginResponseDto() { Value = foundUser.UserName, Message = "Sikeres regisztráció!", Token = jwtToken  };
+                    return new LoginResponseDto() { Value = foundUser.UserName, Message = "Sikeres regisztráció!", Token = jwtToken };
                 }
 
-                
+
 
             }
 
-            return $"Sikertelen regisztráció! Lehet a felhasználó létezik!";
+            return "Sikertelen regisztráció! Lehet a felhasználó létezik!";
         }
 
         public async Task<object> UpdateUserData(RegisterRequestDto updateUserDto)
@@ -176,8 +176,8 @@ namespace AuthApi.Services
                             var updated = await userManager.UpdateAsync(user);
 
                             if (updated.Succeeded)
-                            { 
-                               return new ResponseDto() { Value = user.UserName, Message = "Sikeres módosítás!" };
+                            {
+                                return new ResponseDto() { Value = user.UserName, Message = "Sikeres módosítás!" };
                             }
                         }
 
@@ -186,7 +186,7 @@ namespace AuthApi.Services
                 }
                 else if ((updateUserDto.Password != null && updateUserDto.Email != null) || (updateUserDto.Password != "" && updateUserDto.Email != ""))
                 {
-                   
+
                     user.Email = updateUserDto.Email;
                     var removePassword = await userManager.RemovePasswordAsync(user);
 
@@ -215,7 +215,7 @@ namespace AuthApi.Services
                 return "A felhasználó nem létezik!";
             }
 
-             return "Sikertelen módosítás. Hibás a JSON adatok!";
+            return "Sikertelen módosítás. Hibás az adatok!";
         }
     }
 }
