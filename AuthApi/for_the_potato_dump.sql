@@ -431,29 +431,31 @@ CREATE TABLE `szintarany` (
 CREATE TABLE `velemeny` (
   `Id` varchar(255) NOT NULL,
   `Ertekeles` char(1) NOT NULL,
-  `Megjegyzes` longtext NOT NULL
+  `Megjegyzes` longtext NOT NULL,
+  `RegDate` datetime(6) NOT NULL,
+  `ModDate` datetime(6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- A tábla adatainak kiíratása `velemeny`
 --
 
-INSERT INTO `velemeny` (`Id`, `Ertekeles`, `Megjegyzes`) VALUES
-('5af671a9-9377-4092-933c-6d197287a004', '3', 'Jó játék'),
-('5b0a929b-6b47-4dbd-832e-1d51319b5b49', '4', 'Van benne potenciál'),
-('5e7ba88e-dae3-46ed-86e9-da7fa6300c65', '2', 'Nagyon bugos'),
-('70674815-23fc-46a4-9f96-e4ab1ed39642', '1', 'Rosszul néz ki'),
-('742b67c5-47e6-44ec-95fb-94d3c924f35c', '5', 'Nekem nagyon bejött!'),
-('7d3d71b5-2922-4102-b763-1571181acedc', '4', 'Még a játszható rage game!'),
-('853ee164-ab7d-4b6a-9cb4-a49b24825098', '4', 'Elmegy'),
-('8a4142dc-7569-4f6c-9542-e0ce53ab8eb8', '3', 'A játék a 2000-es években készült nem most, de játszható!'),
-('8b7d45d7-4e33-4ecd-8b79-2c04fed29dc1', '5', 'Nekem nagyon tetszik alig várom a második részt!'),
-('8cd5ab88-2e57-4358-94cf-0e63149a989c', '4', 'Egy pályán kívül nem mazochista a játék!'),
-('8f0bbfac-1e68-4b1f-a428-ea917cc5e8fe', '3', 'Érdekes a története, de a játék jobban kell kinéznie!'),
-('93c6d55a-21fe-4d60-93f1-bd58e0430f17', '3', 'Értelmesebb történet nincs?'),
-('9a6867d5-3f40-407f-acc5-6ea4f8f1979f', '5', 'Mostanában az ilyen játékok sokkal jobbak, mint a AAA játékok!'),
-('a056b2e9-b54a-48f4-b470-8a563eeeb758', '2', 'Többet kellene dolgozni a játékon, mert erre nem fizetnék!'),
-('f52d6229-eb21-402b-a358-ea6d90969b06', '4', 'Ez egy vicces játék');
+INSERT INTO `velemeny` (`Id`, `Ertekeles`, `Megjegyzes`, `RegDate`, `ModDate`) VALUES
+('5af671a9-9377-4092-933c-6d197287a004', '3', 'Jó játék', '2025-11-09 00:00:00.000000', '2025-01-25 00:00:00.000000'),
+('5b0a929b-6b47-4dbd-832e-1d51319b5b49', '4', 'Van benne potenciál', '2025-11-09 00:00:00.000000', '2025-01-25 00:00:00.000000'),
+('5e7ba88e-dae3-46ed-86e9-da7fa6300c65', '2', 'Nagyon bugos', '2025-11-09 00:00:00.000000', '2025-01-25 00:00:00.000000'),
+('70674815-23fc-46a4-9f96-e4ab1ed39642', '1', 'Rosszul néz ki', '2025-11-09 00:00:00.000000', '2025-01-25 00:00:00.000000'),
+('742b67c5-47e6-44ec-95fb-94d3c924f35c', '5', 'Nekem nagyon bejött!', '2025-11-09 00:00:00.000000', '2025-01-25 00:00:00.000000'),
+('7d3d71b5-2922-4102-b763-1571181acedc', '4', 'Még a játszható rage game!', '2025-11-09 00:00:00.000000', '2025-01-25 00:00:00.000000'),
+('853ee164-ab7d-4b6a-9cb4-a49b24825098', '4', 'Elmegy', '2025-11-09 00:00:00.000000', '2025-01-25 00:00:00.000000'),
+('8a4142dc-7569-4f6c-9542-e0ce53ab8eb8', '3', 'A játék a 2000-es években készült nem most, de játszható!', '2025-11-09 00:00:00.000000', '2025-01-25 00:00:00.000000'),
+('8b7d45d7-4e33-4ecd-8b79-2c04fed29dc1', '5', 'Nekem nagyon tetszik alig várom a második részt!', '2025-11-09 00:00:00.000000', '2025-01-25 00:00:00.000000'),
+('8cd5ab88-2e57-4358-94cf-0e63149a989c', '4', 'Egy pályán kívül nem mazochista a játék!', '2025-11-09 00:00:00.000000', '2025-01-25 00:00:00.000000'),
+('8f0bbfac-1e68-4b1f-a428-ea917cc5e8fe', '3', 'Érdekes a története, de a játék jobban kell kinéznie!', '2025-11-09 00:00:00.000000', '2025-01-25 00:00:00.000000'),
+('93c6d55a-21fe-4d60-93f1-bd58e0430f17', '3', 'Értelmesebb történet nincs?', '2025-11-09 00:00:00.000000', '2025-01-25 00:00:00.000000'),
+('9a6867d5-3f40-407f-acc5-6ea4f8f1979f', '5', 'Mostanában az ilyen játékok sokkal jobbak, mint a AAA játékok!', '2025-11-09 00:00:00.000000', '2025-01-25 00:00:00.000000'),
+('a056b2e9-b54a-48f4-b470-8a563eeeb758', '2', 'Többet kellene dolgozni a játékon, mert erre nem fizetnék!', '2025-11-09 00:00:00.000000', '2025-01-25 00:00:00.000000'),
+('f52d6229-eb21-402b-a358-ea6d90969b06', '4', 'Ez egy vicces játék', '2025-11-09 00:00:00.000000', '2025-01-25 00:00:00.000000');
 
 -- --------------------------------------------------------
 
