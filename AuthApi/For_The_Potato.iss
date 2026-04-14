@@ -13,7 +13,6 @@ ArchitecturesAllowed=x64compatible
 ArchitecturesInstallIn64BitMode=x64compatible
 DefaultDirName=ForThePotatoDemo
 UninstallDisplayIcon={app}\{#MyAppExeName}
-PrivilegesRequired=admin
 
 
 [Languages]
