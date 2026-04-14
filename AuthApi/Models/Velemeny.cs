@@ -16,6 +16,9 @@ public partial class Velemeny
 
     public string Megjegyzes { get; set; } = null!;
 
+    public DateTime RegDate { get; set; }
+    public DateTime ModDate { get; set; }
+
 
     [JsonIgnore]
     public virtual ApplicationUser User { get; set; } = null!;

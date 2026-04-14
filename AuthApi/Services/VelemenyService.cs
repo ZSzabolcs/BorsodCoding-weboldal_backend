@@ -131,7 +131,9 @@ namespace AuthApi.Services
                         {
                             Id = user.Id,
                             Ertekeles = velemenyDto.Ertekeles,
-                            Megjegyzes = velemenyDto.Megjegyzes
+                            Megjegyzes = velemenyDto.Megjegyzes,
+                            RegDate = DateTime.Now,
+                            ModDate = DateTime.MinValue,
                         };
 
                         await _context.AddAsync(ujVelemeny);
@@ -165,7 +167,7 @@ namespace AuthApi.Services
                         {
                             velemeny.Ertekeles = velemenyDto.Ertekeles;
                             velemeny.Megjegyzes = velemenyDto.Megjegyzes;
-
+                            velemeny.ModDate = DateTime.Now;
                             _context.Velemeny.Update(velemeny);
                             await _context.SaveChangesAsync();
                             _responseDto.Message = "A módosított véleményed sikeresen elmentve!";
@@ -199,7 +201,7 @@ namespace AuthApi.Services
                         {
                             velemeny.Ertekeles = velemenyDto.Ertekeles;
                             velemeny.Megjegyzes = velemenyDto.Megjegyzes;
-
+                            velemeny.ModDate = DateTime.Now;
                             _context.Velemeny.Update(velemeny);
                             await _context.SaveChangesAsync();
                             _responseDto.Message = "A módosított véleményed sikeresen elmentve!";
