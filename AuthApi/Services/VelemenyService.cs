@@ -99,7 +99,7 @@ namespace AuthApi.Services
                     if (velemeny != null)
                     {
                         _responseDto.Message = "Sikeres lekérés";
-                        _responseDto.Value = new { velemeny.Ertekeles, velemeny.Megjegyzes };
+                        _responseDto.Value = velemeny;
                         return _responseDto;
                     }
 
