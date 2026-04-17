@@ -89,13 +89,13 @@ namespace AuthApi.Controllers
 
         [Authorize(Roles = "Admin")]
         [HttpGet]
-        public async Task<ActionResult> getAllUsers()
+        public async Task<ActionResult> GetAllUsers()
         {
             var response = await auth.GetAllUser();
             return Ok(response);
 
         }
-        [Authorize(Roles = "Admin,Player")]
+        [Authorize(Roles = "Admin")]
         [HttpGet("FiokById/{id}")]
         public async Task<ActionResult> GetOneUserDataById(string id)
         {
